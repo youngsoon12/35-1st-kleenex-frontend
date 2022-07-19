@@ -1,34 +1,49 @@
+import { useState, useEffect } from 'react';
 import { MdOutlineShoppingBag } from 'react-icons/md';
 import './ProductCard.scss';
 
 export default function ProductCard() {
+  const [values, setValues] = useState({
+    imgURL: '',
+    korTitle: '',
+    engTitle: '',
+    details: '',
+    roastedDate: '',
+    price: '',
+  });
+
+  useEffect(() => {
+    fetch('http://localhost:3000/data/productCard.json')
+      .then(res => res.json())
+      .then(res => {
+        setValues(res.MOCK_DATA);
+      });
+  }, []);
+
   return (
-    <article className="productCard">
+    <section className="productCard">
       <div className="cardContainer">
         <div className="cardThumbnail">
-          <img
-            src="images/kingkong-fizzy-summer-thumbnail.png"
-            alt="thumbnail"
-          />
+          <img src={values[0].imgURL} alt="thumbnail" />
         </div>
         <div className="discriptionContainer">
           <div className="titleContainer">
-            <div className="korTitle">7월 킹콩 피지 서머 블렌드</div>
-            <div className="engTitle">Fizzy Summer Blend</div>
+            <div className="korTitle">{values[0].korTitle}</div>
+            <div className="engTitle">{values[0].engTitle}</div>
           </div>
           <div className="discription">
-            <div className="details">청사과, 자두, 라임, 복숭아, 청량감</div>
+            <div className="details">{values[0].details}</div>
             <div className="roastedDate">
               <div className="roastLeft">로스팅</div>
-              <div className="roastRight">2022-07-18</div>
+              <div className="roastRight">{values[0].roastedDate}</div>
             </div>
           </div>
           <div className="price">
-            <p>28,000원</p>
+            <p>{values[0].price}원</p>
             <MdOutlineShoppingBag />
           </div>
         </div>
       </div>
-    </article>
+    </section>
   );
 }

@@ -10,14 +10,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    width: 420px;
+    width: 100%;
     height: 423px;
     margin: 25px 0 20px;
 
     .cardThumbnail {
       width: 400px;
       height: 281px;
+      margin: 10px 0;
 
       img {
         width: 100%;
@@ -29,7 +29,6 @@
       display: flex;
       justify-content: flex-start;
       flex-direction: column;
-
       width: 100%;
       padding: 14px 12px 0;
 
@@ -38,37 +37,34 @@
 
         .korTitle {
           font-weight: bold;
-          font-size: 20px;
           color: #231916;
+          font-size: 20px;
         }
 
         .engTitle {
-          font-size: 15px;
           color: #595959;
+          font-size: 15px;
         }
       }
 
       .discription {
         display: flex;
         flex-direction: column;
-
         margin: 0 0 2px 0;
         gap: 2px;
 
         .details {
-          font-size: 14px;
           color: #383838;
+          font-size: 14px;
         }
 
         .roastedDate {
           display: flex;
           flex-direction: row;
-
           padding: 0 0 2px 0;
           gap: 5px;
-
-          font-size: 14px;
           color: #383838;
+          font-size: 14px;
         }
       }
       .price {
@@ -76,10 +72,9 @@
         align-items: center;
         flex-direction: row;
         padding: 3px 0;
-
         font-weight: bold;
-        font-size: 17px;
         color: #333333;
+        font-size: 17px;
 
         svg {
           font-size: 28px;
