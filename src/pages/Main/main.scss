@@ -167,6 +167,14 @@
           }
         }
       }
+
+      .mainBottomContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 70px 0;
+        gap: 90px;
+      }
     }
   }
 }

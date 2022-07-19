@@ -151,6 +151,25 @@ function Main() {
               </li>
             </ul>
           </div>
+          <div className="mainBottomLink">
+            <ul className="mainBottomContainer">
+              <li>
+                <a href="#home">
+                  <img src="https://terarosa.com/SkinImg/main_bt_01.jpg" />
+                </a>
+              </li>
+              <li>
+                <a href="#home">
+                  <img src="https://terarosa.com/SkinImg/main_bt_02.jpg" />
+                </a>
+              </li>
+              <li>
+                <a href="#home">
+                  <img src="https://terarosa.com/SkinImg/main_bt_03.jpg" />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
