@@ -1,0 +1,120 @@
+.main {
+  .mainSliderContainer {
+    .mainSliderImage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+
+      .image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 550px;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.25s 0.25s ease-in;
+      }
+
+      .active {
+        opacity: 1;
+      }
+    }
+
+    .mainSliderRightArrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 550px;
+
+      i {
+        font-size: 50px;
+        color: white;
+      }
+    }
+
+    .mainSliderLeftArrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 550px;
+
+      i {
+        font-size: 50px;
+        color: white;
+      }
+    }
+  }
+  .mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .upperMargin {
+      margin-top: 550px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .mainBestList {
+        padding: 75px 0;
+        max-width: 1260px;
+        .bestListTitleContainer {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 10px;
+
+          .bestListTitle {
+            font-size: 45px;
+          }
+
+          .bestListLink {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            font-size: 15px;
+            font-weight: 600;
+            color: red;
+          }
+        }
+
+        .bestListProductRecommend {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-width: 100%;
+          padding: 20px;
+          gap: 10px;
+
+          .bestListProduct {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 420px;
+            height: 430px;
+            background-color: antiquewhite;
+          }
+        }
+      }
+    }
+  }
+}
+
+.active {
+  opacity: 1;
+}
