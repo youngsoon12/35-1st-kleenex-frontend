@@ -130,6 +130,27 @@ function Main() {
               </li>
             </ul>
           </div>
+          <div className="mainBannerContainer">
+            <img src="./images/coffee1.jpg" alt="coffee" />
+            <ul className="mainBannerSection">
+              <li className="mainBannerCard">
+                <div className="cardTitle">DRIP BAG</div>
+                <div className="cardSubTitle">드립백</div>
+              </li>
+              <li className="mainBannerCard">
+                <div className="cardTitle">DELI</div>
+                <div className="cardSubTitle">식품</div>
+              </li>
+              <li className="mainBannerCard">
+                <div className="cardTitle">GREEN BEAN</div>
+                <div className="cardSubTitle">생두</div>
+              </li>
+              <li className="mainBannerCard">
+                <div className="cardTitle">SUBSCRIPTION</div>
+                <div className="cardSubTitle">정기배송</div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
