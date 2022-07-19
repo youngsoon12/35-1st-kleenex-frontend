@@ -155,17 +155,26 @@ function Main() {
             <ul className="mainBottomContainer">
               <li>
                 <a href="#home">
-                  <img src="https://terarosa.com/SkinImg/main_bt_01.jpg" />
+                  <img
+                    src="https://terarosa.com/SkinImg/main_bt_01.jpg"
+                    alt="icon1"
+                  />
                 </a>
               </li>
               <li>
                 <a href="#home">
-                  <img src="https://terarosa.com/SkinImg/main_bt_02.jpg" />
+                  <img
+                    src="https://terarosa.com/SkinImg/main_bt_02.jpg"
+                    alt="icon2"
+                  />
                 </a>
               </li>
               <li>
                 <a href="#home">
-                  <img src="https://terarosa.com/SkinImg/main_bt_03.jpg" />
+                  <img
+                    src="https://terarosa.com/SkinImg/main_bt_03.jpg"
+                    alt="icon3"
+                  />
                 </a>
               </li>
             </ul>
