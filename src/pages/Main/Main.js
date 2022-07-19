@@ -1,36 +1,33 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './main.scss';
 import Slide from './Slide/Slide';
+import './main.scss';
 
 function Main() {
   const [imgId, setImgId] = useState(1);
-  const interval = useRef();
 
-  const onleftClick1 = () => {
-    clearInterval(interval.current);
-    imgId === 1 ? setImgId(imageData.length) : setImgId(prevId => prevId - 1);
+  const showPrevImage = () => {
+    imgId === 1 ? setImgId(ImageData.length) : setImgId(prevId => prevId - 1);
   };
 
-  const onrightClick1 = () => {
-    clearInterval(interval.current);
-    imgId === imageData.length ? setImgId(1) : setImgId(prevId => prevId + 1);
+  const showNextImage = () => {
+    imgId === ImageData.length ? setImgId(1) : setImgId(prevId => prevId + 1);
   };
 
   useEffect(() => {
     const cycleImage = () => {
-      imgId === imageData.length ? setImgId(1) : setImgId(prevId => prevId + 1);
+      imgId === ImageData.length ? setImgId(1) : setImgId(prevId => prevId + 1);
     };
 
-    interval.current = setInterval(cycleImage, 4000);
+    const autoSlide = setInterval(cycleImage, 4000);
     return () => {
-      clearInterval(interval.current);
+      clearInterval(autoSlide);
     };
   }, [imgId]);
 
   return (
     <section className="main" id="home">
       <div className="mainSliderContainer">
-        {imageData.map(image => {
+        {ImageData.map(image => {
           return (
             <Slide
               key={image.id}
@@ -43,10 +40,10 @@ function Main() {
             />
           );
         })}
-        <div className="mainSliderRightArrow" onClick={onrightClick1}>
+        <div className="mainSliderRightArrow" onClick={showNextImage}>
           <i className="bx bx-chevron-right" />
         </div>
-        <div className="mainSliderLeftArrow" onClick={onleftClick1}>
+        <div className="mainSliderLeftArrow" onClick={showPrevImage}>
           <i className="bx bx-chevron-left" />
         </div>
       </div>
@@ -96,7 +93,7 @@ function Main() {
           <div className="mainBannerContainer">
             <img src="./images/coffee1.jpg" alt="coffee" />
             <ul className="mainBannerSection">
-              {bannerCardData.map(data => {
+              {BannerCardData.map(data => {
                 return (
                   <li className="mainBannerCard" key={data.id}>
                     <div className="cardTitle">{data.Title}</div>
@@ -140,7 +137,9 @@ function Main() {
   );
 }
 
-const imageData = [
+export default Main;
+
+const ImageData = [
   {
     id: 1,
     url: '../images/silde/ethiopia1.jpg',
@@ -171,11 +170,9 @@ const imageData = [
   },
 ];
 
-const bannerCardData = [
+const BannerCardData = [
   { id: 1, Title: 'DRIP BAG', subTitle: '드립백' },
   { id: 2, Title: 'DELI', subTitle: '식품' },
   { id: 3, Title: 'GREEN BEAN', subTitle: '생두' },
   { id: 4, Title: 'SUBSCRIPTION', subTitle: '정기배송' },
 ];
-
-export default Main;

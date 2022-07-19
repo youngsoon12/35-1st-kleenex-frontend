@@ -1,92 +1,33 @@
 .main {
-  .mainSliderContainer {
-    .mainSliderImage {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      transition: opacity 0.25s 0.25s ease-in;
-      opacity: 0;
+  .mainSliderRightArrow {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 550px;
 
-      .image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 550px;
-        object-fit: cover;
-      }
-
-      .mainSliderText {
-        position: absolute;
-        top: 100px;
-        left: 150px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 30px;
-        color: white;
-
-        .sliderSubTitle {
-          font-size: 15px;
-        }
-
-        .sliderTitle {
-          font-size: 85px;
-          font-weight: 600;
-        }
-
-        .shopNowButton {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-weight: 500;
-          padding: 10px;
-          width: 110px;
-          height: 40px;
-          border: 1.5px solid #000;
-          border-color: white;
-        }
-      }
+    i {
+      color: white;
+      font-size: 50px;
     }
+  }
 
-    .active {
-      opacity: 1;
-    }
+  .mainSliderLeftArrow {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 550px;
 
-    .mainSliderRightArrow {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100px;
-      height: 550px;
-
-      i {
-        font-size: 50px;
-        color: white;
-      }
-    }
-
-    .mainSliderLeftArrow {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100px;
-      height: 550px;
-
-      i {
-        font-size: 50px;
-        color: white;
-      }
+    i {
+      color: white;
+      font-size: 50px;
     }
   }
   .mainContainer {
@@ -96,15 +37,16 @@
     height: 100%;
 
     .upperMargin {
-      margin-top: 550px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin-top: 550px;
 
       .mainBestList {
         padding: 75px 0;
         max-width: 1260px;
+
         .bestListTitleContainer {
           position: relative;
           display: flex;
@@ -120,9 +62,9 @@
             position: absolute;
             bottom: 0;
             right: 20px;
+            color: red;
             font-size: 15px;
             font-weight: 600;
-            color: red;
           }
         }
 
@@ -168,11 +110,11 @@
           justify-content: center;
           align-items: center;
           gap: 5px;
-          background-image: url(../../assets/images/colombia.jpg);
-          background-repeat: no-repeat;
           width: 610px;
           height: 350px;
           margin: 10px;
+          background-image: url(../../assets/images/colombia.jpg);
+          background-repeat: no-repeat;
           color: white;
 
           &:nth-child(1) {
