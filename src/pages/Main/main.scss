@@ -1,33 +1,36 @@
 .main {
-  .mainSliderRightArrow {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    right: 0;
-    width: 100px;
-    height: 550px;
+  .mainSliderContainer {
+    position: relative;
+    .mainSliderRightArrow {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 550px;
 
-    i {
-      color: white;
-      font-size: 50px;
+      i {
+        color: white;
+        font-size: 50px;
+      }
     }
-  }
 
-  .mainSliderLeftArrow {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 550px;
+    .mainSliderLeftArrow {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 550px;
 
-    i {
-      color: white;
-      font-size: 50px;
+      i {
+        color: white;
+        font-size: 50px;
+      }
     }
   }
   .mainContainer {
@@ -55,6 +58,8 @@
           margin-bottom: 10px;
 
           .bestListTitle {
+            font-family: 'Cinzel', serif;
+            font-weight: 300;
             font-size: 45px;
           }
 
@@ -134,6 +139,7 @@
           }
 
           .cardTitle {
+            font-family: 'Cinzel', serif;
             font-size: 70px;
             font-weight: 800;
           }
@@ -153,8 +159,4 @@
       }
     }
   }
-}
-
-.active {
-  opacity: 1;
 }

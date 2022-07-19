@@ -91,7 +91,7 @@ function Main() {
             </ul>
           </div>
           <div className="mainBannerContainer">
-            <img src="./images/coffee1.jpg" alt="coffee" />
+            <img src="./images/colombia.jpg" alt="coffee" />
             <ul className="mainBannerSection">
               {BannerCardData.map(data => {
                 return (

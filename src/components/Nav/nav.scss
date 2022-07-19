@@ -1,0 +1,18 @@
+.nav {
+  position: relative;
+  z-index: 1000;
+  .navContainer {
+    width: 100vw;
+    height: 191px;
+    background-color: aquamarine;
+    transition: color 0.25s 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .navContainerSmall {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 85px;
+    background-color: bisque;
+  }
+}

@@ -30,12 +30,14 @@
       color: white;
 
       .sliderSubTitle {
+        font-family: 'Noto Sans KR', sans-serif;
         font-size: 15px;
       }
 
       .sliderTitle {
+        font-family: 'Playfair Display', serif;
         font-size: 85px;
-        font-weight: 600;
+        font-weight: 400;
       }
 
       .shopNowButton {
@@ -47,6 +49,8 @@
         height: 40px;
         border: 1.5px solid #000;
         border-color: white;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 15px;
         font-weight: 500;
       }
     }
