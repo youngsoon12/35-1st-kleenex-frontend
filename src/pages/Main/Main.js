@@ -1,129 +1,52 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './main.scss';
+import Slide from './Slide/Slide';
 
 function Main() {
-  const [img, setImg] = useState({
-    img1: 'active',
-    img2: '',
-    img3: '',
-    img4: '',
-  });
+  const [imgId, setImgId] = useState(1);
   const interval = useRef();
+
+  const onleftClick1 = () => {
+    clearInterval(interval.current);
+    imgId === 1 ? setImgId(imageData.length) : setImgId(prevId => prevId - 1);
+  };
+
+  const onrightClick1 = () => {
+    clearInterval(interval.current);
+    imgId === imageData.length ? setImgId(1) : setImgId(prevId => prevId + 1);
+  };
 
   useEffect(() => {
     const cycleImage = () => {
-      if (img.img1 === 'active') {
-        setImg({ ...img, img1: '', img2: 'active' });
-      } else if (img.img2 === 'active') {
-        setImg({ ...img, img2: '', img3: 'active' });
-      } else if (img.img3 === 'active') {
-        setImg({ ...img, img3: '', img4: 'active' });
-      } else if (img.img4 === 'active') {
-        setImg({ ...img, img4: '', img1: 'active' });
-      }
+      imgId === imageData.length ? setImgId(1) : setImgId(prevId => prevId + 1);
     };
 
     interval.current = setInterval(cycleImage, 4000);
     return () => {
       clearInterval(interval.current);
     };
-  }, [img]);
-
-  const onleftClick = () => {
-    clearInterval(interval.current);
-    if (img.img1 === 'active') {
-      setImg({ ...img, img1: '', img4: 'active' });
-    } else if (img.img4 === 'active') {
-      setImg({ ...img, img4: '', img3: 'active' });
-    } else if (img.img3 === 'active') {
-      setImg({ ...img, img3: '', img2: 'active' });
-    } else if (img.img2 === 'active') {
-      setImg({ ...img, img2: '', img1: 'active' });
-    }
-  };
-
-  const onrightClick = () => {
-    clearInterval(interval.current);
-    if (img.img1 === 'active') {
-      setImg({ ...img, img1: '', img2: 'active' });
-    } else if (img.img2 === 'active') {
-      setImg({ ...img, img2: '', img3: 'active' });
-    } else if (img.img3 === 'active') {
-      setImg({ ...img, img3: '', img4: 'active' });
-    } else if (img.img4 === 'active') {
-      setImg({ ...img, img4: '', img1: 'active' });
-    }
-  };
+  }, [imgId]);
 
   return (
     <section className="main" id="home">
       <div className="mainSliderContainer">
-        <div className={`mainSliderImage ${img.img1}`}>
-          <img
-            src="../images/silde/ethiopia1.jpg"
-            alt="slide1"
-            className="image"
-          />
-          <div className="mainSliderText">
-            <span className="sliderSubTitle">에티오피아 예가체페 첼베사</span>
-            <span className="sliderTitle">
-              Ethiopia <br />
-              Yirgacheffe Chelbesa
-            </span>
-            <div className="shopNowButton">SHOP NOW</div>
-          </div>
-        </div>
-        <div className={`mainSliderImage ${img.img2}`}>
-          <img
-            src="../images/silde/indonesia.jpg"
-            alt="slide2"
-            className="image"
-          />
-          <div className="mainSliderText">
-            <span className="sliderSubTitle">
-              인도네시아 COE 3위 판탄 무사라
-            </span>
-            <span className="sliderTitle">
-              2021 Indonesia <br />
-              C.O.E Winner
-            </span>
-            <div className="shopNowButton">SHOP NOW</div>
-          </div>
-        </div>
-        <div className={`mainSliderImage ${img.img3}`}>
-          <img
-            src="../images/silde/colombia1.jpg"
-            alt="slide3"
-            className="image"
-          />
-          <div className="mainSliderText">
-            <span className="sliderSubTitle">콜롬비아 호세 플로레즈</span>
-            <span className="sliderTitle">
-              Colombia <br />
-              Jose Florez
-            </span>
-            <div className="shopNowButton">SHOP NOW</div>
-          </div>
-        </div>
-        <div className={`mainSliderImage ${img.img4}`}>
-          <img
-            src="../images/silde/ethiopia2.jpg"
-            alt="slide4"
-            className="image"
-          />
-          <div className="mainSliderText">
-            <span className="sliderSubTitle">에티오피아 구지 함벨라</span>
-            <span className="sliderTitle">
-              Ethiopia <br />
-              Guji Hambela
-            </span>
-            <div className="shopNowButton">SHOP NOW</div>
-          </div>
-        </div>
-        <div className="mainSliderRightArrow" onClick={onrightClick}>
+        {imageData.map(image => {
+          return (
+            <Slide
+              key={image.id}
+              id={image.id}
+              url={image.url}
+              subTitle={image.subTitle}
+              Title1={image.Title1}
+              Title2={image.Title2}
+              imgId={imgId}
+            />
+          );
+        })}
+        <div className="mainSliderRightArrow" onClick={onrightClick1}>
           <i className="bx bx-chevron-right" />
         </div>
-        <div className="mainSliderLeftArrow" onClick={onleftClick}>
+        <div className="mainSliderLeftArrow" onClick={onleftClick1}>
           <i className="bx bx-chevron-left" />
         </div>
       </div>
@@ -173,22 +96,14 @@ function Main() {
           <div className="mainBannerContainer">
             <img src="./images/coffee1.jpg" alt="coffee" />
             <ul className="mainBannerSection">
-              <li className="mainBannerCard">
-                <div className="cardTitle">DRIP BAG</div>
-                <div className="cardSubTitle">드립백</div>
-              </li>
-              <li className="mainBannerCard">
-                <div className="cardTitle">DELI</div>
-                <div className="cardSubTitle">식품</div>
-              </li>
-              <li className="mainBannerCard">
-                <div className="cardTitle">GREEN BEAN</div>
-                <div className="cardSubTitle">생두</div>
-              </li>
-              <li className="mainBannerCard">
-                <div className="cardTitle">SUBSCRIPTION</div>
-                <div className="cardSubTitle">정기배송</div>
-              </li>
+              {bannerCardData.map(data => {
+                return (
+                  <li className="mainBannerCard" key={data.id}>
+                    <div className="cardTitle">{data.Title}</div>
+                    <div className="cardSubTitle">{data.subTitle}</div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="mainBottomLink">
@@ -224,5 +139,43 @@ function Main() {
     </section>
   );
 }
+
+const imageData = [
+  {
+    id: 1,
+    url: '../images/silde/ethiopia1.jpg',
+    subTitle: '에티오피아 예가체페 첼베사',
+    Title1: 'Ethiopia',
+    Title2: 'Yirgacheffe Chelbesa',
+  },
+  {
+    id: 2,
+    url: '../images/silde/indonesia.jpg',
+    subTitle: '인도네시아 COE 3위 판탄 무사라',
+    Title1: '2021 Indonesia',
+    Title2: 'C.O.E Winner',
+  },
+  {
+    id: 3,
+    url: '../images/silde/colombia1.jpg',
+    subTitle: '콜롬비아 호세 플로레즈',
+    Title1: 'Colombia',
+    Title2: 'Jose Florez',
+  },
+  {
+    id: 4,
+    url: '../images/silde/ethiopia2.jpg',
+    subTitle: '에티오피아 구지 함벨라',
+    Title1: 'Ethiopia',
+    Title2: 'Guji Hambela',
+  },
+];
+
+const bannerCardData = [
+  { id: 1, Title: 'DRIP BAG', subTitle: '드립백' },
+  { id: 2, Title: 'DELI', subTitle: '식품' },
+  { id: 3, Title: 'GREEN BEAN', subTitle: '생두' },
+  { id: 4, Title: 'SUBSCRIPTION', subTitle: '정기배송' },
+];
 
 export default Main;
