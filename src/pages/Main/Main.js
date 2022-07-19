@@ -58,27 +58,67 @@ function Main() {
   return (
     <section className="main" id="home">
       <div className="mainSliderContainer">
-        <div className="mainSliderImage">
+        <div className={`mainSliderImage ${img.img1}`}>
           <img
-            src="../images/silde/slide1.jpg"
+            src="../images/silde/ethiopia1.jpg"
             alt="slide1"
-            className={`image ${img.img1}`}
+            className="image"
           />
+          <div className="mainSliderText">
+            <span className="sliderSubTitle">에티오피아 예가체페 첼베사</span>
+            <span className="sliderTitle">
+              Ethiopia <br />
+              Yirgacheffe Chelbesa
+            </span>
+            <div className="shopNowButton">SHOP NOW</div>
+          </div>
+        </div>
+        <div className={`mainSliderImage ${img.img2}`}>
           <img
-            src="../images/silde/slide2.jpg"
+            src="../images/silde/indonesia.jpg"
             alt="slide2"
-            className={`image ${img.img2}`}
+            className="image"
           />
+          <div className="mainSliderText">
+            <span className="sliderSubTitle">
+              인도네시아 COE 3위 판탄 무사라
+            </span>
+            <span className="sliderTitle">
+              2021 Indonesia <br />
+              C.O.E Winner
+            </span>
+            <div className="shopNowButton">SHOP NOW</div>
+          </div>
+        </div>
+        <div className={`mainSliderImage ${img.img3}`}>
           <img
-            src="../images/silde/slide3.jpg"
+            src="../images/silde/colombia1.jpg"
             alt="slide3"
-            className={`image ${img.img3}`}
+            className="image"
           />
+          <div className="mainSliderText">
+            <span className="sliderSubTitle">콜롬비아 호세 플로레즈</span>
+            <span className="sliderTitle">
+              Colombia <br />
+              Jose Florez
+            </span>
+            <div className="shopNowButton">SHOP NOW</div>
+          </div>
+        </div>
+        <div className={`mainSliderImage ${img.img4}`}>
           <img
-            src="../images/silde/slide4.jpg"
+            src="../images/silde/ethiopia2.jpg"
             alt="slide4"
-            className={`image ${img.img4}`}
+            className="image"
           />
+          <div className="mainSliderText">
+            <span className="sliderSubTitle">에티오피아 구지 함벨라</span>
+            <span className="sliderTitle">
+              Ethiopia <br />
+              Guji Hambela
+            </span>
+            <div className="shopNowButton">SHOP NOW</div>
+          </div>
         </div>
         <div className="mainSliderRightArrow" onClick={onrightClick}>
           <i className="bx bx-chevron-right" />

@@ -7,6 +7,8 @@
       align-items: center;
       width: 100%;
       height: 100%;
+      transition: opacity 0.25s 0.25s ease-in;
+      opacity: 0;
 
       .image {
         position: absolute;
@@ -15,13 +17,44 @@
         width: 100%;
         height: 550px;
         object-fit: cover;
-        opacity: 0;
-        transition: opacity 0.25s 0.25s ease-in;
       }
 
-      .active {
-        opacity: 1;
+      .mainSliderText {
+        position: absolute;
+        top: 100px;
+        left: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+        color: white;
+
+        .sliderSubTitle {
+          font-size: 15px;
+        }
+
+        .sliderTitle {
+          font-size: 85px;
+          font-weight: 600;
+        }
+
+        .shopNowButton {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 500;
+          padding: 10px;
+          width: 110px;
+          height: 40px;
+          border: 1.5px solid #000;
+          border-color: white;
+        }
       }
+    }
+
+    .active {
+      opacity: 1;
     }
 
     .mainSliderRightArrow {
@@ -135,11 +168,12 @@
           justify-content: center;
           align-items: center;
           gap: 5px;
-          background-image: url(../../assets/images/bannerCardBackground.jpg);
+          background-image: url(../../assets/images/colombia.jpg);
           background-repeat: no-repeat;
           width: 610px;
           height: 350px;
           margin: 10px;
+          color: white;
 
           &:nth-child(1) {
             background-position: 43% 44%;
