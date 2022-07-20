@@ -1,3 +1,18 @@
+@mixin cardSizeSmall {
+  width: 289px;
+  height: 202px;
+}
+
+@mixin cardSizeMed {
+  width: 329px;
+  height: 229px;
+}
+
+@mixin cardSizeBig {
+  width: 400px;
+  height: 281px;
+}
+
 .productCard {
   display: flex;
   justify-content: center;
@@ -10,13 +25,32 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
-    height: 423px;
-    margin: 25px 0 20px;
+    width: fit-content;
+    height: 100%;
+    margin: 25px 10px 20px;
 
-    .cardThumbnail {
-      width: 400px;
-      height: 281px;
+    .cardThumbnailSmall {
+      @include cardSizeSmall();
+      margin: 10px 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .cardThumbnailMed {
+      @include cardSizeMed();
+      margin: 10px 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .cardThumbnailBig {
+      @include cardSizeBig();
       margin: 10px 0;
 
       img {
@@ -30,7 +64,7 @@
       justify-content: flex-start;
       flex-direction: column;
       width: 100%;
-      padding: 14px 12px 0;
+      padding: 14px 0 0;
 
       .titleContainer {
         padding: 0 0 10px 0;

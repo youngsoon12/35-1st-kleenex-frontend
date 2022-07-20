@@ -5,7 +5,36 @@ import './main.scss';
 
 function Main() {
   const [imgId, setImgId] = useState(1);
+  const [values, setValues] = useState({
+    imgURL: '',
+    korTitle: '',
+    engTitle: '',
+    details: '',
+    roastedDate: '',
+    price: '',
+  });
+  const [newValue, setNewValue] = useState();
 
+  // mock data 가져오기
+
+  async function request() {
+    const res = await fetch('http://localhost:3000/data/productCardBest.json');
+    const result = await res.json();
+    setValues(result);
+  }
+
+  async function requestNewData() {
+    const res = await fetch('http://localhost:3000/data/productCardNew.json');
+    const result = await res.json();
+    setNewValue(result);
+  }
+
+  useEffect(() => {
+    request();
+    requestNewData();
+  }, []);
+
+  // 이미지 슬라이드 기능 구현
   const showPrevImage = () => {
     imgId === 1 ? setImgId(IMAGE_DATA.length) : setImgId(prevId => prevId - 1);
   };
@@ -27,115 +56,136 @@ function Main() {
     };
   }, [imgId]);
 
-  return (
-    <section className="main" id="home">
-      <div className="mainSliderContainer">
-        {IMAGE_DATA.map(image => {
-          return (
-            <Slide
-              key={image.id}
-              id={image.id}
-              url={image.url}
-              subTitle={image.subTitle}
-              Title1={image.Title1}
-              Title2={image.Title2}
-              imgId={imgId}
-            />
-          );
-        })}
-        <div className="mainSliderRightArrow" onClick={showNextImage}>
-          <i className="bx bx-chevron-right" />
+  if (values.length) {
+    return (
+      <section className="main" id="home">
+        <div className="mainSliderContainer">
+          {IMAGE_DATA.map(image => {
+            return (
+              <Slide
+                key={image.id}
+                id={image.id}
+                url={image.url}
+                subTitle={image.subTitle}
+                Title1={image.Title1}
+                Title2={image.Title2}
+                imgId={imgId}
+              />
+            );
+          })}
+          <div className="mainSliderRightArrow" onClick={showNextImage}>
+            <i className="bx bx-chevron-right" />
+          </div>
+          <div className="mainSliderLeftArrow" onClick={showPrevImage}>
+            <i className="bx bx-chevron-left" />
+          </div>
         </div>
-        <div className="mainSliderLeftArrow" onClick={showPrevImage}>
-          <i className="bx bx-chevron-left" />
-        </div>
-      </div>
-      <div className="mainContainer">
-        <div className="upperMargin">
-          <div className="mainBestList">
-            <div className="bestListTitleContainer">
-              <div className="bestListTitle">BEST</div>
-              <a href="#home" className="bestListLink">
-                + SHOP
-              </a>
+        <div className="mainContainer">
+          <div className="upperMargin">
+            <div className="mainBestList">
+              <div className="bestListTitleContainer">
+                <div className="bestListTitle">BEST</div>
+                <a href="#home" className="bestListLink">
+                  + SHOP
+                </a>
+              </div>
+              <ul className="bestListProductRecommend">
+                {values.map(product => {
+                  return (
+                    <ProductCard
+                      key={product.id}
+                      id={product.id}
+                      imgURL={product.imgURL}
+                      korTitle={product.korTitle}
+                      engTitle={product.engTitle}
+                      details={product.details}
+                      roastedDate={product.roastedDate}
+                      price={product.price}
+                      cardSize="Big"
+                    />
+                  );
+                })}
+                {/* <li className="bestListProduct">
+                  <div>컴포넌트</div>
+                </li>
+                <li className="bestListProduct">
+                  <div>컴포넌트</div>
+                </li> */}
+              </ul>
             </div>
-            <ul className="bestListProductRecommend">
-              <ProductCard />
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-            </ul>
-          </div>
-          <div className="mainBestList">
-            <div className="bestListTitleContainer">
-              <div className="bestListTitle">NEW</div>
-              <a href="#home" className="bestListLink">
-                + SHOP
-              </a>
+            <div className="mainNewList">
+              <div className="newListTitleContainer">
+                <div className="newListTitle">NEW</div>
+                <a href="#home" className="newListLink">
+                  + SHOP
+                </a>
+              </div>
+              <ul className="newListProductRecommend">
+                {newValue.map(product => {
+                  return (
+                    <ProductCard
+                      key={product.id}
+                      id={product.id}
+                      imgURL={product.imgURL}
+                      korTitle={product.korTitle}
+                      engTitle={product.engTitle}
+                      details={product.details}
+                      roastedDate={product.roastedDate}
+                      price={product.price}
+                      cardSize="Small"
+                    />
+                  );
+                })}
+              </ul>
             </div>
-            <ul className="bestListProductRecommend">
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-            </ul>
-          </div>
-          <div className="mainBannerContainer">
-            <img src="./images/colombia.jpg" alt="coffee" />
-            <ul className="mainBannerSection">
-              {BANNER_CARD_DATA.map(data => {
-                return (
-                  <li className="mainBannerCard" key={data.id}>
-                    <div className="cardTitle">{data.Title}</div>
-                    <div className="cardSubTitle">{data.subTitle}</div>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="mainBottomLink">
-            <ul className="mainBottomContainer">
-              <li>
-                <a href="#home">
-                  <img
-                    src="https://terarosa.com/SkinImg/main_bt_01.jpg"
-                    alt="icon1"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="#home">
-                  <img
-                    src="https://terarosa.com/SkinImg/main_bt_02.jpg"
-                    alt="icon2"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="#home">
-                  <img
-                    src="https://terarosa.com/SkinImg/main_bt_03.jpg"
-                    alt="icon3"
-                  />
-                </a>
-              </li>
-            </ul>
+            <div className="mainBannerContainer">
+              <img src="./images/colombia.jpg" alt="coffee" />
+              <ul className="mainBannerSection">
+                {BANNER_CARD_DATA.map(data => {
+                  return (
+                    <li className="mainBannerCard" key={data.id}>
+                      <div className="cardTitle">{data.Title}</div>
+                      <div className="cardSubTitle">{data.subTitle}</div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <div className="mainBottomLink">
+              <ul className="mainBottomContainer">
+                <li>
+                  <a href="#home">
+                    <img
+                      src="https://terarosa.com/SkinImg/main_bt_01.jpg"
+                      alt="icon1"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="#home">
+                    <img
+                      src="https://terarosa.com/SkinImg/main_bt_02.jpg"
+                      alt="icon2"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="#home">
+                    <img
+                      src="https://terarosa.com/SkinImg/main_bt_03.jpg"
+                      alt="icon3"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  } else {
+    return <div />;
+  }
 }
 
 export default Main;

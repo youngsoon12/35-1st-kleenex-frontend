@@ -79,14 +79,59 @@
           align-items: center;
           min-width: 100%;
           padding: 10px;
-          gap: 10px;
 
           .bestListProduct {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 420px;
-            height: 430px;
+            height: fit-content;
+            background-color: antiquewhite;
+          }
+        }
+      }
+
+      .mainNewList {
+        padding: 75px 0;
+        max-width: 1260px;
+
+        .newListTitleContainer {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 10px;
+
+          .newListTitle {
+            font-family: 'Cinzel', serif;
+            font-weight: 300;
+            font-size: 45px;
+          }
+
+          .newListLink {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            color: red;
+            font-size: 15px;
+            font-weight: 600;
+          }
+        }
+
+        .newListProductRecommend {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-width: 100%;
+          padding: 10px;
+          gap: 8px;
+
+          .newListProduct {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 420px;
+            height: fit-content;
             background-color: antiquewhite;
           }
         }
