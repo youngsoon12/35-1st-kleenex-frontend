@@ -7,19 +7,35 @@ function Login() {
     email: '',
     password: '',
   });
+  const [response, setResponse] = useState();
+
+  const body = JSON.stringify({
+    username: inputValue.email,
+    password: inputValue.password,
+  });
+
+  const postLogin = async () => {
+    const request = await fetch('http://10.58.5.214:8000/user/signin', {
+      method: 'POST',
+      body: body,
+    });
+    const result = await request.json();
+    setResponse(result);
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    postLogin();
+  };
 
   const emailRegExp =
     /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
   const passwordRegExp =
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 
-  const isValid =
-    emailRegExp.test(inputValue.email) &&
+  const isValid = true;
+  emailRegExp.test(inputValue.email) &&
     passwordRegExp.test(inputValue.password);
-
-  if (isValid) {
-    console.log('성공');
-  }
 
   const onHandleInput = e => {
     const { name, value } = e.target;
@@ -48,7 +64,7 @@ function Login() {
             </h2>
           </div>
           <div className="loginBox">
-            <form className="loginForm">
+            <form className="loginForm" onSubmit={onSubmit}>
               <h3 className="loginBoxTitle">회원 조회</h3>
               <input
                 type="text"
