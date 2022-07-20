@@ -16,7 +16,6 @@ export default function ProductCard() {
     fetch('http://localhost:3000/data/productCard.json')
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         setValues(res);
       });
   }, []);
