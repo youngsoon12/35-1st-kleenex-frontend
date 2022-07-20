@@ -26,8 +26,23 @@
       }
     }
     .categoryOne {
-      width: 323px;
+      width: 340px;
       margin-right: 100px;
+      .searchBar {
+        height: 32px;
+        padding: 6px;
+        width: 100%;
+        border-radius: 10px;
+        opacity: 1;
+        border: 1px solid #6d5f5f;
+        font-size: 13px;
+      }
+      .searchIcon {
+        position: absolute;
+        top: 34px;
+        left: 665px;
+        height: 17px;
+      }
       & ul {
         & li {
           float: left;
@@ -37,16 +52,25 @@
         & li:hover {
           font-size: 0px;
         }
+        .about {
+          width: 109px;
+        }
+        .shop {
+          width: 100px;
+        }
       }
     }
     .categoryTwo {
-      width: 300px;
+      width: 330px;
       margin: 10px;
       & ul {
         & li {
           float: left;
           padding: 10px;
           font-weight: lighter;
+        }
+        .museum {
+          width: 100px;
         }
         & li:hover {
           font-size: 0px;
@@ -97,10 +121,4 @@
     font-size: 16px;
     content: '매장 안내';
   }
-}
-
-.box {
-  width: 500px;
-  height: 2500px;
-  border: 1px solid black;
 }

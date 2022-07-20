@@ -97,7 +97,6 @@ const Navv = () => {
             </div>
           </div>
         </div>
-        <div className="box" />
       </div>
     );
   } else {

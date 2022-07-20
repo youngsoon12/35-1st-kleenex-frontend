@@ -23,16 +23,19 @@
       padding: 7px;
       width: 450px;
       border-radius: 10px;
-      border: 0.5px solid black;
+      border: 0.5px solid #6d5f5f;
+      font-size: 13px;
     }
     .searchIcon {
       position: absolute;
-      left: 830px;
-      top: 73px;
+      left: 860px;
+      top: 78px;
+      height: 20px;
     }
 
     & ul {
       & li {
+        width: 115px;
         color: #222222;
         float: left;
         align-items: center;
@@ -82,23 +85,9 @@
         line-height: 2.5vh;
       }
       & li:hover {
-        font-size: 0;
-      }
-      .museum:hover::before {
         color: red;
-        font-size: 16px;
-        content: '박물관';
       }
-      .teraTimes:hover::before {
-        color: red;
-        font-size: 16px;
-        content: '테라 타임즈';
-      }
-      .locations:hover::before {
-        color: red;
-        font-size: 16px;
-        content: '매장 안내';
-      }
+
       & a {
         color: #222222;
         font-size: 16px;
@@ -106,10 +95,4 @@
       }
     }
   }
-}
-
-.box {
-  width: 500px;
-  height: 2500px;
-  border: 1px solid black;
 }
