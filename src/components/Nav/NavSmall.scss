@@ -1,0 +1,106 @@
+.NavSmall {
+  a {
+    color: #222222;
+    font-size: 16px;
+    text-decoration: none;
+    &:hover {
+      color: red;
+    }
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    padding: 0 63.5px;
+    position: fixed;
+    width: 100%;
+    height: 84.5px;
+    background-color: white;
+    justify-content: center;
+    border-bottom: 1px solid #f6f6f6;
+    .first {
+      width: 164px;
+      margin-right: 90px;
+      img {
+        width: 164px;
+      }
+    }
+    .categoryOne {
+      width: 323px;
+      margin-right: 100px;
+      & ul {
+        & li {
+          float: left;
+          padding: 0px 27px;
+          font-weight: 700;
+        }
+        & li:hover {
+          font-size: 0px;
+        }
+      }
+    }
+    .categoryTwo {
+      width: 300px;
+      margin: 10px;
+      & ul {
+        & li {
+          float: left;
+          padding: 10px;
+          font-weight: lighter;
+        }
+        & li:hover {
+          font-size: 0px;
+        }
+      }
+    }
+    .iconBar {
+      float: right;
+      & ul {
+        & li {
+          float: left;
+          padding: 0 14px 0 15px;
+          border-right: 1px solid black;
+        }
+      }
+    }
+  }
+  .about:hover:before {
+    font-size: 16px;
+    content: '소개';
+    color: red;
+    border-bottom: 2px solid red;
+  }
+  .shop:hover:before {
+    font-size: 16px;
+    content: '쇼핑';
+    color: red;
+    border-bottom: 2px solid red;
+  }
+  .search:hover:before {
+    font-size: 16px;
+    content: '검색';
+    color: red;
+    border-bottom: 2px solid red;
+  }
+  .museum:hover::before {
+    color: red;
+    font-size: 16px;
+    content: '박물관';
+  }
+  .teraTimes:hover::before {
+    color: red;
+    font-size: 16px;
+    content: '테라 타임즈';
+  }
+  .locations:hover::before {
+    color: red;
+    font-size: 16px;
+    content: '매장 안내';
+  }
+}
+
+.box {
+  width: 500px;
+  height: 2500px;
+  border: 1px solid black;
+}

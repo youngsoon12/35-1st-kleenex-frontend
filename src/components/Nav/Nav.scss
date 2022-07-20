@@ -1,0 +1,115 @@
+.header {
+  display: flex;
+  min-width: 1260px;
+  height: 158px;
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: sticky;
+    width: 1240px;
+    top: 0;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .middle {
+    width: 400px;
+    display: flex;
+    align-items: flex-end;
+    height: 50px;
+    font-weight: 700;
+
+    .searchBar {
+      padding: 7px;
+      width: 450px;
+      border-radius: 10px;
+      border: 0.5px solid black;
+    }
+    .searchIcon {
+      position: absolute;
+      left: 830px;
+      top: 73px;
+    }
+
+    & ul {
+      & li {
+        color: #222222;
+        float: left;
+        align-items: center;
+        padding: 0 30px;
+        &:hover {
+          font-size: 0px;
+        }
+      }
+
+      .about:hover:before {
+        font-size: 16px;
+        content: '소개';
+        color: red;
+        border-bottom: 2px solid red;
+      }
+      .shop:hover:before {
+        font-size: 16px;
+        content: '쇼핑';
+        color: red;
+        border-bottom: 2px solid red;
+      }
+      .search:hover:before {
+        font-size: 16px;
+        content: '검색';
+        color: red;
+        border-bottom: 2px solid red;
+      }
+    }
+  }
+  .last {
+    margin-bottom: 22px;
+    .rightTop {
+      padding: 15px 0 40px;
+      & li {
+        color: #222222;
+        padding: 1px;
+        float: left;
+        font-size: 14px;
+      }
+      & li:hover {
+        color: red;
+      }
+    }
+    .link {
+      & li {
+        margin: 0 0 5px 20px;
+        line-height: 2.5vh;
+      }
+      & li:hover {
+        font-size: 0;
+      }
+      .museum:hover::before {
+        color: red;
+        font-size: 16px;
+        content: '박물관';
+      }
+      .teraTimes:hover::before {
+        color: red;
+        font-size: 16px;
+        content: '테라 타임즈';
+      }
+      .locations:hover::before {
+        color: red;
+        font-size: 16px;
+        content: '매장 안내';
+      }
+      & a {
+        color: #222222;
+        font-size: 16px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.box {
+  width: 500px;
+  height: 2500px;
+  border: 1px solid black;
+}
