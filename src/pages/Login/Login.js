@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './login.scss';
 
 function Login() {
+  const [inputValue, setInputValue] = useState({
+    email: '',
+    password: '',
+  });
+
+  const emailRegExp =
+    /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+  const passwordRegExp =
+    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+
+  const isValid =
+    emailRegExp.test(inputValue.email) &&
+    passwordRegExp.test(inputValue.password);
+
+  if (isValid) {
+    console.log('성공');
+  }
+
+  const onHandleInput = e => {
+    const { name, value } = e.target;
+    setInputValue({ ...inputValue, [name]: value });
+  };
+
   return (
     <section className="login">
       <div className="container">
@@ -14,7 +37,7 @@ function Login() {
               </li>
               <i class="bx bxs-chevron-right" />
               <li>
-                <Link to="/">로그인</Link>
+                <Link to="/login">로그인</Link>
               </li>
             </ol>
           </div>
@@ -30,12 +53,16 @@ function Login() {
               <input
                 type="text"
                 placeholder="아이디"
+                name="email"
                 className="loginInputId"
+                onChange={onHandleInput}
               />
               <input
                 type="password"
                 placeholder="비밀번호"
+                name="password"
                 className="loginInputPw"
+                onChange={onHandleInput}
               />
               <div className="loginOptionCotainer">
                 <div className="idKeepingContainer">
@@ -52,7 +79,9 @@ function Login() {
                   <span>비밀번호찾기</span>
                 </div>
               </div>
-              <button className="loginButton">로그인</button>
+              <button className={`loginButton ${isValid ? 'valid' : ''}`}>
+                로그인
+              </button>
               <div className="registerBox">
                 <div className="regiDescription">
                   <span>아직 회원이 아니신가요?</span>
