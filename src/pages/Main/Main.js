@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Slide from './Slide/Slide';
+import ProductCard from '../../components/ProductCard/ProductCard';
 import './main.scss';
 
 function Main() {
@@ -59,9 +60,7 @@ function Main() {
               </a>
             </div>
             <ul className="bestListProductRecommend">
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
+              <ProductCard />
               <li className="bestListProduct">
                 <div>컴포넌트</div>
               </li>

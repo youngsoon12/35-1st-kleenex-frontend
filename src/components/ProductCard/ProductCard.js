@@ -16,7 +16,8 @@ export default function ProductCard() {
     fetch('http://localhost:3000/data/productCard.json')
       .then(res => res.json())
       .then(res => {
-        setValues(res.MOCK_DATA);
+        console.log(res);
+        setValues(res);
       });
   }, []);
 
@@ -24,22 +25,22 @@ export default function ProductCard() {
     <section className="productCard">
       <div className="cardContainer">
         <div className="cardThumbnail">
-          <img src={values[0].imgURL} alt="thumbnail" />
+          <img src={values.imgURL} alt="thumbnail" />
         </div>
         <div className="discriptionContainer">
           <div className="titleContainer">
-            <div className="korTitle">{values[0].korTitle}</div>
-            <div className="engTitle">{values[0].engTitle}</div>
+            <div className="korTitle">{values.korTitle}</div>
+            <div className="engTitle">{values.engTitle}</div>
           </div>
           <div className="discription">
-            <div className="details">{values[0].details}</div>
+            <div className="details">{values.details}</div>
             <div className="roastedDate">
               <div className="roastLeft">로스팅</div>
-              <div className="roastRight">{values[0].roastedDate}</div>
+              <div className="roastRight">{values.roastedDate}</div>
             </div>
           </div>
           <div className="price">
-            <p>{values[0].price}원</p>
+            <p>{values.price}원</p>
             <MdOutlineShoppingBag />
           </div>
         </div>
