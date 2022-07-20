@@ -6,16 +6,18 @@ function Main() {
   const [imgId, setImgId] = useState(1);
 
   const showPrevImage = () => {
-    imgId === 1 ? setImgId(ImageData.length) : setImgId(prevId => prevId - 1);
+    imgId === 1 ? setImgId(IMAGE_DATA.length) : setImgId(prevId => prevId - 1);
   };
 
   const showNextImage = () => {
-    imgId === ImageData.length ? setImgId(1) : setImgId(prevId => prevId + 1);
+    imgId === IMAGE_DATA.length ? setImgId(1) : setImgId(prevId => prevId + 1);
   };
 
   useEffect(() => {
     const cycleImage = () => {
-      imgId === ImageData.length ? setImgId(1) : setImgId(prevId => prevId + 1);
+      imgId === IMAGE_DATA.length
+        ? setImgId(1)
+        : setImgId(prevId => prevId + 1);
     };
 
     const autoSlide = setInterval(cycleImage, 4000);
@@ -27,7 +29,7 @@ function Main() {
   return (
     <section className="main" id="home">
       <div className="mainSliderContainer">
-        {ImageData.map(image => {
+        {IMAGE_DATA.map(image => {
           return (
             <Slide
               key={image.id}
@@ -93,7 +95,7 @@ function Main() {
           <div className="mainBannerContainer">
             <img src="./images/colombia.jpg" alt="coffee" />
             <ul className="mainBannerSection">
-              {BannerCardData.map(data => {
+              {BANNER_CARD_DATA.map(data => {
                 return (
                   <li className="mainBannerCard" key={data.id}>
                     <div className="cardTitle">{data.Title}</div>
@@ -139,7 +141,7 @@ function Main() {
 
 export default Main;
 
-const ImageData = [
+const IMAGE_DATA = [
   {
     id: 1,
     url: '../images/silde/ethiopia1.jpg',
@@ -170,7 +172,7 @@ const ImageData = [
   },
 ];
 
-const BannerCardData = [
+const BANNER_CARD_DATA = [
   { id: 1, Title: 'DRIP BAG', subTitle: '드립백' },
   { id: 2, Title: 'DELI', subTitle: '식품' },
   { id: 3, Title: 'GREEN BEAN', subTitle: '생두' },
