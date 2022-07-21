@@ -11,7 +11,7 @@ const Nav = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      window.scrollY > 4 ? setIsShowNavbar(false) : setIsShowNavbar(true);
+      window.scrollY > 0 ? setIsShowNavbar(false) : setIsShowNavbar(true);
     });
     return () => {
       window.removeEventListener('scroll');
@@ -55,11 +55,9 @@ const Nav = () => {
                       </span>
                     );
                   })}
-                  <Link to="/" className="link">
-                    <li className="search" onClick={handleSearchOpen}>
-                      SEARCH
-                    </li>
-                  </Link>
+                  <li className="search" onClick={handleSearchOpen}>
+                    SEARCH
+                  </li>
                 </ul>
               )}
             </div>

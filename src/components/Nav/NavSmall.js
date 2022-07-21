@@ -38,11 +38,9 @@ const NavSmall = () => {
                   </Link>
                 );
               })}
-              <Link to="/">
-                <li className="search" onClick={handleSearchOpen}>
-                  SEARCH
-                </li>
-              </Link>
+              <li className="search" onClick={handleSearchOpen}>
+                SEARCH
+              </li>
             </ul>
           )}
         </div>

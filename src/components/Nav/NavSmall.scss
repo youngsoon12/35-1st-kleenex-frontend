@@ -65,11 +65,12 @@
         height: 17px;
       }
 
-      & ul {
-        & li {
+      ul {
+        li {
           float: left;
           padding: 0px 27px;
           font-weight: 700;
+          cursor: pointer;
         }
 
         & li:hover {
@@ -90,8 +91,8 @@
       margin: 10px;
       width: 330px;
 
-      & ul {
-        & li {
+      ul {
+        li {
           float: left;
           padding: 10px;
           font-weight: lighter;
@@ -101,7 +102,7 @@
           width: 100px;
         }
 
-        & li:hover {
+        li:hover {
           font-size: 0px;
         }
       }
@@ -110,8 +111,8 @@
     .iconBar {
       float: right;
 
-      & ul {
-        & li {
+      ul {
+        li {
           float: left;
           padding: 0 14px 0 15px;
           border-right: 1px solid black;

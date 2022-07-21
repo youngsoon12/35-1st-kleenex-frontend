@@ -42,13 +42,14 @@
       height: 20px;
     }
 
-    & ul {
-      & li {
+    ul {
+      li {
         width: 115px;
         padding: 0 30px;
         color: #222222;
         float: left;
         align-items: center;
+        cursor: pointer;
 
         &:hover {
           font-size: 0px;
@@ -77,29 +78,29 @@
 
     .rightTop {
       padding: 15px 0 40px;
-      & li {
+      li {
         float: left;
         padding: 1px;
         font-size: 14px;
         color: #222222;
       }
 
-      & li:hover {
+      li:hover {
         color: red;
       }
     }
 
     .link {
-      & li {
+      li {
         margin: 0 0 5px 20px;
         line-height: 2.5vh;
       }
 
-      & li:hover {
+      li:hover {
         color: red;
       }
 
-      & a {
+      a {
         text-decoration: none;
         font-size: 16px;
         color: #222222;
