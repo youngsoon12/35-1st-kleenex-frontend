@@ -7,7 +7,6 @@ function Login() {
     id: '',
     password: '',
   });
-  const [response, setResponse] = useState();
   const [check, setCheck] = useState(false);
   const isChecked = useRef(false);
   const navigate = useNavigate();
@@ -50,7 +49,6 @@ function Login() {
       body: body,
     });
     const result = await request.json();
-    setResponse(result);
 
     // 서버로 부터 받아오는 메세지로 판단
     switch (result.MESSAGE) {
@@ -67,6 +65,8 @@ function Login() {
           localStorage.setItem('UserId', inputValue.id); // 아이디 저장을 위해 localStorage 에 저장
         }
         navigate('/main');
+        break;
+      default:
         break;
     }
   };
@@ -150,7 +150,10 @@ function Login() {
                   <span>비밀번호찾기</span>
                 </div>
               </div>
-              <button className={`loginButton ${isValid ? 'valid' : ''}`}>
+              <button
+                className={`loginButton ${isValid ? 'valid' : ''}`}
+                disabled={!isValid}
+              >
                 로그인
               </button>
               <div className="registerBox">
