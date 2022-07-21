@@ -8,53 +8,23 @@ function Login() {
     password: '',
   });
   const [response, setResponse] = useState();
-  const navigate = useNavigate();
   const [check, setCheck] = useState(false);
   const isChecked = useRef(false);
+  const navigate = useNavigate();
 
+  // 첫 랜더링 이후 로컬스토리지에서 유저아이디를 확인합니다.
   useEffect(() => {
     if (localStorage.getItem('UserId')) {
       isChecked.current = true;
       setCheck(true);
     }
+    // 다음 isChecked 에 의해 화면 아이디 렌더링 여부를 결정합니다.
     isChecked.current === true
       ? setInputValue({ ...inputValue, id: localStorage.getItem('UserId') })
       : setInputValue({ ...inputValue, id: '' });
   }, []);
 
-  const body = JSON.stringify({
-    username: inputValue.id,
-    password: inputValue.password,
-  });
-
-  console.log('inputValue', inputValue);
-
-  const postLogin = async () => {
-    const request = await fetch('http://10.58.1.67:8000/user/signin', {
-      method: 'POST',
-      body: body,
-    });
-    const result = await request.json();
-    setResponse(result);
-
-    switch (result.MESSAGE) {
-      case 'DOESNOTEXIST':
-        alert('아이디가 존재하지 않습니다.');
-        break;
-      case 'INVALID_USER':
-        alert('패스워드가 틀렸습니다.');
-        break;
-      case 'LOGIN SUCCESS':
-        localStorage.setItem('Token', result.ACCESS_TOKEN);
-        if (check === true) {
-          localStorage.setItem('UserId', inputValue.id);
-        }
-        navigate('/main');
-        break;
-    }
-  };
-
-  console.log(response);
+  // 체크 여부에 따라 데이터와 화면을 변경해 줍니다.
 
   const onCheckedBox = () => {
     if (check === false) {
@@ -67,9 +37,49 @@ function Login() {
     }
   };
 
+  // 서버에게 데이터를 POST
+
+  const body = JSON.stringify({
+    username: inputValue.id,
+    password: inputValue.password,
+  });
+
+  const postLogin = async () => {
+    const request = await fetch('http://10.58.1.67:8000/user/signin', {
+      method: 'POST',
+      body: body,
+    });
+    const result = await request.json();
+    setResponse(result);
+
+    // 서버로 부터 받아오는 메세지로 판단
+    switch (result.MESSAGE) {
+      case 'DOESNOTEXIST':
+        alert('아이디가 존재하지 않습니다.');
+        break;
+      case 'INVALID_USER':
+        alert('패스워드가 틀렸습니다.');
+        break;
+      case 'LOGIN SUCCESS':
+        localStorage.setItem('Token', result.ACCESS_TOKEN);
+        if (check === true) {
+          // 체크가 되어있다면
+          localStorage.setItem('UserId', inputValue.id); // 아이디 저장을 위해 localStorage 에 저장
+        }
+        navigate('/main');
+        break;
+    }
+  };
+
   const onSubmit = e => {
     e.preventDefault();
     postLogin();
+  };
+
+  // 유효성 검사
+  const onHandleInput = e => {
+    const { name, value } = e.target;
+    setInputValue({ ...inputValue, [name]: value });
   };
 
   const idRegExp = /^[A-Za-z0-9]{4,12}$/;
@@ -78,11 +88,6 @@ function Login() {
 
   const isValid =
     idRegExp.test(inputValue.id) && passwordRegExp.test(inputValue.password);
-
-  const onHandleInput = e => {
-    const { name, value } = e.target;
-    setInputValue({ ...inputValue, [name]: value });
-  };
 
   return (
     <section className="login">
