@@ -151,7 +151,7 @@ function Main() {
     return (
       <div className="loadingContainer">
         <div className="loadingIcon">
-          <i class="bx bxs-coffee bx-tada"></i>
+          <i class="bx bxs-coffee bx-tada" />
           <span className="loadingText">커피를 가져오는 중이에요...</span>
         </div>
       </div>
