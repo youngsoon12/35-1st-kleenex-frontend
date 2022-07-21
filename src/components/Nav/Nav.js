@@ -11,7 +11,7 @@ const Nav = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      window.scrollY > 1 ? setIsShowNavbar(false) : setIsShowNavbar(true);
+      window.scrollY > 4 ? setIsShowNavbar(false) : setIsShowNavbar(true);
     });
     return () => {
       window.removeEventListener('scroll');
