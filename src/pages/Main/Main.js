@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Slide from './Slide/Slide';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import {
+  IMAGE_DATA,
+  BANNER_CARD_DATA,
+  BOTTOM_LINK_DATA,
+} from '../Main/data/data';
 import './main.scss';
 
 function Main() {
@@ -18,20 +23,16 @@ function Main() {
   // mock data 가져오기
 
   async function request() {
-    const res = await fetch('http://localhost:3000/data/productCardBest.json');
-    const result = await res.json();
-    setValues(result);
-  }
-
-  async function requestNewData() {
-    const res = await fetch('http://localhost:3000/data/productCardNew.json');
-    const result = await res.json();
-    setNewValue(result);
+    const res1 = await fetch('/data/productCardBest.json');
+    const result1 = await res1.json();
+    const res2 = await fetch('/data/productCardNew.json');
+    const result2 = await res2.json();
+    setValues(result1);
+    setNewValue(result2);
   }
 
   useEffect(() => {
     request();
-    requestNewData();
   }, []);
 
   // 이미지 슬라이드 기능 구현
@@ -92,25 +93,9 @@ function Main() {
               <ul className="bestListProductRecommend">
                 {values.map(product => {
                   return (
-                    <ProductCard
-                      key={product.id}
-                      id={product.id}
-                      imgURL={product.imgURL}
-                      korTitle={product.korTitle}
-                      engTitle={product.engTitle}
-                      details={product.details}
-                      roastedDate={product.roastedDate}
-                      price={product.price}
-                      cardSize="Big"
-                    />
+                    <ProductCard key={product.id} {...product} cardSize="Big" />
                   );
                 })}
-                {/* <li className="bestListProduct">
-                  <div>컴포넌트</div>
-                </li>
-                <li className="bestListProduct">
-                  <div>컴포넌트</div>
-                </li> */}
               </ul>
             </div>
             <div className="mainNewList">
@@ -125,13 +110,7 @@ function Main() {
                   return (
                     <ProductCard
                       key={product.id}
-                      id={product.id}
-                      imgURL={product.imgURL}
-                      korTitle={product.korTitle}
-                      engTitle={product.engTitle}
-                      details={product.details}
-                      roastedDate={product.roastedDate}
-                      price={product.price}
+                      {...product}
                       cardSize="Small"
                     />
                   );
@@ -153,30 +132,15 @@ function Main() {
             </div>
             <div className="mainBottomLink">
               <ul className="mainBottomContainer">
-                <li>
-                  <a href="#home">
-                    <img
-                      src="https://terarosa.com/SkinImg/main_bt_01.jpg"
-                      alt="icon1"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="#home">
-                    <img
-                      src="https://terarosa.com/SkinImg/main_bt_02.jpg"
-                      alt="icon2"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="#home">
-                    <img
-                      src="https://terarosa.com/SkinImg/main_bt_03.jpg"
-                      alt="icon3"
-                    />
-                  </a>
-                </li>
+                {BOTTOM_LINK_DATA.map(img => {
+                  return (
+                    <li key={img.id}>
+                      <a href="#home">
+                        <img src={img.url} alt="icon1" />
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
@@ -184,46 +148,8 @@ function Main() {
       </section>
     );
   } else {
-    return <div />;
+    return <div>로딩중</div>;
   }
 }
 
 export default Main;
-
-const IMAGE_DATA = [
-  {
-    id: 1,
-    url: '../images/silde/ethiopia1.jpg',
-    subTitle: '에티오피아 예가체페 첼베사',
-    Title1: 'Ethiopia',
-    Title2: 'Yirgacheffe Chelbesa',
-  },
-  {
-    id: 2,
-    url: '../images/silde/indonesia.jpg',
-    subTitle: '인도네시아 COE 3위 판탄 무사라',
-    Title1: '2021 Indonesia',
-    Title2: 'C.O.E Winner',
-  },
-  {
-    id: 3,
-    url: '../images/silde/colombia1.jpg',
-    subTitle: '콜롬비아 호세 플로레즈',
-    Title1: 'Colombia',
-    Title2: 'Jose Florez',
-  },
-  {
-    id: 4,
-    url: '../images/silde/ethiopia2.jpg',
-    subTitle: '에티오피아 구지 함벨라',
-    Title1: 'Ethiopia',
-    Title2: 'Guji Hambela',
-  },
-];
-
-const BANNER_CARD_DATA = [
-  { id: 1, Title: 'DRIP BAG', subTitle: '드립백' },
-  { id: 2, Title: 'DELI', subTitle: '식품' },
-  { id: 3, Title: 'GREEN BEAN', subTitle: '생두' },
-  { id: 4, Title: 'SUBSCRIPTION', subTitle: '정기배송' },
-];

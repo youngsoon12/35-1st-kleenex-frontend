@@ -1,11 +1,27 @@
 [
   {
-    "imgURL": "images/kingkong-fizzy-summer-thumbnail.png",
+    "imgURL": "https://images.unsplash.com/photo-1573403092240-26095e118918?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     "korTitle": "7월 킹콩 피지 서머 블렌드",
     "engTitle": "Fizzy Summer Blend",
     "details": "청사과, 자두, 라임, 복숭아, 청량감",
     "roastedDate": "2022-07-18",
-    "price": "28000"
+    "price": "28,000"
+  },
+  {
+    "imgURL": "https://images.unsplash.com/photo-1576018753502-1a55b66cc44a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1473&q=80",
+    "korTitle": "7월 킹콩 피지 서머 블렌드",
+    "engTitle": "Fizzy Summer Blend",
+    "details": "청사과, 자두, 라임, 복숭아, 청량감",
+    "roastedDate": "2022-07-18",
+    "price": "28,000"
+  },
+  {
+    "imgURL": "https://images.unsplash.com/photo-1558005530-a7958896ec60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
+    "korTitle": "7월 킹콩 피지 서머 블렌드",
+    "engTitle": "Fizzy Summer Blend",
+    "details": "청사과, 자두, 라임, 복숭아, 청량감",
+    "roastedDate": "2022-07-18",
+    "price": "28,000"
   },
   {
     "imgURL": "images/kingkong-fizzy-summer-thumbnail.png",
@@ -13,22 +29,6 @@
     "engTitle": "Fizzy Summer Blend",
     "details": "청사과, 자두, 라임, 복숭아, 청량감",
     "roastedDate": "2022-07-18",
-    "price": "28000"
-  },
-  {
-    "imgURL": "images/kingkong-fizzy-summer-thumbnail.png",
-    "korTitle": "7월 킹콩 피지 서머 블렌드",
-    "engTitle": "Fizzy Summer Blend",
-    "details": "청사과, 자두, 라임, 복숭아, 청량감",
-    "roastedDate": "2022-07-18",
-    "price": "28000"
-  },
-  {
-    "imgURL": "images/kingkong-fizzy-summer-thumbnail.png",
-    "korTitle": "7월 킹콩 피지 서머 블렌드",
-    "engTitle": "Fizzy Summer Blend",
-    "details": "청사과, 자두, 라임, 복숭아, 청량감",
-    "roastedDate": "2022-07-18",
-    "price": "28000"
+    "price": "28,000"
   }
 ]
