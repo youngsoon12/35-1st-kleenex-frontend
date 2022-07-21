@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './NavSmall.scss';
 import { Link } from 'react-router-dom';
+import './NavSmall.scss';
 
 const NavSmall = () => {
   const [isSearchOn, setIsSearchOn] = useState(false);
