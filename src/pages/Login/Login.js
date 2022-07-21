@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
 
@@ -9,6 +9,7 @@ function Login() {
   });
   const [response, setResponse] = useState();
   const navigate = useNavigate();
+  const isChecked = useRef(false);
 
   const body = JSON.stringify({
     username: inputValue.id,
@@ -41,6 +42,12 @@ function Login() {
   };
 
   console.log(response);
+
+  const onCheckedBox = () => {
+    !isChecked.current
+      ? (isChecked.current = true)
+      : (isChecked.current = false);
+  };
 
   const onSubmit = e => {
     e.preventDefault();
@@ -99,7 +106,14 @@ function Login() {
               />
               <div className="loginOptionCotainer">
                 <div className="idKeepingContainer">
-                  <i class="bx bx-check-square bx-sm " />
+                  <i
+                    class={
+                      isChecked
+                        ? 'bx bxs-check-square bx-sm '
+                        : 'bx bx-check-square bx-sm '
+                    }
+                    onClick={onCheckedBox}
+                  />
                   <span>아이디 저장</span>
                   <span>
                     <i class="bx bxs-lock" />
