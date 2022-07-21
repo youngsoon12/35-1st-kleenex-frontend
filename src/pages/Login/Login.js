@@ -1,41 +1,58 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
 
 function Login() {
   const [inputValue, setInputValue] = useState({
-    email: '',
+    id: '',
     password: '',
   });
   const [response, setResponse] = useState();
+  const navigate = useNavigate();
 
   const body = JSON.stringify({
-    username: inputValue.email,
+    username: inputValue.id,
     password: inputValue.password,
   });
 
+  console.log('inputValue', inputValue);
+
   const postLogin = async () => {
-    const request = await fetch('http://10.58.5.214:8000/user/signin', {
+    const request = await fetch('http://10.58.1.67:8000/user/signin', {
       method: 'POST',
       body: body,
     });
     const result = await request.json();
     setResponse(result);
+
+    switch (result.MESSAGE) {
+      case 'DOESNOTEXIST':
+        alert('아이디가 존재하지 않습니다.');
+        break;
+      case 'INVALID_USER':
+        alert('패스워드가 틀렸습니다.');
+        break;
+      case 'LOGIN SUCCESS':
+        localStorage.setItem('Token', result.ACCESS_TOKEN);
+        localStorage.setItem('UserId', inputValue.id);
+        navigate('/main');
+        break;
+    }
   };
+
+  console.log(response);
 
   const onSubmit = e => {
     e.preventDefault();
     postLogin();
   };
 
-  const emailRegExp =
-    /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+  const idRegExp = /^[A-Za-z0-9]{4,12}$/;
   const passwordRegExp =
-    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
-  const isValid = true;
-  emailRegExp.test(inputValue.email) &&
-    passwordRegExp.test(inputValue.password);
+  const isValid =
+    idRegExp.test(inputValue.id) && passwordRegExp.test(inputValue.password);
 
   const onHandleInput = e => {
     const { name, value } = e.target;
@@ -69,7 +86,7 @@ function Login() {
               <input
                 type="text"
                 placeholder="아이디"
-                name="email"
+                name="id"
                 className="loginInputId"
                 onChange={onHandleInput}
               />
