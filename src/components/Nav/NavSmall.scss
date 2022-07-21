@@ -1,8 +1,18 @@
+@mixin hoverFontColorBottom {
+  font-size: 16px;
+  color: red;
+  border-bottom: 2px solid red;
+}
+@mixin hoverFontColor {
+  color: red;
+  font-size: 16px;
+}
 .NavSmall {
   a {
-    color: #222222;
-    font-size: 16px;
     text-decoration: none;
+    font-size: 16px;
+    color: #222222;
+
     &:hover {
       color: red;
     }
@@ -10,75 +20,95 @@
 
   .inner {
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 0 63.5px;
     position: fixed;
+    padding: 0 63.5px;
     width: 100%;
     height: 84.5px;
     background-color: white;
-    justify-content: center;
     border-bottom: 1px solid #ededed;
+
     .first {
-      width: 164px;
       margin-right: 90px;
+      width: 164px;
+
       img {
         width: 164px;
       }
     }
+
     .categoryOne {
-      width: 340px;
       margin-right: 100px;
+      width: 340px;
+
+      .searchTag {
+        position: relative;
+      }
+
       .searchBar {
-        height: 32px;
+        position: relative;
         padding: 6px;
         width: 100%;
+        height: 32px;
         border-radius: 10px;
-        opacity: 1;
         border: 1px solid #6d5f5f;
         font-size: 13px;
+        opacity: 1;
       }
+
       .searchIcon {
         position: absolute;
-        top: 34px;
-        left: 665px;
+        top: 9px;
+        left: 310px;
         height: 17px;
       }
+
       & ul {
         & li {
           float: left;
           padding: 0px 27px;
           font-weight: 700;
         }
+
         & li:hover {
           font-size: 0px;
         }
+
         .about {
           width: 109px;
         }
+
         .shop {
           width: 100px;
         }
       }
     }
+
     .categoryTwo {
-      width: 330px;
       margin: 10px;
+      width: 330px;
+
       & ul {
         & li {
           float: left;
           padding: 10px;
           font-weight: lighter;
         }
+
         .museum {
           width: 100px;
         }
+
         & li:hover {
           font-size: 0px;
         }
       }
     }
+
     .iconBar {
       float: right;
+
       & ul {
         & li {
           float: left;
@@ -88,37 +118,34 @@
       }
     }
   }
+
   .about:hover:before {
-    font-size: 16px;
+    @include hoverFontColorBottom();
     content: '소개';
-    color: red;
-    border-bottom: 2px solid red;
   }
+
   .shop:hover:before {
-    font-size: 16px;
+    @include hoverFontColorBottom();
     content: '쇼핑';
-    color: red;
-    border-bottom: 2px solid red;
   }
+
   .search:hover:before {
-    font-size: 16px;
+    @include hoverFontColorBottom();
     content: '검색';
-    color: red;
-    border-bottom: 2px solid red;
   }
+
   .museum:hover::before {
-    color: red;
-    font-size: 16px;
+    @include hoverFontColor();
     content: '박물관';
   }
+
   .teraTimes:hover::before {
-    color: red;
-    font-size: 16px;
+    @include hoverFontColor();
     content: '테라 타임즈';
   }
+
   .locations:hover::before {
-    color: red;
-    font-size: 16px;
+    @include hoverFontColor();
     content: '매장 안내';
   }
 }

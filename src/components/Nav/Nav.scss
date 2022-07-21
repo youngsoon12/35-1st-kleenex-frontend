@@ -1,22 +1,29 @@
+@mixin hoverFontColor {
+  color: red;
+  font-size: 16px;
+  border-bottom: 2px solid red;
+}
+
 .header {
   display: flex;
   min-width: 1260px;
   height: 158px;
   border-bottom: 1px solid #ededed;
+
   .inner {
     display: flex;
     justify-content: space-between;
-    box-sizing: border-box;
     position: sticky;
-    width: 1240px;
     top: 0;
+    width: 1240px;
     align-items: center;
     margin: 0 auto;
   }
-  .middle {
-    width: 400px;
+
+  .categoryMid {
     display: flex;
     align-items: flex-end;
+    width: 400px;
     height: 50px;
     font-weight: 700;
 
@@ -27,6 +34,7 @@
       border: 0.5px solid #6d5f5f;
       font-size: 13px;
     }
+
     .searchIcon {
       position: absolute;
       left: 860px;
@@ -37,62 +45,64 @@
     & ul {
       & li {
         width: 115px;
+        padding: 0 30px;
         color: #222222;
         float: left;
         align-items: center;
-        padding: 0 30px;
+
         &:hover {
           font-size: 0px;
         }
       }
 
       .about:hover:before {
-        font-size: 16px;
+        @include hoverFontColor();
         content: '소개';
-        color: red;
-        border-bottom: 2px solid red;
       }
+
       .shop:hover:before {
-        font-size: 16px;
+        @include hoverFontColor();
         content: '쇼핑';
-        color: red;
-        border-bottom: 2px solid red;
       }
+
       .search:hover:before {
-        font-size: 16px;
+        @include hoverFontColor();
         content: '검색';
-        color: red;
-        border-bottom: 2px solid red;
       }
     }
   }
-  .last {
+
+  .categoryRight {
     margin-bottom: 22px;
+
     .rightTop {
       padding: 15px 0 40px;
       & li {
-        color: #222222;
-        padding: 1px;
         float: left;
+        padding: 1px;
         font-size: 14px;
+        color: #222222;
       }
+
       & li:hover {
         color: red;
       }
     }
+
     .link {
       & li {
         margin: 0 0 5px 20px;
         line-height: 2.5vh;
       }
+
       & li:hover {
         color: red;
       }
 
       & a {
-        color: #222222;
-        font-size: 16px;
         text-decoration: none;
+        font-size: 16px;
+        color: #222222;
       }
     }
   }
