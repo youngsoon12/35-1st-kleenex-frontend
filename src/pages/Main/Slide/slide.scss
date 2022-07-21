@@ -1,0 +1,94 @@
+.slide {
+  .mainSliderImage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.25s 0.25s ease-in;
+    opacity: 0;
+
+    .image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 550px;
+      object-fit: cover;
+    }
+
+    .mainSliderText {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      top: 100px;
+      left: 150px;
+      color: white;
+
+      .sliderSubTitle {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 15px;
+      }
+
+      .sliderTitle {
+        font-family: 'Playfair Display', serif;
+        font-size: 85px;
+        font-weight: 400;
+      }
+
+      .shopNowButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        width: 110px;
+        height: 40px;
+        border: 1.5px solid #000;
+        border-color: white;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .active {
+    opacity: 1;
+  }
+
+  .mainSliderRightArrow {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 550px;
+
+    i {
+      color: white;
+      font-size: 50px;
+    }
+  }
+
+  .mainSliderLeftArrow {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 550px;
+
+    i {
+      color: white;
+      font-size: 50px;
+    }
+  }
+}

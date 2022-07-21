@@ -1,3 +1,18 @@
+@mixin cardSizeSmall {
+  width: 289px;
+  height: 202px;
+}
+
+@mixin cardSizeMed {
+  width: 329px;
+  height: 229px;
+}
+
+@mixin cardSizeBig {
+  width: 400px;
+  height: 281px;
+}
+
 .productCard {
   display: flex;
   justify-content: center;
@@ -10,13 +25,33 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
-    height: 423px;
-    margin: 25px 0 20px;
+    width: fit-content;
+    height: 100%;
+    margin: 25px 10px 20px;
 
-    .cardThumbnail {
-      width: 400px;
-      height: 281px;
+    .cardThumbnailSmall {
+      @include cardSizeSmall();
+      margin: 10px 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .cardThumbnailMed {
+      @include cardSizeMed();
+      margin: 10px 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .cardThumbnailBig {
+      @include cardSizeBig();
       margin: 10px 0;
 
       img {
@@ -30,20 +65,24 @@
       justify-content: flex-start;
       flex-direction: column;
       width: 100%;
-      padding: 14px 12px 0;
+      padding: 14px 0 0;
 
       .titleContainer {
         padding: 0 0 10px 0;
 
         .korTitle {
-          font-weight: bold;
-          color: #231916;
+          margin-bottom: 5px;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-weight: 400;
           font-size: 20px;
+          color: #231916;
         }
 
         .engTitle {
-          color: #595959;
           font-size: 15px;
+          font-weight: 200;
+          font-family: 'Barlow Condensed', sans-serif;
+          color: #595959;
         }
       }
 
@@ -55,6 +94,8 @@
 
         .details {
           color: #383838;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-weight: 300;
           font-size: 14px;
         }
 
@@ -64,7 +105,13 @@
           padding: 0 0 2px 0;
           gap: 5px;
           color: #383838;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-weight: 400;
           font-size: 14px;
+
+          .roastRight {
+            font-weight: 300;
+          }
         }
       }
       .price {
@@ -74,7 +121,9 @@
         padding: 3px 0;
         font-weight: bold;
         color: #333333;
-        font-size: 17px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
 
         svg {
           font-size: 28px;
