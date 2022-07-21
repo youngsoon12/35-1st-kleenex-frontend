@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
 
@@ -9,7 +9,18 @@ function Login() {
   });
   const [response, setResponse] = useState();
   const navigate = useNavigate();
+  const [check, setCheck] = useState(false);
   const isChecked = useRef(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('UserId')) {
+      isChecked.current = true;
+      setCheck(true);
+    }
+    isChecked.current === true
+      ? setInputValue({ ...inputValue, id: localStorage.getItem('UserId') })
+      : setInputValue({ ...inputValue, id: '' });
+  }, []);
 
   const body = JSON.stringify({
     username: inputValue.id,
@@ -35,7 +46,9 @@ function Login() {
         break;
       case 'LOGIN SUCCESS':
         localStorage.setItem('Token', result.ACCESS_TOKEN);
-        localStorage.setItem('UserId', inputValue.id);
+        if (check === true) {
+          localStorage.setItem('UserId', inputValue.id);
+        }
         navigate('/main');
         break;
     }
@@ -44,9 +57,14 @@ function Login() {
   console.log(response);
 
   const onCheckedBox = () => {
-    !isChecked.current
-      ? (isChecked.current = true)
-      : (isChecked.current = false);
+    if (check === false) {
+      setCheck(true);
+      isChecked.current = true;
+    } else {
+      setCheck(false);
+      isChecked.current = false;
+      localStorage.removeItem('UserId');
+    }
   };
 
   const onSubmit = e => {
@@ -95,6 +113,7 @@ function Login() {
                 placeholder="아이디"
                 name="id"
                 className="loginInputId"
+                value={inputValue.id}
                 onChange={onHandleInput}
               />
               <input
@@ -107,10 +126,10 @@ function Login() {
               <div className="loginOptionCotainer">
                 <div className="idKeepingContainer">
                   <i
-                    class={
-                      isChecked
-                        ? 'bx bxs-check-square bx-sm '
-                        : 'bx bx-check-square bx-sm '
+                    className={
+                      check
+                        ? `bx bxs-check-square bx-sm `
+                        : `bx bx-check-square bx-sm `
                     }
                     onClick={onCheckedBox}
                   />
