@@ -10,29 +10,26 @@ import './main.scss';
 
 function Main() {
   const [imgId, setImgId] = useState(1);
-  const [values, setValues] = useState({
-    imgURL: '',
-    korTitle: '',
-    engTitle: '',
-    details: '',
-    roastedDate: '',
-    price: '',
-  });
-  const [newValue, setNewValue] = useState();
+  const [values, setValues] = useState([]);
+  const [newValue, setNewValue] = useState([]);
 
   // mock data 가져오기
 
   async function request() {
-    const res1 = await fetch('/data/productCardBest.json');
-    const result1 = await res1.json();
-    const res2 = await fetch('/data/productCardNew.json');
-    const result2 = await res2.json();
-    setValues(result1);
-    setNewValue(result2);
+    const res = await fetch('/data/productCardBest.json');
+    const result = await res.json();
+    setValues(result);
+  }
+
+  async function newRequest() {
+    const res = await fetch('/data/productCardNew.json');
+    const result = await res.json();
+    setNewValue(result);
   }
 
   useEffect(() => {
     request();
+    newRequest();
   }, []);
 
   // 이미지 슬라이드 기능 구현
@@ -62,17 +59,7 @@ function Main() {
       <section className="main" id="home">
         <div className="mainSliderContainer">
           {IMAGE_DATA.map(image => {
-            return (
-              <Slide
-                key={image.id}
-                id={image.id}
-                url={image.url}
-                subTitle={image.subTitle}
-                Title1={image.Title1}
-                Title2={image.Title2}
-                imgId={imgId}
-              />
-            );
+            return <Slide key={image.id} {...image} imgId={imgId} />;
           })}
           <div className="mainSliderRightArrow" onClick={showNextImage}>
             <i className="bx bx-chevron-right" />
