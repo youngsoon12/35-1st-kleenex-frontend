@@ -148,7 +148,14 @@ function Main() {
       </section>
     );
   } else {
-    return <div>로딩중</div>;
+    return (
+      <div className="loadingContainer">
+        <div className="loadingIcon">
+          <i class="bx bxs-coffee bx-tada"></i>
+          <span className="loadingText">커피를 가져오는 중이에요...</span>
+        </div>
+      </div>
+    );
   }
 }
 

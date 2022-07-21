@@ -205,3 +205,32 @@
     }
   }
 }
+
+.loadingContainer {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  .loadingIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    i {
+      color: #d02d28;
+      font-size: 100px;
+    }
+
+    span {
+      color: rgba(0, 0, 0, 0.6);
+      font-family: 'Quicksand', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+    }
+  }
+}
