@@ -1,21 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import Slide from './Slide/Slide';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import {
+  IMAGE_DATA,
+  BANNER_CARD_DATA,
+  BOTTOM_LINK_DATA,
+} from '../Main/data/data';
 import './main.scss';
 
 function Main() {
   const [imgId, setImgId] = useState(1);
+  const [values, setValues] = useState([]);
+  const [newValue, setNewValue] = useState([]);
 
+  // mock data 가져오기
+
+  async function request() {
+    const res = await fetch('/data/productCardBest.json');
+    const result = await res.json();
+    setValues(result);
+  }
+
+  async function newRequest() {
+    const res = await fetch('/data/productCardNew.json');
+    const result = await res.json();
+    setNewValue(result);
+  }
+
+  useEffect(() => {
+    request();
+    newRequest();
+  }, []);
+
+  // 이미지 슬라이드 기능 구현
   const showPrevImage = () => {
-    imgId === 1 ? setImgId(ImageData.length) : setImgId(prevId => prevId - 1);
+    imgId === 1 ? setImgId(IMAGE_DATA.length) : setImgId(prevId => prevId - 1);
   };
 
   const showNextImage = () => {
-    imgId === ImageData.length ? setImgId(1) : setImgId(prevId => prevId + 1);
+    imgId === IMAGE_DATA.length ? setImgId(1) : setImgId(prevId => prevId + 1);
   };
 
   useEffect(() => {
     const cycleImage = () => {
-      imgId === ImageData.length ? setImgId(1) : setImgId(prevId => prevId + 1);
+      imgId === IMAGE_DATA.length
+        ? setImgId(1)
+        : setImgId(prevId => prevId + 1);
     };
 
     const autoSlide = setInterval(cycleImage, 4000);
@@ -24,155 +54,96 @@ function Main() {
     };
   }, [imgId]);
 
-  return (
-    <section className="main" id="home">
-      <div className="mainSliderContainer">
-        {ImageData.map(image => {
-          return (
-            <Slide
-              key={image.id}
-              id={image.id}
-              url={image.url}
-              subTitle={image.subTitle}
-              Title1={image.Title1}
-              Title2={image.Title2}
-              imgId={imgId}
-            />
-          );
-        })}
-        <div className="mainSliderRightArrow" onClick={showNextImage}>
-          <i className="bx bx-chevron-right" />
+  if (values.length) {
+    return (
+      <section className="main" id="home">
+        <div className="mainSliderContainer">
+          {IMAGE_DATA.map(image => {
+            return <Slide key={image.id} {...image} imgId={imgId} />;
+          })}
+          <div className="mainSliderRightArrow" onClick={showNextImage}>
+            <i className="bx bx-chevron-right" />
+          </div>
+          <div className="mainSliderLeftArrow" onClick={showPrevImage}>
+            <i className="bx bx-chevron-left" />
+          </div>
         </div>
-        <div className="mainSliderLeftArrow" onClick={showPrevImage}>
-          <i className="bx bx-chevron-left" />
+        <div className="mainContainer">
+          <div className="upperMargin">
+            <div className="mainBestList">
+              <div className="bestListTitleContainer">
+                <div className="bestListTitle">BEST</div>
+                <a href="#home" className="bestListLink">
+                  + SHOP
+                </a>
+              </div>
+              <ul className="bestListProductRecommend">
+                {values.map(product => {
+                  return (
+                    <ProductCard key={product.id} {...product} cardSize="Big" />
+                  );
+                })}
+              </ul>
+            </div>
+            <div className="mainNewList">
+              <div className="newListTitleContainer">
+                <div className="newListTitle">NEW</div>
+                <a href="#home" className="newListLink">
+                  + SHOP
+                </a>
+              </div>
+              <ul className="newListProductRecommend">
+                {newValue.map(product => {
+                  return (
+                    <ProductCard
+                      key={product.id}
+                      {...product}
+                      cardSize="Small"
+                    />
+                  );
+                })}
+              </ul>
+            </div>
+            <div className="mainBannerContainer">
+              <img src="./images/colombia.jpg" alt="coffee" />
+              <ul className="mainBannerSection">
+                {BANNER_CARD_DATA.map(data => {
+                  return (
+                    <li className="mainBannerCard" key={data.id}>
+                      <div className="cardTitle">{data.Title}</div>
+                      <div className="cardSubTitle">{data.subTitle}</div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <div className="mainBottomLink">
+              <ul className="mainBottomContainer">
+                {BOTTOM_LINK_DATA.map(img => {
+                  return (
+                    <li key={img.id}>
+                      <a href="#home">
+                        <img src={img.url} alt="icon1" />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  } else {
+    return (
+      <div className="loadingContainer">
+        <div className="loadingIcon">
+          <i class="bx bxs-coffee bx-tada" />
+          <span className="loadingText">커피를 가져오는 중이에요...</span>
         </div>
       </div>
-      <div className="mainContainer">
-        <div className="upperMargin">
-          <div className="mainBestList">
-            <div className="bestListTitleContainer">
-              <div className="bestListTitle">BEST</div>
-              <a href="#home" className="bestListLink">
-                + SHOP
-              </a>
-            </div>
-            <ul className="bestListProductRecommend">
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-            </ul>
-          </div>
-          <div className="mainBestList">
-            <div className="bestListTitleContainer">
-              <div className="bestListTitle">NEW</div>
-              <a href="#home" className="bestListLink">
-                + SHOP
-              </a>
-            </div>
-            <ul className="bestListProductRecommend">
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-              <li className="bestListProduct">
-                <div>컴포넌트</div>
-              </li>
-            </ul>
-          </div>
-          <div className="mainBannerContainer">
-            <img src="./images/colombia.jpg" alt="coffee" />
-            <ul className="mainBannerSection">
-              {BannerCardData.map(data => {
-                return (
-                  <li className="mainBannerCard" key={data.id}>
-                    <div className="cardTitle">{data.Title}</div>
-                    <div className="cardSubTitle">{data.subTitle}</div>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="mainBottomLink">
-            <ul className="mainBottomContainer">
-              <li>
-                <a href="#home">
-                  <img
-                    src="https://terarosa.com/SkinImg/main_bt_01.jpg"
-                    alt="icon1"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="#home">
-                  <img
-                    src="https://terarosa.com/SkinImg/main_bt_02.jpg"
-                    alt="icon2"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="#home">
-                  <img
-                    src="https://terarosa.com/SkinImg/main_bt_03.jpg"
-                    alt="icon3"
-                  />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+    );
+  }
 }
 
 export default Main;
-
-const ImageData = [
-  {
-    id: 1,
-    url: '../images/silde/ethiopia1.jpg',
-    subTitle: '에티오피아 예가체페 첼베사',
-    Title1: 'Ethiopia',
-    Title2: 'Yirgacheffe Chelbesa',
-  },
-  {
-    id: 2,
-    url: '../images/silde/indonesia.jpg',
-    subTitle: '인도네시아 COE 3위 판탄 무사라',
-    Title1: '2021 Indonesia',
-    Title2: 'C.O.E Winner',
-  },
-  {
-    id: 3,
-    url: '../images/silde/colombia1.jpg',
-    subTitle: '콜롬비아 호세 플로레즈',
-    Title1: 'Colombia',
-    Title2: 'Jose Florez',
-  },
-  {
-    id: 4,
-    url: '../images/silde/ethiopia2.jpg',
-    subTitle: '에티오피아 구지 함벨라',
-    Title1: 'Ethiopia',
-    Title2: 'Guji Hambela',
-  },
-];
-
-const BannerCardData = [
-  { id: 1, Title: 'DRIP BAG', subTitle: '드립백' },
-  { id: 2, Title: 'DELI', subTitle: '식품' },
-  { id: 3, Title: 'GREEN BEAN', subTitle: '생두' },
-  { id: 4, Title: 'SUBSCRIPTION', subTitle: '정기배송' },
-];
