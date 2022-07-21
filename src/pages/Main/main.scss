@@ -1,0 +1,236 @@
+.main {
+  .mainSliderContainer {
+    position: relative;
+    .mainSliderRightArrow {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 550px;
+
+      i {
+        color: white;
+        font-size: 50px;
+      }
+    }
+
+    .mainSliderLeftArrow {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 550px;
+
+      i {
+        color: white;
+        font-size: 50px;
+      }
+    }
+  }
+  .mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .upperMargin {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 550px;
+
+      .mainBestList {
+        padding: 75px 0;
+        max-width: 1260px;
+
+        .bestListTitleContainer {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 10px;
+
+          .bestListTitle {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 45px;
+          }
+
+          .bestListLink {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            color: red;
+            font-size: 15px;
+            font-weight: 600;
+          }
+        }
+
+        .bestListProductRecommend {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-width: 100%;
+          padding: 10px;
+
+          .bestListProduct {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 420px;
+            height: fit-content;
+            background-color: antiquewhite;
+          }
+        }
+      }
+
+      .mainNewList {
+        padding: 75px 0;
+        max-width: 1260px;
+
+        .newListTitleContainer {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 10px;
+
+          .newListTitle {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 300;
+            font-size: 45px;
+          }
+
+          .newListLink {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            color: red;
+            font-size: 15px;
+            font-weight: 600;
+          }
+        }
+
+        .newListProductRecommend {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-width: 100%;
+          padding: 10px;
+          gap: 8px;
+
+          .newListProduct {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 420px;
+            height: fit-content;
+            background-color: antiquewhite;
+          }
+        }
+      }
+
+      .mainBannerContainer {
+        max-width: 1260px;
+
+        img {
+          width: 1260px;
+          height: 500px;
+          padding: 10px;
+          object-fit: cover;
+        }
+      }
+
+      .mainBannerSection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .mainBannerCard {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+          width: 610px;
+          height: 350px;
+          margin: 10px;
+          background-image: url(../../assets/images/colombia.jpg);
+          background-repeat: no-repeat;
+          color: white;
+
+          &:nth-child(1) {
+            background-position: 43% 44%;
+          }
+
+          &:nth-child(2) {
+            background-position: 57% 44%;
+          }
+
+          &:nth-child(3) {
+            background-position: 43% 56%;
+          }
+
+          &:nth-child(4) {
+            background-position: 57% 56%;
+          }
+
+          .cardTitle {
+            font-family: 'Cinzel', serif;
+            font-size: 70px;
+            font-weight: 800;
+          }
+
+          .cardSubTitle {
+            font-size: 25px;
+          }
+        }
+      }
+
+      .mainBottomContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 70px 0;
+        gap: 90px;
+      }
+    }
+  }
+}
+
+.loadingContainer {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  .loadingIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    i {
+      color: #d02d28;
+      font-size: 100px;
+    }
+
+    span {
+      color: rgba(0, 0, 0, 0.6);
+      font-family: 'Quicksand', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+    }
+  }
+}
