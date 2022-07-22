@@ -35,7 +35,6 @@ const Nav = () => {
               {isSearchOn ? (
                 <div>
                   <input placeholder="입력해주세요." className="searchBar" />
-
                   <img
                     src="./images/Nav/search.png"
                     alt="돋보기"
