@@ -1,3 +1,11 @@
+@mixin inputForm {
+  margin: 0px 4px;
+  padding: 0px 10px;
+  height: 40px;
+  border: 1px solid #d5d5d5;
+  color: #808080;
+}
+
 .Register {
   .wrap {
     width: 100%;
@@ -63,29 +71,27 @@
           td {
             width: 100%;
             padding: 15px 0px 15px 13px;
+            .phoneFirst {
+              @include inputForm();
+              width: 116px;
+              font-size: 16px;
+            }
           }
         }
+
         .inputName {
-          margin: 0px 4px;
-          padding: 0px 10px;
+          @include inputForm();
           width: 397px;
-          height: 40px;
-          border: 1px solid #d5d5d5;
-          color: #808080;
           font-size: 14px;
           &:hover {
             border: 2px solid black;
             border-radius: 3px;
           }
         }
+
         .inputPhoneNumber {
-          margin-right: 5px;
-          margin: 0px 4px;
-          padding: 0px 10px;
+          @include inputForm();
           width: 50px;
-          height: 40px;
-          border: 1px solid #d5d5d5;
-          color: #808080;
           font-size: 14px;
           &:hover {
             border: 2px solid black;

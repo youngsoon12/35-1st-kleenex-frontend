@@ -40,7 +40,10 @@ const Register = () => {
               <tr>
                 <th>전화번호</th>
                 <td>
-                  <input className="inputPhoneNumber" />
+                  <select className="phoneFirst" disabled="disabled">
+                    <option>010</option>
+                  </select>
+                  <span>-</span>
                 </td>
               </tr>
               <tr>
