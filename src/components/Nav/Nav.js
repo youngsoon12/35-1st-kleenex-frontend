@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavSmall from './NavSmall';
-import './NavSmall';
 import './Nav.scss';
 
 // true false
@@ -46,7 +45,7 @@ const Nav = () => {
                 </div>
               ) : (
                 <ul>
-                  {linkData.map((data, index) => {
+                  {LINK_DATA.map((data, index) => {
                     return (
                       <span key={index}>
                         <Link to="/" className="link">
@@ -63,7 +62,7 @@ const Nav = () => {
             </div>
             <div className="categoryRight">
               <ul className="rightTop">
-                {rightTopData.map(data => {
+                {RIGHT_TOP_DATA.map(data => {
                   return (
                     <span key={data.id}>
                       <Link to="/">
@@ -75,7 +74,7 @@ const Nav = () => {
                 })}
               </ul>
               <ul className="link">
-                {LastlinkData.map((data, index) => {
+                {LAST_LINK_DATA.map((data, index) => {
                   return (
                     <span key={index}>
                       <Link to="/">
@@ -94,20 +93,22 @@ const Nav = () => {
     return <NavSmall />;
   }
 };
-const linkData = [
+
+export default Nav;
+
+const LINK_DATA = [
   { className: 'about', name: 'ABOUT' },
   { className: 'shop', name: 'SHOP' },
 ];
 
-const rightTopData = [
+const RIGHT_TOP_DATA = [
   { id: 1, name: '로그인' },
   { id: 2, name: '주문/배송' },
   { id: 3, name: '장바구니' },
   { id: 4, name: '문의' },
 ];
-const LastlinkData = [
+const LAST_LINK_DATA = [
   { name: 'MUSEUM', className: 'museum' },
   { name: 'TERA TIMES', className: 'teraTimes' },
   { name: 'LOCATIONS', className: 'locations' },
 ];
-export default Nav;

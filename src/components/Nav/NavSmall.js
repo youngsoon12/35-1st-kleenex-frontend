@@ -31,7 +31,7 @@ const NavSmall = () => {
           )}
           {isSearchOn || (
             <ul>
-              {categoryOne.map((data, index) => {
+              {CATEGORY_ONE.map((data, index) => {
                 return (
                   <Link to="/" key={index}>
                     <li className={data.className}>{data.value}</li>
@@ -46,7 +46,7 @@ const NavSmall = () => {
         </div>
         <div className="categoryTwo">
           <ul>
-            {categoryTwo.map((data, index) => {
+            {CATEGORY_TWO.map((data, index) => {
               return (
                 <Link to="/" key={index}>
                   <li className={data.className}>{data.value}</li>
@@ -61,10 +61,7 @@ const NavSmall = () => {
               return (
                 <Link to="/" key={index}>
                   <li>
-                    <img
-                      src={`./images/Nav/icon${no.imgNo}.png`}
-                      alt="로그인"
-                    />
+                    <img src={`./images/Nav/icon${no}.png`} alt="로그인" />
                   </li>
                 </Link>
               );
@@ -76,17 +73,17 @@ const NavSmall = () => {
   );
 };
 
-const categoryOne = [
+export default NavSmall;
+
+const CATEGORY_ONE = [
   { className: 'about', value: 'ABOUT' },
   { className: 'shop', value: 'SHOP' },
 ];
 
-const categoryTwo = [
+const CATEGORY_TWO = [
   { className: 'museum', value: 'MUSEUM' },
   { className: 'teraTimes', value: 'TERA TIMES' },
   { className: 'loacations', value: 'LOCATIONS' },
 ];
 
-const iconBarImage = [{ imgNo: 1 }, { imgNo: 2 }, { imgNo: 3 }, { imgNo: 4 }];
-
-export default NavSmall;
+const iconBarImage = [1, 2, 3, 4];
