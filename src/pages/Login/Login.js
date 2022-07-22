@@ -48,7 +48,7 @@ function Login() {
   // 서버에게 데이터를 POST
 
   const postLogin = async () => {
-    const request = await fetch('http://10.58.1.67:8000/user/signin', {
+    const request = await fetch('http://10.58.5.22:8000/user/signin', {
       method: 'POST',
       body: JSON.stringify({
         username: inputValue.id,
