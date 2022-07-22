@@ -8,8 +8,19 @@ function Login() {
     password: '',
   });
   const [check, setCheck] = useState(false);
+
   const isChecked = useRef(false);
   const navigate = useNavigate();
+
+  const isInputValueTrue = () => {
+    isChecked.current === true
+      ? setInputValue(prev => {
+          return { ...prev, id: localStorage.getItem('UserId') };
+        })
+      : setInputValue(prev => {
+          return { ...prev, id: '' };
+        });
+  };
 
   // 첫 랜더링 이후 로컬스토리지에서 유저아이디를 확인합니다.
   useEffect(() => {
@@ -18,9 +29,7 @@ function Login() {
       setCheck(true);
     }
     // 다음 isChecked 에 의해 화면 아이디 렌더링 여부를 결정합니다.
-    isChecked.current === true
-      ? setInputValue({ ...inputValue, id: localStorage.getItem('UserId') })
-      : setInputValue({ ...inputValue, id: '' });
+    isInputValueTrue();
   }, []);
 
   // 체크 여부에 따라 데이터와 화면을 변경해 줍니다.
@@ -44,7 +53,7 @@ function Login() {
   });
 
   const postLogin = async () => {
-    const request = await fetch('http://10.58.5.22:8000/user/signin', {
+    const request = await fetch('http://10.58.1.67:8000/user/signin', {
       method: 'POST',
       body: body,
     });
@@ -174,5 +183,4 @@ function Login() {
     </section>
   );
 }
-
 export default Login;
