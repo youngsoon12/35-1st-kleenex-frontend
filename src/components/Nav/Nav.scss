@@ -1,0 +1,110 @@
+@mixin hoverFontColor {
+  color: red;
+  font-size: 16px;
+  border-bottom: 2px solid red;
+}
+
+.header {
+  display: flex;
+  min-width: 1260px;
+  height: 158px;
+  border-bottom: 1px solid #ededed;
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    width: 1240px;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .categoryMid {
+    display: flex;
+    align-items: flex-end;
+    width: 400px;
+    height: 50px;
+    font-weight: 700;
+
+    .searchBar {
+      padding: 7px;
+      width: 450px;
+      border-radius: 10px;
+      border: 0.5px solid #6d5f5f;
+      font-size: 13px;
+    }
+
+    .searchIcon {
+      position: absolute;
+      left: 860px;
+      top: 78px;
+      height: 20px;
+    }
+
+    ul {
+      li {
+        width: 115px;
+        padding: 0 30px;
+        color: #222222;
+        float: left;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+          font-size: 0px;
+        }
+      }
+
+      .about:hover:before {
+        @include hoverFontColor();
+        content: '소개';
+      }
+
+      .shop:hover:before {
+        @include hoverFontColor();
+        content: '쇼핑';
+      }
+
+      .search:hover:before {
+        @include hoverFontColor();
+        content: '검색';
+      }
+    }
+  }
+
+  .categoryRight {
+    margin-bottom: 22px;
+
+    .rightTop {
+      padding: 15px 0 40px;
+      li {
+        float: left;
+        padding: 1px;
+        font-size: 14px;
+        color: #222222;
+      }
+
+      li:hover {
+        color: red;
+      }
+    }
+
+    .link {
+      li {
+        margin: 0 0 5px 20px;
+        line-height: 2.5vh;
+      }
+
+      li:hover {
+        color: red;
+      }
+
+      a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #222222;
+      }
+    }
+  }
+}

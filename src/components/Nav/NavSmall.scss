@@ -1,0 +1,153 @@
+@mixin hoverFontColorBottom {
+  font-size: 16px;
+  color: red;
+  border-bottom: 2px solid red;
+}
+@mixin hoverFontColor {
+  color: red;
+  font-size: 16px;
+}
+.NavSmall {
+  a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #222222;
+
+    &:hover {
+      color: red;
+    }
+  }
+
+  .inner {
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    padding: 0 63.5px;
+    width: 100%;
+    height: 84.5px;
+    background-color: white;
+    border-bottom: 1px solid #ededed;
+
+    .first {
+      margin-right: 90px;
+      width: 164px;
+
+      img {
+        width: 164px;
+      }
+    }
+
+    .categoryOne {
+      margin-right: 100px;
+      width: 340px;
+
+      .searchTag {
+        position: relative;
+      }
+
+      .searchBar {
+        position: relative;
+        padding: 6px;
+        width: 100%;
+        height: 32px;
+        border-radius: 10px;
+        border: 1px solid #6d5f5f;
+        font-size: 13px;
+        opacity: 1;
+      }
+
+      .searchIcon {
+        position: absolute;
+        top: 9px;
+        left: 310px;
+        height: 17px;
+      }
+
+      ul {
+        li {
+          float: left;
+          padding: 0px 27px;
+          font-weight: 700;
+          cursor: pointer;
+        }
+
+        & li:hover {
+          font-size: 0px;
+        }
+
+        .about {
+          width: 109px;
+        }
+
+        .shop {
+          width: 100px;
+        }
+      }
+    }
+
+    .categoryTwo {
+      margin: 10px;
+      width: 330px;
+
+      ul {
+        li {
+          float: left;
+          padding: 10px;
+          font-weight: lighter;
+        }
+
+        .museum {
+          width: 100px;
+        }
+
+        li:hover {
+          font-size: 0px;
+        }
+      }
+    }
+
+    .iconBar {
+      float: right;
+
+      ul {
+        li {
+          float: left;
+          padding: 0 14px 0 15px;
+          border-right: 1px solid black;
+        }
+      }
+    }
+  }
+
+  .about:hover:before {
+    @include hoverFontColorBottom();
+    content: '소개';
+  }
+
+  .shop:hover:before {
+    @include hoverFontColorBottom();
+    content: '쇼핑';
+  }
+
+  .search:hover:before {
+    @include hoverFontColorBottom();
+    content: '검색';
+  }
+
+  .museum:hover::before {
+    @include hoverFontColor();
+    content: '박물관';
+  }
+
+  .teraTimes:hover::before {
+    @include hoverFontColor();
+    content: '테라 타임즈';
+  }
+
+  .locations:hover::before {
+    @include hoverFontColor();
+    content: '매장 안내';
+  }
+}
