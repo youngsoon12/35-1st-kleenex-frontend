@@ -1,4 +1,4 @@
-const UTILITIES = [
+export const UTILITIES = [
   {
     id: 1,
     util: '이용약관',
@@ -13,7 +13,7 @@ const UTILITIES = [
   },
 ];
 
-const WORKING_TIME = [
+export const WORKING_TIME = [
   {
     id: 1,
     timeDivision: '평일',
@@ -31,7 +31,7 @@ const WORKING_TIME = [
   },
 ];
 
-const COMPANY_INFO = [
+export const COMPANY_INFO = [
   {
     id: 1,
     title: '상호',
