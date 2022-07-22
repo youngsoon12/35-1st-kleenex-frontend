@@ -47,9 +47,12 @@
 
         tr {
           display: table-row;
-          border-bottom: #dbdbdb;
+          border-bottom: 1px solid #dbdbdb;
+          color: #808080;
+          font-weight: 700;
 
           th {
+            display: block;
             padding: 25px 0 24px 23px;
             width: 150px;
             font-size: 16px;
@@ -58,15 +61,36 @@
             text-align: left;
           }
           td {
+            width: 100%;
             padding: 15px 0px 15px 13px;
           }
         }
-        input {
-          margin-right: 5px;
+        .inputName {
+          margin: 0px 4px;
           padding: 0px 10px;
           width: 397px;
           height: 40px;
+          border: 1px solid #d5d5d5;
           color: #808080;
+          font-size: 14px;
+          &:hover {
+            border: 2px solid black;
+            border-radius: 3px;
+          }
+        }
+        .inputPhoneNumber {
+          margin-right: 5px;
+          margin: 0px 4px;
+          padding: 0px 10px;
+          width: 50px;
+          height: 40px;
+          border: 1px solid #d5d5d5;
+          color: #808080;
+          font-size: 14px;
+          &:hover {
+            border: 2px solid black;
+            border-radius: 3px;
+          }
         }
       }
     }

@@ -37,6 +37,18 @@ const Register = () => {
                   </tr>
                 );
               })}
+              <tr>
+                <th>전화번호</th>
+                <td>
+                  <input className="inputPhoneNumber" />
+                </td>
+              </tr>
+              <tr>
+                <th>이메일</th>
+                <td>
+                  <input className="inputName" />
+                </td>
+              </tr>
             </table>
           </form>
         </div>
@@ -52,8 +64,6 @@ const inputData = [
   { th: '비밀번호' },
   { th: '비밀번호 확인' },
   { th: '주소' },
-  { th: '휴대전화' },
-  { th: '이메일' },
 ];
 
 export default Register;

@@ -210,6 +210,12 @@ html {
  * Address `outline` inconsistency between Chrome and other browsers.
  */
 
+a {
+  color: #000;
+  text-decoration: none;
+  outline: none;
+}
+
 a:focus {
   outline: thin dotted;
 }
