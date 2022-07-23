@@ -27,22 +27,27 @@
           }
         }
       }
+
       .titleArea {
         margin: 0 auto;
         text-align: center;
         padding: 0 0 40px;
+
         .logo {
           height: 68.4px;
+
           .logo1 {
             font-size: 38px;
             letter-spacing: -3px;
             font-weight: 100;
           }
+
           .logo2 {
             font-size: 19px;
           }
         }
       }
+
       .inputTitle {
         padding: 0 0 15px;
         line-height: 1.5;
@@ -50,17 +55,20 @@
         font-weight: 600;
         border-bottom: 2px solid #333333;
       }
+
       .inputDataTable {
         line-height: 1.5;
         margin-bottom: 55px;
+
         .inputTip {
           margin: 5px;
           color: #808080;
           font-size: 14px;
           font: 0.75em;
-          span {
-            margin: 5px;
-          }
+        }
+
+        .CheckFail {
+          color: red;
         }
 
         tr {
@@ -78,14 +86,23 @@
             background-color: #f8f8f8;
             text-align: left;
           }
+
           td {
             width: 100%;
             padding: 15px 0px 15px 13px;
+
+            span {
+              margin: 5px;
+              font-size: 14px;
+              font: 0.75em;
+            }
+
             .phoneFirst {
               @include inputForm();
               width: 116px;
               font-size: 16px;
             }
+
             .inputPhoneNumber {
               @include inputForm();
               width: 127px;
@@ -108,9 +125,11 @@
           }
         }
       }
+
       .buttonArea {
         display: flex;
         justify-content: center;
+
         .inputSubmit {
           padding: 10px 8px;
           width: 487px;

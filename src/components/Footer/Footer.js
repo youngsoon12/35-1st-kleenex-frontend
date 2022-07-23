@@ -11,12 +11,12 @@ export default function Footer() {
         <article className="utilMenu">
           <div className="utilMenuContainer">
             {UTILITIES.map(values => (
-              <>
-                <div key={values.id}>
+              <span key={values.id}>
+                <div>
                   <Link to="">{values.util}</Link>
                 </div>
                 {values.id === UTILITIES.length ? '' : <span>|</span>}
-              </>
+              </span>
             ))}
           </div>
         </article>

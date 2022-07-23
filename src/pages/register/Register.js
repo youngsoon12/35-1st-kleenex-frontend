@@ -1,48 +1,64 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './Register.scss';
 
 const Register = () => {
-  const [name, setName] = useState('ds');
-  const [userName, setUserName] = useState('');
-  const [nameError, setNameError] = useState(false);
-  const [passWord, setPassWord] = useState('');
-  const [passWordCheck, setPassWordCheck] = useState('');
-  const [address, setAddress] = useState('');
-  const [phoneNumber1, setPhoneNumber1] = useState('');
-  const [phoneNumber2, setPhoneNumber2] = useState('');
-  const [email, setEmail] = useState('');
+  const [person, setPerson] = useState({
+    name: '',
+    userName: '',
+    paswWord: '',
+    passWordCheck: '',
+    address: '',
+    phoneNumber1: '',
+    phoneNumber2: '',
+    email: '',
+  });
 
-  const REGEX_USERNAME = '^[A-Za-z0-9]{4,12}$';
-  const REGEX_PASSWORD =
-    '^(?=.*[A-Za-z])(?=.*d)(?=.*[$@$!%*#?&])[A-Za-zd$@$!%*#?&]{8,}$';
-  const REGEX_EMAIL = '^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$';
-  const REGEX_PHONE_NUMBER = '^d{3}-d{3,4}-d{4}$';
-
-  const onChangeUserName = e => {
-    const REGEX_USERNAME = '^[A-Za-z0-9]{4,12}$';
-    if (!e.target.value || REGEX_USERNAME.test(e.target.value))
-      setNameError(false);
-    else setNameError(true);
+  const onBlur = e => {
+    const { name, value } = e.target;
+    setPerson({ ...person, [name]: value });
   };
+
+  const REGEX_USERNAME = /^[A-Za-z0-9]{4,12}$/;
+  const REGEX_PASSWORD =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+  const REGEX_EMAIL = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+  const REGEX_PHONE_NUMBER = /\d{3}-\d{4}-\d{4}/;
 
   const signUp = e => {
     e.preventDefault();
-
-    fetch('http://10.58.5.22:8000/user/signup', {
-      method: 'post',
-      body: JSON.stringify({
-        name: name,
-        username: userName,
-        password: passWord,
-        address: address,
-        email: email,
-        phone_number: `010-${phoneNumber1}-${phoneNumber2}`,
-      }),
-    })
-      .then(res => res.json())
-      .then(result => {
-        console.log(result);
-      });
+    if (person.name.length > 0) {
+      if (REGEX_USERNAME.test(person.userName)) {
+        if (
+          REGEX_PASSWORD.test(person.passWord) &&
+          person.passWord === person.passWordCheck
+        ) {
+          if (person.address.length > 0) {
+            if (REGEX_EMAIL.test(person.email)) {
+              if (
+                REGEX_PHONE_NUMBER.test(
+                  `010-${person.phoneNumber1}-${person.phoneNumber2}`
+                )
+              ) {
+                fetch('http://10.58.7.167:8000/user/signup', {
+                  method: 'post',
+                  body: JSON.stringify({
+                    name: person.name,
+                    username: person.userName,
+                    password: person.passWord,
+                    address: person.address,
+                    email: person.email,
+                    phone_number: `010-${person.phoneNumber1}-${person.phoneNumber2}`,
+                  }),
+                })
+                  .then(res => res.json())
+                  .then(result => {});
+              } else alert('휴대전화 번호를 다시 확인해주세요');
+            } else alert('이메일 양식을 다시 확인해주세요');
+          } else alert('주소란은 필수 입니다.');
+        } else alert('비밀번호 양식을 다시 확인해주세요');
+      } else alert('아이디 양식을 다시 확인해주세요');
+    } else alert('이름란은 필수입니다.');
   };
 
   return (
@@ -53,7 +69,7 @@ const Register = () => {
             <ul>
               <li>회원가입</li>
               <li>
-                HOME
+                <Link to="/main">HOME</Link>
                 <i className="bx bx-chevron-right" />{' '}
               </li>
             </ul>
@@ -73,10 +89,7 @@ const Register = () => {
                     <div>이름</div>
                   </th>
                   <td>
-                    <input
-                      className="inputInfo"
-                      onChange={e => setName(e.target.value)}
-                    />
+                    <input className="inputInfo" name="name" onBlur={onBlur} />
                   </td>
                 </tr>
               </thead>
@@ -86,7 +99,20 @@ const Register = () => {
                     <div>아이디</div>
                   </th>
                   <td>
-                    <input className="inputInfo" onChange={onChangeUserName} />
+                    <input
+                      className="inputInfo"
+                      name="userName"
+                      onBlur={onBlur}
+                    />
+                    {person.userName.length > 0 &&
+                      (REGEX_USERNAME.test(person.userName) ? (
+                        <span>{`${person.userName}은 사용가능한 아이디 입니다.`}</span>
+                      ) : (
+                        <span className="CheckFail">
+                          아이디는 영문소문자 또는 숫자 4~12자로 입력해 주세요.
+                        </span>
+                      ))}
+
                     <span className="inputTip">(영문소문자/숫자, 4~12자)</span>
                   </td>
                 </tr>
@@ -98,7 +124,8 @@ const Register = () => {
                     <input
                       className="inputInfo"
                       type="password"
-                      onChange={e => setPassWord(e.target.value)}
+                      name="passWord"
+                      onBlur={onBlur}
                     />
                     <span className="inputTip">
                       (영문/숫자/특수문자 포함 필수, 8자 이상)
@@ -113,8 +140,17 @@ const Register = () => {
                     <input
                       className="inputInfo"
                       type="password"
-                      onChange={e => setPassWordCheck(e.target.value)}
+                      name="passWordCheck"
+                      onBlur={onBlur}
                     />
+                    {person.passWordCheck.length > 0 &&
+                      (person.passWord === person.passWordCheck ? (
+                        ''
+                      ) : (
+                        <span className="CheckFail">
+                          비밀번호가 일치하지 않습니다.
+                        </span>
+                      ))}
                   </td>
                 </tr>
                 <tr>
@@ -124,7 +160,8 @@ const Register = () => {
                   <td>
                     <input
                       className="inputInfo"
-                      onChange={e => setAddress(e.target.value)}
+                      name="address"
+                      onBlur={onBlur}
                     />
                     <span className="inputTip">기본 주소</span>
                   </td>
@@ -139,14 +176,16 @@ const Register = () => {
                     <span>
                       <input
                         className="inputPhoneNumber"
-                        onChange={e => setPhoneNumber1(e.target.value)}
+                        name="phoneNumber1"
+                        onBlur={onBlur}
                       />
                     </span>
                     <span>-</span>
                     <span>
                       <input
                         className="inputPhoneNumber"
-                        onChange={e => setPhoneNumber2(e.target.value)}
+                        name="phoneNumber2"
+                        onBlur={onBlur}
                       />
                     </span>
                     <span className="inputTip">
@@ -159,10 +198,7 @@ const Register = () => {
                 <tr>
                   <th>이메일</th>
                   <td>
-                    <input
-                      className="inputInfo"
-                      onChange={e => setEmail(e.target.value)}
-                    />
+                    <input className="inputInfo" name="email" onBlur={onBlur} />
                     <span className="inputTip">
                       <span>이메일 수신</span>
                       <input type="checkbox" />
