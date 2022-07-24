@@ -1,8 +1,10 @@
 import { React, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Register.scss';
+import RegisterToP from './RegisterToP';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [person, setPerson] = useState({
     name: '',
     userName: '',
@@ -52,7 +54,11 @@ const Register = () => {
                   }),
                 })
                   .then(res => res.json())
-                  .then(result => {});
+                  .then(result => {
+                    result.access_token
+                      ? alert('')
+                      : navigate('/register/success', { state: { person } });
+                  });
               } else alert('휴대전화 번호를 다시 확인해주세요');
             } else alert('이메일 양식을 다시 확인해주세요');
           } else alert('주소란은 필수 입니다.');
@@ -65,21 +71,7 @@ const Register = () => {
     <div className="Register">
       <div className="wrap">
         <div className="container">
-          <div className="path">
-            <ul>
-              <li>회원가입</li>
-              <li>
-                <Link to="/main">HOME</Link>
-                <i className="bx bx-chevron-right" />{' '}
-              </li>
-            </ul>
-          </div>
-          <div className="titleArea">
-            <div className="logo">
-              <div className="logo1">J0IN</div>
-              <div className="logo2">회원가입</div>
-            </div>
-          </div>
+          <RegisterToP />
           <div className="inputTitle">기본정보 입력</div>
           <form>
             <table className="inputDataTable">

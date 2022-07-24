@@ -5,6 +5,41 @@
   border: 1px solid #d5d5d5;
   color: #808080;
 }
+@mixin signUp {
+  .path {
+    padding: 68px 10px 0 0;
+    ul {
+      height: 30px;
+      vertical-align: middle;
+
+      li {
+        float: right;
+        padding-top: 4px;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .titleArea {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 0 40px;
+
+    .logo {
+      height: 68.4px;
+
+      .logo1 {
+        font-size: 38px;
+        letter-spacing: -3px;
+        font-weight: 100;
+      }
+
+      .logo2 {
+        font-size: 19px;
+      }
+    }
+  }
+}
 
 .Register {
   .wrap {
@@ -14,39 +49,8 @@
     .container {
       width: 1240px;
       margin: 0 auto;
-      .path {
-        padding: 68px 10px 0 0;
-        ul {
-          height: 30px;
-          vertical-align: middle;
 
-          li {
-            float: right;
-            padding-top: 4px;
-            font-size: 13px;
-          }
-        }
-      }
-
-      .titleArea {
-        margin: 0 auto;
-        text-align: center;
-        padding: 0 0 40px;
-
-        .logo {
-          height: 68.4px;
-
-          .logo1 {
-            font-size: 38px;
-            letter-spacing: -3px;
-            font-weight: 100;
-          }
-
-          .logo2 {
-            font-size: 19px;
-          }
-        }
-      }
+      @include signUp();
 
       .inputTitle {
         padding: 0 0 15px;
@@ -139,6 +143,40 @@
           font-size: 20px;
         }
       }
+    }
+  }
+}
+
+.RegisterSuccess {
+  @include signUp();
+  .signUpShow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 0px 20px;
+    width: 1200px;
+    height: 400px;
+    border-top: 1px solid black;
+    background-color: #f9f9f9;
+
+    .message {
+      margin: 0 auto;
+      width: 100%;
+      line-height: 4vh;
+      p {
+        font-size: 25px;
+      }
+      span {
+        font-weight: 700;
+      }
+    }
+
+    .goMain {
+      margin-top: 25px;
+      width: 200px;
+      height: 50px;
     }
   }
 }

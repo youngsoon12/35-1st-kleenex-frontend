@@ -5,6 +5,7 @@ import Register from './pages/register/Register';
 import Nav from './components/Nav/Nav';
 import Main from './pages/Main/Main';
 import Footer from './components/Footer/Footer';
+import RegisterSuccess from './pages/register/RegisterSuccess';
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route exact path="register/success" element={<RegisterSuccess />} />
         <Route path="/main" element={<Main />} />
       </Routes>
       <Footer />

@@ -23,12 +23,16 @@ const Nav = () => {
 
   if (isShowNavbar) {
     return (
-      <div className="Navv">
+      <div className="Nav">
         <div className="header">
           <div className="inner">
             <div className="link">
               <Link to="/">
-                <img src="./images/Nav/NavLogo.jpg" alt="테라로사" />
+                <img
+                  src="/images/Nav/logo.jpg"
+                  alt="테라로사"
+                  className="logoImg"
+                />
               </Link>
             </div>
             <div className="categoryMid">
@@ -36,7 +40,7 @@ const Nav = () => {
                 <div>
                   <input placeholder="입력해주세요." className="searchBar" />
                   <img
-                    src="./images/Nav/search.png"
+                    src="/images/Nav/search.png"
                     alt="돋보기"
                     className="searchIcon"
                     onClick={handleSearchOpen}
