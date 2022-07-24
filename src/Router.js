@@ -14,7 +14,7 @@ const Router = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route exact path="register/success" element={<RegisterSuccess />} />
+        <Route exact path="/register/success" element={<RegisterSuccess />} />
         <Route path="/main" element={<Main />} />
       </Routes>
       <Footer />
