@@ -9,51 +9,119 @@ const Cart = () => {
   const shipmentPrice = itemsPrice > 50000 ? 0 : 2500;
   const totalPrice = itemsPrice + shipmentPrice;
 
+  // 첫 화면 렌더링 시 개인 카트 데이터를 요청합니다.
   async function request() {
-    const res = await fetch('/data/productInCart.json');
+    const res = await fetch('http://10.58.7.167:8000/cart/cart', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('Token'),
+      },
+    });
     const result = await res.json();
-    setValues(result);
-    setItemsPrice(result.reduce((a, c) => a + c.price * c.quantity, 0));
+    setValues(result.MESSAGE);
+    // 상품들의 합계를 구해 업데이트 해줍니다.
+    setItemsPrice(result.MESSAGE.reduce((a, c) => a + c.price * c.quantity, 0));
   }
 
+  // 렌더링 이후 request 를 불러옵니다.
   useEffect(() => {
     request();
   }, []);
 
+  // 카트 아이템의 수량을 1씩 감소시켜 이후 바로 서버에 전송합니다.
   const toMinusNum = id => {
-    const selectedId = value.findIndex(product => product.id === id);
     const copyValue = [...value];
+    const selectedId = value.findIndex(product => product.cart_id === id);
     copyValue[selectedId].quantity === 1
       ? (copyValue[selectedId].quantity = 1)
       : (copyValue[selectedId].quantity -= 1);
     setValues(copyValue);
+
+    // 서버에 patch 로 전달
+    fetch('http://10.58.7.167:8000/cart/cart', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('Token'),
+      },
+      body: JSON.stringify({
+        cart_id: copyValue[selectedId].cart_id,
+        quantity: copyValue[selectedId].quantity,
+      }),
+    }).then(res => res.json());
     setItemsPrice(value.reduce((a, c) => a + c.price * c.quantity, 0));
   };
 
+  // 수량을 1씩 더해 서버에 전송합니다.
   const toPlusNum = id => {
-    const selectedId = value.findIndex(product => product.id === id);
     const copyValue = [...value];
+    const selectedId = value.findIndex(product => product.cart_id === id);
     copyValue[selectedId].quantity += 1;
     setValues(copyValue);
+
+    fetch('http://10.58.7.167:8000/cart/cart', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('Token'),
+      },
+      body: JSON.stringify({
+        cart_id: copyValue[selectedId].cart_id,
+        quantity: copyValue[selectedId].quantity,
+      }),
+    }).then(res => res.json());
     setItemsPrice(value.reduce((a, c) => a + c.price * c.quantity, 0));
   };
 
+  // 체크박스로 각 아이템을 선택합니다.
   const isCheckedBox = id => {
-    const selectedId = value.findIndex(product => product.id === id);
     const copyValue = [...value];
-    return copyValue[selectedId].isChecked === false
-      ? ((copyValue[selectedId].isChecked = true), setValues(copyValue))
-      : ((copyValue[selectedId].isChecked = false), setValues(copyValue));
+    const selectedId = value.findIndex(product => product.cart_id === id);
+    return copyValue[selectedId].is_checked === false
+      ? ((copyValue[selectedId].is_checked = true), setValues(copyValue))
+      : ((copyValue[selectedId].is_checked = false), setValues(copyValue));
   };
 
+  // 선택된 아이템을 카트에서 삭제합니다.
   const toDeleteCheckedItem = () => {
-    const filterValue = value.filter(product => product.isChecked !== true);
+    const copyValue = [...value];
+    const isCheckedProduct = value.filter(
+      product => product.is_checked === true
+    );
+    const filterValue = copyValue.filter(
+      product => product.is_checked !== true
+    );
+    const filterCartId = isCheckedProduct.map(product => product.cart_id);
+
+    fetch('http://10.58.7.167:8000/cart/cart', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('Token'),
+      },
+      body: JSON.stringify({
+        cart_id: filterCartId,
+      }),
+    }).then(res => res.json());
     setValues(filterValue);
     setItemsPrice(filterValue.reduce((a, c) => a + c.price * c.quantity, 0));
   };
 
+  // 모든 아이템을 한번에 삭제합니다.
   const toDeletaAllItem = () => {
     const filterValue = [];
+
+    fetch('http://10.58.7.167:8000/cart/cart', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('Token'),
+      },
+      body: JSON.stringify({
+        is_bool: 'True',
+      }),
+    }).then(res => res.json());
     setValues(filterValue);
     setItemsPrice(filterValue.reduce((a, c) => a + c.price * c.quantity, 0));
   };
@@ -82,7 +150,7 @@ const Cart = () => {
           {value.length !== 0 ? (
             <div className="cartBox">
               <div className="cartTitle">
-                <p>장바구니 상품(1)</p>
+                <p>장바구니 상품({value.length})</p>
               </div>
               <div className="cartTableContainer">
                 <table className="cartBoxTable">
@@ -108,9 +176,9 @@ const Cart = () => {
                           key={data.id}
                           {...data}
                           data={data}
-                          toMinusNum={() => toMinusNum(data.id)}
-                          toPlusNum={() => toPlusNum(data.id)}
-                          isCheckedBox={() => isCheckedBox(data.id)}
+                          toMinusNum={() => toMinusNum(data.cart_id)}
+                          toPlusNum={() => toPlusNum(data.cart_id)}
+                          isCheckedBox={() => isCheckedBox(data.cart_id)}
                         />
                       );
                     })}
