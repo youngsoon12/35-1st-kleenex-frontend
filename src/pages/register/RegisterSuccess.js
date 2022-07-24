@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, Navigate, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Register.scss';
 import RegisterToP from './RegisterToP';
 
