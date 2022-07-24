@@ -395,4 +395,23 @@
       }
     }
   }
+
+  .toComment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+    margin-bottom: 150px;
+
+    i {
+      font-size: 150px;
+      padding-right: 10px;
+    }
+
+    p {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 15px;
+    }
+  }
 }
