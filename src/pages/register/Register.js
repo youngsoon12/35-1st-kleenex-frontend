@@ -55,9 +55,7 @@ const Register = () => {
                 })
                   .then(res => res.json())
                   .then(result => {
-                    result.access_token
-                      ? alert('')
-                      : navigate('/register/success', { state: { person } });
+                    navigate('/register/success', { state: { person } });
                   });
               } else alert('휴대전화 번호를 다시 확인해주세요');
             } else alert('이메일 양식을 다시 확인해주세요');
