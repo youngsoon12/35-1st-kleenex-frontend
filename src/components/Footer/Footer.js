@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ImPhone } from 'react-icons/im';
 import { FaInstagramSquare } from 'react-icons/fa';
-import { UTILITIES, WORKING_TIME, COMPANY_INFO } from './FooterData';
+import { UTILITIES, WORKING_TIME, COMPANY_INFO } from './footerData';
 import './Footer.scss';
 
 export default function Footer() {
