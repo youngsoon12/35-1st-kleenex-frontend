@@ -1,45 +1,43 @@
-import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MdOutlineShoppingBag } from 'react-icons/md';
 import './ProductCard.scss';
 
-export default function ProductCard() {
-  const [values, setValues] = useState({
-    imgURL: '',
-    korTitle: '',
-    engTitle: '',
-    details: '',
-    roastedDate: '',
-    price: '',
-  });
+export default function ProductCard({
+  id,
+  img,
+  name,
+  eng_name,
+  taste,
+  roasting_date,
+  price,
+  cardSize,
+}) {
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch('http://localhost:3000/data/productCard.json')
-      .then(res => res.json())
-      .then(res => {
-        setValues(res.MOCK_DATA);
-      });
-  }, []);
-
+  const goToDetail = e => {
+    e.preventDefault();
+    return navigate(`../product/detail/${id}`);
+  };
   return (
-    <section className="productCard">
-      <div className="cardContainer">
-        <div className="cardThumbnail">
-          <img src={values[0].imgURL} alt="thumbnail" />
+    <section className="productCard" key={id}>
+      <div className="cardContainer" onClick={goToDetail}>
+        <div className={'cardThumbnail' + cardSize}>
+          <img src={img} alt="thumbnail" />
         </div>
         <div className="discriptionContainer">
           <div className="titleContainer">
-            <div className="korTitle">{values[0].korTitle}</div>
-            <div className="engTitle">{values[0].engTitle}</div>
+            <div className="korTitle">{name}</div>
+            <div className="engTitle">{eng_name}</div>
           </div>
           <div className="discription">
-            <div className="details">{values[0].details}</div>
+            <div className="details">{`${taste}`}</div>
             <div className="roastedDate">
               <div className="roastLeft">로스팅</div>
-              <div className="roastRight">{values[0].roastedDate}</div>
+              <div className="roastRight">{roasting_date}</div>
             </div>
           </div>
           <div className="price">
-            <p>{values[0].price}원</p>
+            <p>{Math.floor(price).toLocaleString('ko-KR')}원</p>
             <MdOutlineShoppingBag />
           </div>
         </div>
