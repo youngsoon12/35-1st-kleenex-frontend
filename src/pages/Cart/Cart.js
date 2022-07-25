@@ -11,7 +11,7 @@ const Cart = () => {
 
   // 첫 화면 렌더링 시 개인 카트 데이터를 요청합니다.
   async function request() {
-    const res = await fetch('http://10.58.7.167:8000/cart/cart', {
+    const res = await fetch('http://10.58.1.149:8000/cart/cart', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const Cart = () => {
     setValues(copyValue);
 
     // 서버에 patch 로 전달
-    fetch('http://10.58.7.167:8000/cart/cart', {
+    fetch('http://10.58.1.149:8000/cart/cart', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const Cart = () => {
     copyValue[selectedId].quantity += 1;
     setValues(copyValue);
 
-    fetch('http://10.58.7.167:8000/cart/cart', {
+    fetch('http://10.58.1.149:8000/cart/cart', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ const Cart = () => {
     );
     const filterCartId = isCheckedProduct.map(product => product.cart_id);
 
-    fetch('http://10.58.7.167:8000/cart/cart', {
+    fetch('http://10.58.1.149:8000/cart/cart', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ const Cart = () => {
   const toDeletaAllItem = () => {
     const filterValue = [];
 
-    fetch('http://10.58.7.167:8000/cart/cart', {
+    fetch('http://10.58.1.149:8000/cart/cart', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
