@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Slide from './Slide/Slide';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import {
@@ -12,6 +12,7 @@ function Main() {
   const [imgId, setImgId] = useState(1);
   const [values, setValues] = useState([]);
   const [newValue, setNewValue] = useState([]);
+  const [totalValue, setTotalValue] = useState([]);
 
   // mock data 가져오기
 
@@ -27,9 +28,16 @@ function Main() {
     setNewValue(result);
   }
 
+  async function premiumRequest() {
+    const res = await fetch('/data/productCardPremium.json');
+    const result = await res.json();
+    setTotalValue(result);
+  }
+
   useEffect(() => {
     request();
     newRequest();
+    premiumRequest();
   }, []);
 
   // 이미지 슬라이드 기능 구현
