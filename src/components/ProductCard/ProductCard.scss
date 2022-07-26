@@ -4,7 +4,7 @@
 }
 
 @mixin cardSizeMed {
-  width: 329px;
+  width: 326px;
   height: 229px;
 }
 
@@ -28,6 +28,9 @@
     width: fit-content;
     height: 100%;
     margin: 25px 10px 20px;
+    &:hover {
+      cursor: pointer;
+    }
 
     .cardThumbnailSmall {
       @include cardSizeSmall();
@@ -94,6 +97,7 @@
 
         .details {
           color: #383838;
+          padding: 0 0 2px 0;
           font-family: 'Noto Sans KR', sans-serif;
           font-weight: 300;
           font-size: 14px;
