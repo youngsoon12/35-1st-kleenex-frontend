@@ -35,8 +35,9 @@ const Nav = () => {
   }, [search]);
 
   const handleSearchOpen = () => {
+    // const body = document.querySelector('body');
+    // body.classList.add('hidden');
     setSearch('');
-
     setIsSearchOn(isSearchOn => !isSearchOn);
   };
 

@@ -31,8 +31,19 @@
     background-color: white;
     border-bottom: 1px solid #ededed;
 
+    .searchBar {
+      position: relative;
+      padding: 6px;
+      min-width: 420px;
+      height: 32px;
+      font-size: 13px;
+      opacity: 1;
+      border: none;
+      border-bottom: 1px solid black;
+    }
+
     .first {
-      margin-right: 90px;
+      margin-right: 60px;
       width: 164px;
 
       img {
@@ -41,29 +52,10 @@
     }
 
     .categoryOne {
-      margin-right: 100px;
-      width: 340px;
+      margin-right: 40px;
 
       .searchTag {
         position: relative;
-      }
-
-      .searchBar {
-        position: relative;
-        padding: 6px;
-        width: 100%;
-        height: 32px;
-        border-radius: 10px;
-        border: 1px solid #6d5f5f;
-        font-size: 13px;
-        opacity: 1;
-      }
-
-      .searchIcon {
-        position: absolute;
-        top: 9px;
-        left: 310px;
-        height: 17px;
       }
 
       ul {
@@ -90,7 +82,7 @@
 
     .categoryTwo {
       margin: 10px;
-      width: 330px;
+      min-width: 330px;
 
       ul {
         li {
@@ -110,6 +102,7 @@
     }
 
     .iconBar {
+      min-width: 250px;
       float: right;
 
       ul {
@@ -150,5 +143,61 @@
   .locations:hover::before {
     @include hoverFontColor();
     content: '매장 안내';
+  }
+}
+
+.searchSmallBox {
+  position: absolute;
+  border-radius: 12px;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  // background-color: white;
+  background-color: white;
+  border-bottom: 1px solid black;
+  opacity: 0.98;
+
+  .searchBoxContainer {
+    min-width: 1440px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0px;
+
+    .leftContainer {
+      // display: flex;
+      // justify-content: center;
+      align-items: flex-start;
+      padding-bottom: 170px;
+      width: 400px;
+      // border: 1px solid black;
+      margin-left: 100px;
+
+      .linkBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 20px;
+          font-size: 17px;
+          font-family: 'Noto Sans KR', sans-serif;
+        }
+      }
+    }
+
+    .rightContainer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 950px;
+      overflow: hidden;
+      height: 350px;
+      gap: 20px;
+    }
   }
 }

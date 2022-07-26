@@ -21,7 +21,7 @@ export default function SearchCard({
             <div className="engTitle">{eng_name}</div>
           </div>
           <div className="price">
-            <p>{price.slice(0, price.indexOf('.'))}원</p>
+            <p>{Math.floor(price).toLocaleString('ko-KR')}원</p>
             <MdOutlineShoppingBag />
           </div>
         </div>

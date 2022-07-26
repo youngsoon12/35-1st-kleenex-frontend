@@ -1,13 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SearchCard from './search/SearchCard';
 import './NavSmall.scss';
 
 const NavSmall = () => {
   const [isSearchOn, setIsSearchOn] = useState(false);
+  const [search, setSearch] = useState('');
+  const [values, setValues] = useState([]);
+  const filterValue = useRef([]);
+
+  async function request() {
+    const res = await fetch(
+      `http://10.58.3.145:8000/products/main/search?keywords=${search}`
+    );
+    const result = await res.json();
+    setValues(result.result);
+  }
 
   const handleSearchOpen = () => {
+    setSearch('');
     setIsSearchOn(isSearchOn => !isSearchOn);
   };
+
+  const inputSearch = e => {
+    setSearch(e.target.value);
+    console.log(search);
+    request();
+  };
+
+  if (values) {
+    filterValue.current = values.filter(result => {
+      if (!search.startsWith(' ')) {
+        return result.name.includes(search);
+      }
+    });
+  }
+
+  useEffect(() => {
+    request();
+  }, [search]);
 
   return (
     <div className="NavSmall">
@@ -17,19 +48,40 @@ const NavSmall = () => {
             <img src="/images/Nav/NavSmallLogo.png" alt="로고" />
           </Link>
         </div>
-        <div className="categoryOne">
-          {isSearchOn && (
-            <div className="searchTag">
-              <input placeholder="입력해주세요." className="searchBar" />
-              <img
-                src="/images/Nav/search.png"
-                alt="돋보기"
-                className="searchIcon"
-                onClick={handleSearchOpen}
-              />
-              {/* <div className="searchBox" /> */}
+        {isSearchOn && (
+          <div className="searchTag">
+            <input
+              placeholder="검색"
+              className="searchBar"
+              onChange={inputSearch}
+              onBlur={handleSearchOpen}
+              autoFocus
+            />
+            <div className="searchSmallBox">
+              <div className="searchBoxContainer">
+                <div className="leftContainer">
+                  <div className="linkBox">
+                    <ul>
+                      <li>싱글블렌드</li>
+                      <li>로스팅</li>
+                      <li>원두</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="rightContainer">
+                  {' '}
+                  {filterValue.current &&
+                    filterValue.current.map((data, index) => {
+                      return (
+                        <SearchCard key={data.id} {...data} cardSize="Small" />
+                      );
+                    })}
+                </div>
+              </div>
             </div>
-          )}
+          </div>
+        )}
+        <div className="categoryOne">
           {isSearchOn || (
             <ul>
               {CATEGORY_ONE.map((data, index) => {

@@ -4,6 +4,12 @@
   border-bottom: 2px solid red;
 }
 
+body {
+  .hidden {
+    overflow: hidden;
+    height: 100%;
+  }
+}
 .header {
   position: sticky;
   top: 0;
@@ -39,7 +45,6 @@
       position: relative;
       padding: 7px;
       width: 450px;
-
       border: none;
       border-bottom: 1px solid black;
       font-size: 13px;
@@ -134,7 +139,7 @@
     justify-content: center;
     align-items: center;
     gap: 150px;
-    padding-top: 50px;
+    padding-top: 20px;
 
     .leftContainer {
       display: flex;
