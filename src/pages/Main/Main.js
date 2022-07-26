@@ -12,32 +12,24 @@ function Main() {
   const [imgId, setImgId] = useState(1);
   const [values, setValues] = useState([]);
   const [newValue, setNewValue] = useState([]);
-  const [totalValue, setTotalValue] = useState([]);
 
   // mock data 가져오기
 
   async function request() {
-    const res = await fetch('/data/productCardBest.json');
+    const res = await fetch('http://10.58.3.145:8000/products/main');
     const result = await res.json();
-    setValues(result);
+    setValues(result.premium);
   }
 
   async function newRequest() {
-    const res = await fetch('/data/productCardNew.json');
+    const res = await fetch('http://10.58.3.145:8000/products/main');
     const result = await res.json();
-    setNewValue(result);
-  }
-
-  async function premiumRequest() {
-    const res = await fetch('/data/productCardPremium.json');
-    const result = await res.json();
-    setTotalValue(result);
+    setNewValue(result.fresh_product);
   }
 
   useEffect(() => {
     request();
     newRequest();
-    premiumRequest();
   }, []);
 
   // 이미지 슬라이드 기능 구현
@@ -86,9 +78,18 @@ function Main() {
                 </a>
               </div>
               <ul className="bestListProductRecommend">
-                {values.map(product => {
+                {values.map((product, i) => {
                   return (
-                    <ProductCard key={product.id} {...product} cardSize="Big" />
+                    <ProductCard
+                      key={product.id}
+                      img={product.img[0].img_url}
+                      name={product.name}
+                      eng_name={product.eng_name}
+                      taste={product.taste.map(taste => taste.taste_name)}
+                      roasting_date={product.roasting_date}
+                      price={product.price}
+                      cardSize="Big"
+                    />
                   );
                 })}
               </ul>
@@ -105,7 +106,12 @@ function Main() {
                   return (
                     <ProductCard
                       key={product.id}
-                      {...product}
+                      img={product.img[0].img_url}
+                      name={product.name}
+                      eng_name={product.eng_name}
+                      taste={product.taste.map(taste => taste.taste_name)}
+                      roasting_date={product.roasting_date}
+                      price={product.price}
                       cardSize="Small"
                     />
                   );
