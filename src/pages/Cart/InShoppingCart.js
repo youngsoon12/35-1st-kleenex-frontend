@@ -1,5 +1,6 @@
 import React from 'react';
 import InProduct from './InProduct/InProduct';
+import { THEAD_DATA, ORDER_BUTTON } from '../Cart/Data/Data';
 import './InShoppingCart.scss';
 
 const InShoppingCart = ({
@@ -101,16 +102,14 @@ const InShoppingCart = ({
             </div>
           </div>
           <div className="toOrderButtonContainer">
-            <div className="selectOrder">
-              <span>선택상품 주문</span>
-            </div>
-            <div className="present">
-              <i class="bx bxs-gift" />
-              <span>선물하기</span>
-            </div>
-            <div className="allOrder">
-              <span>전체상품 주문</span>
-            </div>
+            {ORDER_BUTTON.map((data, i) => {
+              return (
+                <div key={data.value + i} className={data.className}>
+                  {i === 1 ? <i class="bx bxs-gift" /> : ''}
+                  <span>{data.value}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -119,13 +118,3 @@ const InShoppingCart = ({
 };
 
 export default InShoppingCart;
-
-const THEAD_DATA = [
-  { className: 'headCheckBox', value: '목록', colSpan: 0 },
-  { className: 'headProductName', value: '상품명', colSpan: 2 },
-  { className: 'headSelectedOption', value: '선택옵션', colSpan: 0 },
-  { className: 'headMarketPrice', value: '판매가', colSpan: 0 },
-  { className: 'headProductQty', value: '수량', colSpan: 0 },
-  { className: 'headProductFee', value: '배송비', colSpan: 0 },
-  { className: 'headTotalPrice', value: '합계', colSpan: 0 },
-];
