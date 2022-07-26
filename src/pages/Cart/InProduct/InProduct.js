@@ -14,21 +14,24 @@ const InProduct = ({
   onChangeHandle,
   isCheckedBox,
   data,
+  totalPrice,
 }) => {
   return (
     <tr>
-      <td className="bodyNum1">
+      <td className="bodyCheckBox">
         <input type="checkbox" onClick={isCheckedBox} />
       </td>
-      <td className="bodyNum2">
+      <td className="bodyImage">
         <img alt="" src={image} />
       </td>
-      <td className="bodyNum3">{product}</td>
-      <td className="bodyNum4">
+      <td className="bodyProductName">{product}</td>
+      <td className="bodySelectedOption">
         [옵션 : {graind}/{size}]
       </td>
-      <td className="bodyNum5">{price}원</td>
-      <td className="bodyNum6">
+      <td className="bodyMarketPrice">
+        {Math.floor(price).toLocaleString()}원
+      </td>
+      <td className="bodyProductQty">
         <div className="switchNumber">
           <div className="minusBox" onClick={toMinusNum}>
             <i class="bx bx-minus" />
@@ -39,8 +42,14 @@ const InProduct = ({
           </div>
         </div>
       </td>
-      <td className="bodyNum7">무료</td>
-      <td className="bodyNum8">{quantity * price}원</td>
+      <td className="bodyProductFee">
+        {quantity * price > 50000 || totalPrice > 50000
+          ? '무료'
+          : (2500).toLocaleString()}
+      </td>
+      <td className="bodyTotalPrice">
+        {(quantity * price).toLocaleString()}원
+      </td>
     </tr>
   );
 };

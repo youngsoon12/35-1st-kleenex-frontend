@@ -7,10 +7,10 @@ tbody {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  .bodyNum1 {
+  .bodyCheckBox {
     height: 140px;
   }
-  .bodyNum2 {
+  .bodyImage {
     width: 150px;
 
     img {
@@ -19,21 +19,21 @@ tbody {
       object-fit: cover;
     }
   }
-  .bodyNum3 {
+  .bodyProductName {
     padding-left: 20px;
     width: 281px;
     text-align: start;
   }
-  .bodyNum4 {
+  .bodySelectedOption {
     padding-left: 20px;
     color: rgba(0, 0, 0, 0.3);
     text-align: start;
   }
-  .bodyNum5 {
+  .bodyMarketPrice {
     width: fit-content;
     white-space: nowrap;
   }
-  .bodyNum6 {
+  .bodyProductQty {
     .switchNumber {
       display: flex;
       justify-content: center;
