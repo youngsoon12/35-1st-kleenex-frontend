@@ -79,7 +79,11 @@ const Register = () => {
                     <div>이름</div>
                   </th>
                   <td>
-                    <input className="inputInfo" name="name" onBlur={onBlur} />
+                    <input
+                      className="inputInfo"
+                      name="name"
+                      onChange={onBlur}
+                    />
                   </td>
                 </tr>
               </thead>
@@ -92,7 +96,7 @@ const Register = () => {
                     <input
                       className="inputInfo"
                       name="userName"
-                      onBlur={onBlur}
+                      onChange={onBlur}
                     />
                     {person.userName.length > 0 &&
                       (REGEX_USERNAME.test(person.userName) ? (
@@ -115,7 +119,7 @@ const Register = () => {
                       className="inputInfo"
                       type="password"
                       name="passWord"
-                      onBlur={onBlur}
+                      onChange={onBlur}
                     />
                     <span className="inputTip">
                       (영문/숫자/특수문자 포함 필수, 8자 이상)
@@ -131,7 +135,7 @@ const Register = () => {
                       className="inputInfo"
                       type="password"
                       name="passWordCheck"
-                      onBlur={onBlur}
+                      onChange={onBlur}
                     />
                     {person.passWordCheck.length > 0 &&
                       (person.passWord === person.passWordCheck ? (
@@ -151,7 +155,7 @@ const Register = () => {
                     <input
                       className="inputInfo"
                       name="address"
-                      onBlur={onBlur}
+                      onChange={onBlur}
                     />
                     <span className="inputTip">기본 주소</span>
                   </td>
@@ -167,7 +171,7 @@ const Register = () => {
                       <input
                         className="inputPhoneNumber"
                         name="phoneNumber1"
-                        onBlur={onBlur}
+                        onChange={onBlur}
                       />
                     </span>
                     <span>-</span>
@@ -175,7 +179,7 @@ const Register = () => {
                       <input
                         className="inputPhoneNumber"
                         name="phoneNumber2"
-                        onBlur={onBlur}
+                        onChange={onBlur}
                       />
                     </span>
                     <span className="inputTip">
