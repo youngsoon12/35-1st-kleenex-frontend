@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import NavSmall from './NavSmall';
 import SearchCard from './search/SearchCard';
@@ -10,48 +10,59 @@ const Nav = () => {
   const [isSearchOn, setIsSearchOn] = useState(false);
   const [search, setSearch] = useState('');
   const [values, setValues] = useState([]);
-  // const [postData, setPostData] = useState('');
+  const filterValue = useRef([]);
 
   // mokData
-  // async function request() {
-  //   const res = await fetch('/data/productCardBest.json');
-  //   const result = await res.json();
-  //   setValues(result);
-  // }
+  async function request() {
+    const res = await fetch(
+      `http://10.58.3.145:8000/products/main/search?keywords=${search}`
+      // '/data/productCardBest.json'
+    );
+    const result = await res.json();
+    setValues(result.result);
+  }
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
       window.scrollY > 0 ? setIsShowNavbar(false) : setIsShowNavbar(true);
     });
-    // request(); //mokData
+    //mokData
     return () => {
       window.removeEventListener('scroll', () => {});
     };
   }, []);
+  useEffect(() => {
+    request();
+  }, [search]);
 
   const handleSearchOpen = () => {
     setSearch('');
+
     setIsSearchOn(isSearchOn => !isSearchOn);
   };
 
   const inputSearch = e => {
     setSearch(e.target.value);
-
-    if (search) {
-      fetch(`http://10.58.3.145:8000/products/main/test?search=${search}`)
-        .then(res => res.json())
-        .then(result => {
-          setValues(result);
-        });
-    }
-    console.log(values);
+    request();
+    // if (search) {
+    //   fetch(`http://10.58.3.145:8000/products/main/search?keywords=${search}`)
+    //     .then(res => res.json())
+    //     .then(result => {
+    //       console.log(result.MESSAGE);
+    //       setValues(result.MESSAGE);
+    //     });
+    // }
   };
 
-  const filterValue = values.filter(data => {
-    if (!search.startsWith(' ')) {
-      return data.korTitle.includes(search);
-    }
-  });
+  if (values) {
+    filterValue.current = values.filter(result => {
+      if (!search.startsWith(' ')) {
+        return result.name.includes(search);
+      }
+    });
+  }
+
+  console.log(values);
 
   if (isShowNavbar) {
     return (
@@ -71,11 +82,12 @@ const Nav = () => {
                 </div>
                 <div className="rightContainer">
                   {' '}
-                  {filterValue.map((data, index) => {
-                    return (
-                      <SearchCard key={data.id} {...data} cardSize="Small" />
-                    );
-                  })}
+                  {filterValue.current &&
+                    filterValue.current.map((data, index) => {
+                      return (
+                        <SearchCard key={data.id} {...data} cardSize="Small" />
+                      );
+                    })}
                 </div>
               </div>
             </div>

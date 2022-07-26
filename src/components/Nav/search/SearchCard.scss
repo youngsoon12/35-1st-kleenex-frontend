@@ -71,11 +71,15 @@
         padding: 0 0 10px 0;
 
         .korTitle {
+          display: -webkit-inline-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
           margin-bottom: 5px;
           font-family: 'Noto Sans KR', sans-serif;
           font-weight: 400;
           font-size: 20px;
           color: #231916;
+          overflow: hidden;
         }
 
         .engTitle {
