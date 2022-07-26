@@ -6,14 +6,11 @@ export default function SearchCard({
   img,
   name,
   eng_name,
-  // details,
-  // roastedDate,
   price,
   cardSize,
 }) {
   return (
     <section className="searchCard">
-      {console.log(typeof price)}
       <div className="cardContainer">
         <div className={'cardThumbnail' + cardSize}>
           <img src={img[0].img_url} alt="thumbnail" />

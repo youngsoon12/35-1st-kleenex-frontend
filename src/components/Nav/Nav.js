@@ -12,11 +12,10 @@ const Nav = () => {
   const [values, setValues] = useState([]);
   const filterValue = useRef([]);
 
-  // mokData
+  // json
   async function request() {
     const res = await fetch(
       `http://10.58.3.145:8000/products/main/search?keywords=${search}`
-      // '/data/productCardBest.json'
     );
     const result = await res.json();
     setValues(result.result);
@@ -26,7 +25,7 @@ const Nav = () => {
     window.addEventListener('scroll', () => {
       window.scrollY > 0 ? setIsShowNavbar(false) : setIsShowNavbar(true);
     });
-    //mokData
+
     return () => {
       window.removeEventListener('scroll', () => {});
     };
@@ -44,14 +43,6 @@ const Nav = () => {
   const inputSearch = e => {
     setSearch(e.target.value);
     request();
-    // if (search) {
-    //   fetch(`http://10.58.3.145:8000/products/main/search?keywords=${search}`)
-    //     .then(res => res.json())
-    //     .then(result => {
-    //       console.log(result.MESSAGE);
-    //       setValues(result.MESSAGE);
-    //     });
-    // }
   };
 
   if (values) {
@@ -61,9 +52,6 @@ const Nav = () => {
       }
     });
   }
-
-  console.log(values);
-
   if (isShowNavbar) {
     return (
       <div className="Nav">
@@ -110,15 +98,9 @@ const Nav = () => {
                       placeholder="검색"
                       className="searchBar"
                       onChange={inputSearch}
-                      // onBlur={handleSearchOpen}
+                      onBlur={handleSearchOpen}
                       autoFocus
                     />
-                    {/* <img
-                      src="/images/Nav/search.png"
-                      alt="돋보기"
-                      className="searchIcon"
-                      onClick={handleSearchOpen}
-                    /> */}
                   </div>
                 </div>
               ) : (
