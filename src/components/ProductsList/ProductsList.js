@@ -11,8 +11,8 @@ export default function ProductList() {
   const location = useLocation();
 
   async function request(search) {
-    // const res = await fetch(`http://10.58.1.165:8000/products${search}`);
-    const res = await fetch('/data/productDataList.json');
+    const res = await fetch(`http://10.58.3.145:8000/products${search}`);
+    // const res = await fetch('/data/productDataList.json');
     const result = await res.json();
     setTotalItems(result.total);
     setProducts(result.shop_product_list);
@@ -37,7 +37,19 @@ export default function ProductList() {
       </header>
       <div className="listContainer">
         {products.map(product => {
-          return <ProductCard key={product.id} {...product} cardSize="Med" />;
+          return (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              eng_name={product.eng_name}
+              img={product.img[0].img_url}
+              taste={product.taste.map(taste => taste.taste_name)}
+              roasting_date={product.roasting_date}
+              price={product.price}
+              cardSize="Med"
+            />
+          );
         })}
       </div>
       <Buttons updateOffset={updateOffset} totalItems={totalItems} />
