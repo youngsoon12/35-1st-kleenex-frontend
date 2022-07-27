@@ -38,21 +38,23 @@ export default function ProductList() {
         </p>
       </header>
       <div className="listContainer">
-        {products.map(product => {
-          return (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              eng_name={product.eng_name}
-              img={product.img[0].img_url}
-              taste={product.taste.map(taste => taste.taste_name)}
-              roasting_date={product.roasting_date}
-              price={product.price}
-              cardSize="Med"
-            />
-          );
-        })}
+        {products.map(
+          ({ id, name, eng_name, img, taste, roasting_date, price }) => {
+            return (
+              <ProductCard
+                key={id}
+                id={id}
+                name={name}
+                eng_name={eng_name}
+                img={img[0].img_url}
+                taste={taste.map(taste => taste.taste_name)}
+                roasting_date={roasting_date}
+                price={price}
+                cardSize="Med"
+              />
+            );
+          }
+        )}
       </div>
       <Buttons updateOffset={updateOffset} totalItems={totalItems} />
     </section>
