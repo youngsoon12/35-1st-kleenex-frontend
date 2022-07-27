@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useMatch } from 'react-router-dom';
 import { MdOutlineShoppingBag } from 'react-icons/md';
 import './ProductCard.scss';
 
@@ -13,11 +13,19 @@ export default function ProductCard({
   cardSize,
 }) {
   const navigate = useNavigate();
+  const mainMatch = useMatch('/main');
+  const productMatch = useMatch('/products');
 
   const goToDetail = e => {
     e.preventDefault();
-    return navigate(`../product/detail/${id}`);
+
+    if (mainMatch) {
+      return navigate(`products/${id}`);
+    } else if (productMatch) {
+      return navigate(`${id}`);
+    }
   };
+
   return (
     <section className="productCard" key={id}>
       <div className="cardContainer" onClick={goToDetail}>
