@@ -23,7 +23,9 @@ export default function ProductList() {
   }, [location.search]);
 
   const updateOffset = buttonIndex => {
-    const queryString = `?page=${buttonIndex}`;
+    const limit = 12;
+    const offset = (buttonIndex - 1) * limit;
+    const queryString = `offset=${offset}&limit=${limit}`;
     navigate(queryString);
   };
 
