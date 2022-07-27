@@ -6,6 +6,7 @@ import Main from './pages/Main/Main';
 import Footer from './components/Footer/Footer';
 import Cart from './pages/Cart/Cart';
 import Register from './pages/register/Register';
+import RegisterSuccess from './pages/register/RegisterSuccess';
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
         <Route path="/main" element={<Main />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/register/success" element={<RegisterSuccess />} />
       </Routes>
       <Footer />
     </BrowserRouter>

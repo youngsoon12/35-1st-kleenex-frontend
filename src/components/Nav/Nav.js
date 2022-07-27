@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import NavSmall from './NavSmall';
 import SearchCard from './search/SearchCard';
+import { Link } from 'react-router-dom';
+import { CONFIG_URL } from '../../config';
 import './Nav.scss';
 
 // true false
@@ -15,7 +16,7 @@ const Nav = () => {
   // json
   async function request() {
     const res = await fetch(
-      `http://10.58.3.145:8000/products/main/search?keywords=${search}`
+      `${CONFIG_URL}/products/main/search?keywords=${search}`
     );
     const result = await res.json();
     setValues(result.result);
