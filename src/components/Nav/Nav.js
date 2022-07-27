@@ -108,7 +108,12 @@ const Nav = () => {
                     return (
                       <span key={index}>
                         <Link to="/" className="link">
-                          <li className={data.className}>{data.name}</li>
+                          <li
+                            className={data.className}
+                            onClick={() => alert('준비중입니다.')}
+                          >
+                            {data.name}
+                          </li>
                         </Link>
                       </span>
                     );
