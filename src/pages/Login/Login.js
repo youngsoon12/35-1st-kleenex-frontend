@@ -84,6 +84,10 @@ function Login() {
     postLogin();
   };
 
+  const toMoveRegister = () => {
+    navigate('/register');
+  };
+
   // 유효성 검사
   const onHandleInput = e => {
     const { name, value } = e.target;
@@ -171,7 +175,7 @@ function Login() {
                     크리넥스에 가입하시면 더 많은 혜택을 누리실 수 있습니다.
                   </p>
                 </div>
-                <div className="registerButton">
+                <div className="registerButton" onClick={toMoveRegister}>
                   <span>신규회원가입</span>
                 </div>
               </div>
