@@ -11,8 +11,8 @@ export default function ProductList() {
   const location = useLocation();
 
   async function request(search) {
-    const res = await fetch(`http://10.58.3.145:8000/products${search}`);
-    // const res = await fetch('/data/productDataList.json');
+    // const res = await fetch(`http://10.58.3.145:8000/products${search}`);
+    const res = await fetch('/data/productDataList.json');
     const result = await res.json();
     setTotalItems(result.total);
     setProducts(result.shop_product_list);
