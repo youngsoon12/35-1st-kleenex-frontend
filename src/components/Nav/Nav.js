@@ -71,12 +71,15 @@ const Nav = () => {
                 </div>
                 <div className="rightContainer">
                   {' '}
-                  {filterValue.current &&
+                  {filterValue.current.length === 0 ? (
+                    <span>검색결과가 없습니다.</span>
+                  ) : (
                     filterValue.current.map((data, index) => {
                       return (
                         <SearchCard key={data.id} {...data} cardSize="Small" />
                       );
-                    })}
+                    })
+                  )}
                 </div>
               </div>
             </div>

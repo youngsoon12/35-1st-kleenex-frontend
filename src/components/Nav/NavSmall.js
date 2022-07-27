@@ -10,11 +10,17 @@ const NavSmall = () => {
   const filterValue = useRef([]);
 
   async function request() {
+    if (!search) {
+      setValues([]);
+      console.log('실험');
+      return;
+    }
     const res = await fetch(
       `http://10.58.3.145:8000/products/main/search?keywords=${search}`
     );
     const result = await res.json();
     setValues(result.result);
+    console.log('result', result);
   }
 
   const handleSearchOpen = () => {
@@ -35,6 +41,8 @@ const NavSmall = () => {
       }
     });
   }
+  console.log('search', search);
+  console.log('value', values);
 
   useEffect(() => {
     request();
@@ -71,12 +79,15 @@ const NavSmall = () => {
                 </div>
                 <div className="rightContainer">
                   {' '}
-                  {filterValue.current &&
+                  {filterValue.current.length === 0 ? (
+                    <span>검색결과가 없습니다</span>
+                  ) : (
                     filterValue.current.map((data, index) => {
                       return (
                         <SearchCard key={data.id} {...data} cardSize="Small" />
                       );
-                    })}
+                    })
+                  )}
                 </div>
               </div>
             </div>
