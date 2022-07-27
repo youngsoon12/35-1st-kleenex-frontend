@@ -1,15 +1,28 @@
 @mixin hoverFontColor {
-  color: red;
+  color: #d02d28;
   font-size: 16px;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #d02d28;
 }
 
+body {
+  .hidden {
+    overflow: hidden;
+    height: 100%;
+  }
+}
 .header {
+  position: sticky;
+  top: 0;
   display: flex;
   min-width: 1260px;
   height: 158px;
   border-bottom: 1px solid #ededed;
+<<<<<<< HEAD
   min-width: 450px;
+=======
+  min-width: 1450px;
+  z-index: 10000;
+>>>>>>> 28dfd831021afe137fc1cd70b02616bf2d49433c
 
   .inner {
     display: flex;
@@ -20,6 +33,17 @@
     align-items: center;
     margin: 0 auto;
 
+<<<<<<< HEAD
+=======
+    .navLogoTitle {
+      padding-left: 15px;
+      padding-top: 20px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 63px;
+      font-weight: 900;
+    }
+
+>>>>>>> 28dfd831021afe137fc1cd70b02616bf2d49433c
     .logoImg {
       margin-top: 16px;
     }
@@ -33,17 +57,20 @@
     font-weight: 700;
 
     .searchBar {
+      position: relative;
       padding: 7px;
       width: 450px;
-      border-radius: 10px;
-      border: 0.5px solid #6d5f5f;
-      font-size: 13px;
+      height: 40px;
+      border: none;
+      border-bottom: 1px solid black;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px;
     }
 
     .searchIcon {
       position: absolute;
-      left: 860px;
-      top: 78px;
+      left: 420px;
+      top: 5px;
       height: 20px;
     }
 
@@ -91,7 +118,7 @@
       }
 
       li:hover {
-        color: red;
+        color: #d02d28;
       }
     }
 
@@ -102,7 +129,7 @@
       }
 
       li:hover {
-        color: red;
+        color: #d02d28;
       }
 
       a {
@@ -112,4 +139,62 @@
       }
     }
   }
+}
+
+.searchBox {
+  position: absolute;
+  top: 105px;
+  width: 100%;
+  height: 400px;
+  // background-color: white;
+  background-color: white;
+  opacity: 0.98;
+
+  .searchBoxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+    padding-top: 20px;
+
+    .leftContainer {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-bottom: 170px;
+
+      .linkBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 20px;
+          font-size: 20px;
+          font-family: 'Noto Sans KR', sans-serif;
+
+          li:hover {
+            color: #d02d28;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .rightContainer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 750px;
+      height: 350px;
+      gap: 20px;
+    }
+  }
+}
+
+.inputRelative {
+  position: relative;
 }
