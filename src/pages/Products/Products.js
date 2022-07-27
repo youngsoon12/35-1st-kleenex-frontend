@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { CATEGORY_MENU } from './ProductsData';
-import ProductsList from '../../components/ProductsList/ProductsList';
-import ProductDetail from '../../components/ProductDetail/ProductDetail';
 import './Products.scss';
 
 export default function Product() {
@@ -40,8 +38,7 @@ export default function Product() {
             ))}
           </ul>
         </div>
-        {/* <ProductsList /> */}
-        <ProductDetail />
+        <Outlet />
       </div>
     </div>
   );
