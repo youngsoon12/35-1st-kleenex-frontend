@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Cart.scss';
 import EmptyCart from './EmptyCart';
 import InShoppingCart from './InShoppingCart';
 import { CONFIG_URL } from '../../config';
+import './Cart.scss';
 
 const Cart = () => {
   const [value, setValues] = useState([]);
