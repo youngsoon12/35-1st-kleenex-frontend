@@ -8,7 +8,6 @@ import './Cart.scss';
 const Cart = () => {
   const [value, setValues] = useState([]);
   const [itemsPrice, setItemsPrice] = useState([]);
-  const changeQuantity = useRef([]);
   const shipmentPrice = itemsPrice > 50000 ? 0 : 2500;
   const totalPrice = itemsPrice + shipmentPrice;
 
@@ -27,21 +26,12 @@ const Cart = () => {
     setItemsPrice(result.MESSAGE.reduce((a, c) => a + c.price * c.quantity, 0));
   }
 
+  console.log(value);
+
   // 렌더링 이후 request 를 불러옵니다.
   useEffect(() => {
     request();
-    return fetch(`${CONFIG_URL}/cart/cart`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: localStorage.getItem('Token'),
-      },
-      body: JSON.stringify({
-        cart_id: changeQuantity.current.cart_id,
-        quantity: changeQuantity.current.quantity,
-      }),
-    }).then(res => res.json());
-  }, [changeQuantity.current.quantity]);
+  }, []);
 
   // 카트 아이템의 수량을 1씩 감소시켜 이후 바로 서버에 전송합니다.
   const toMinusNum = id => {
@@ -50,7 +40,6 @@ const Cart = () => {
     copyValue[selectedId].quantity === 1
       ? (copyValue[selectedId].quantity = 1)
       : (copyValue[selectedId].quantity -= 1);
-    changeQuantity.current = copyValue[selectedId];
     setValues(copyValue);
 
     // 서버에 patch 로 전달
