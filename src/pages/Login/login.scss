@@ -1,0 +1,210 @@
+.login {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loginContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 1260px;
+
+      .path {
+        display: flex;
+        justify-content: flex-end;
+        padding: 68px 10px 0 0;
+        width: 1240px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        font-size: 13px;
+
+        ol {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 3px;
+
+          li {
+            a {
+              color: rgba(0, 0, 0, 0.4);
+            }
+
+            &:last-child {
+              a {
+                color: #333;
+                font-weight: 400;
+              }
+            }
+          }
+        }
+      }
+
+      .loginTitleContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 40px;
+
+        h2 {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+
+          strong {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 40px;
+            font-weight: 300;
+          }
+        }
+      }
+
+      .loginBox {
+        width: fit-content;
+        padding: 38px 41px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 2px solid #333;
+
+        .loginForm {
+          width: fit-content;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .loginBoxTitle {
+            width: 560px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 18px;
+            margin-bottom: 15px;
+          }
+
+          .loginInputId {
+            width: 560px;
+            height: 46px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+
+            &[placeholder] {
+              font-family: 'Quicksand', sans-serif;
+              font-size: 14px;
+            }
+          }
+
+          .loginInputPw {
+            width: 560px;
+            height: 46px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+
+            &[placeholder] {
+              font-family: 'Quicksand', sans-serif;
+              font-size: 14px;
+            }
+          }
+
+          .loginOptionCotainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 560px;
+            margin-top: 12px;
+            margin-bottom: 22px;
+            font-size: 15px;
+            color: rgba(0, 0, 0, 0.4);
+
+            .idKeepingContainer {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              font-family: 'Quicksand', sans-serif;
+
+              span {
+                display: flex;
+
+                i {
+                  color: #d02d28;
+                }
+              }
+            }
+
+            .idSearchingContainer {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              font-family: 'Quicksand', sans-serif;
+
+              div {
+                width: 1px;
+                height: 15px;
+                background-color: rgba(0, 0, 0, 0.4);
+              }
+            }
+          }
+
+          .loginButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 560px;
+            height: 60px;
+            border: none;
+            background-color: #d02d28;
+            color: white;
+            font-size: 20px;
+            font-family: 'Noto Sans KR', sans-serif;
+            opacity: 0.5;
+            transition: opacity 0.25s ease-in;
+          }
+
+          .valid {
+            opacity: 1;
+          }
+
+          .registerBox {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 560px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.3);
+            padding-top: 38px;
+
+            .regiDescription {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+
+              span {
+                font-family: 'Josefin Sans', sans-serif;
+                font-size: 18.5px;
+              }
+
+              p {
+                font-family: 'Josefin Sans', sans-serif;
+                font-size: 14.5px;
+                color: rgba(0, 0, 0, 0.4);
+              }
+            }
+
+            .registerButton {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 177px;
+              height: 52px;
+              border: 1px solid #333;
+              font-family: 'Noto Sans KR', sans-serif;
+              font-weight: 500;
+              font-size: 19px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
