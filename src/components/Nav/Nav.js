@@ -54,31 +54,39 @@ const Nav = () => {
   if (isShowNavbar) {
     return (
       <div className="Nav">
-        {console.log(isSearchOn)}
         <div className="header">
+          {isSearchOn && (
+            <div className="clickBox" onClick={handleSearchOpen} />
+          )}
           {search && isSearchOn && (
-            <div className="searchBox">
-              <div className="searchBoxContainer">
-                <div className="leftContainer">
-                  <div className="linkBox">
-                    <ul>
-                      <li>싱글블렌드</li>
-                      <li>로스팅</li>
-                      <li>원두</li>
-                    </ul>
+            <div className="clickBox" onClick={handleSearchOpen}>
+              <div className="searchBox">
+                <div className="searchBoxContainer">
+                  <div className="leftContainer">
+                    <div className="linkBox">
+                      <ul>
+                        <li>싱글블렌드</li>
+                        <li>로스팅</li>
+                        <li>원두</li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                <div className="rightContainer">
-                  {' '}
-                  {filterValue.current.length === 0 ? (
-                    <span>검색결과가 없습니다.</span>
-                  ) : (
-                    filterValue.current.map((data, index) => {
-                      return (
-                        <SearchCard key={data.id} {...data} cardSize="Small" />
-                      );
-                    })
-                  )}
+                  <div className="rightContainer">
+                    {' '}
+                    {filterValue.current.length === 0 ? (
+                      <span>검색결과가 없습니다.</span>
+                    ) : (
+                      filterValue.current.map((data, index) => {
+                        return (
+                          <SearchCard
+                            key={data.id}
+                            {...data}
+                            cardSize="Small"
+                          />
+                        );
+                      })
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -97,7 +105,7 @@ const Nav = () => {
                       placeholder="검색"
                       className="searchBar"
                       onChange={inputSearch}
-                      onBlur={handleSearchOpen}
+                      // onBlur={handleSearchOpen}
                       autoFocus
                     />
                   </div>
