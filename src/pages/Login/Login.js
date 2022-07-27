@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { CONFIG_URL } from '../../config';
 import './login.scss';
 
 function Login() {
@@ -48,7 +49,7 @@ function Login() {
   // 서버에게 데이터를 POST
 
   const postLogin = async () => {
-    const request = await fetch('http://10.58.5.22:8000/user/signin', {
+    const request = await fetch(`${CONFIG_URL}/user/signin`, {
       method: 'POST',
       body: JSON.stringify({
         username: inputValue.id,

@@ -1,0 +1,168 @@
+.inShoppingCart {
+  .cartBox {
+    width: 1240px;
+    .cartTitle {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .cartTableContainer {
+      .cartBoxTable {
+        text-align: center;
+        thead {
+          th {
+            padding: auto;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-top: 1px solid rgba(0, 0, 0);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            vertical-align: middle;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.4);
+          }
+          .headCheckBox {
+            width: 60px;
+          }
+          .headProductName {
+            width: 140px;
+          }
+          .headSelectedOption {
+            width: 250px;
+          }
+          .headMarketPrice {
+            width: auto;
+          }
+          .headProductQty {
+            width: 150px;
+          }
+          .headProductFee {
+            width: 150px;
+          }
+          .headTotalPrice {
+            width: 150px;
+          }
+        }
+      }
+    }
+
+    .cartTotalPrice {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1240px;
+      height: 100px;
+      margin-top: 50px;
+      padding: 0 60px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.05);
+
+      .leftTotalPrice {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+
+        .productTotal {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          width: 100%;
+
+          .totalPriceText {
+            white-space: nowrap;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 16px;
+          }
+
+          .productPrice {
+            white-space: nowrap;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 27px;
+
+            span {
+              font-size: 16px;
+            }
+          }
+        }
+
+        .plusIcon {
+          i {
+            font-size: 35px;
+            color: rgba(0, 0, 0, 0.3);
+          }
+        }
+
+        .shipmentPayment {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          width: 100%;
+          margin-left: 30px;
+
+          .totalFeeText {
+            white-space: nowrap;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 16px;
+          }
+
+          .productFee {
+            white-space: nowrap;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 27px;
+
+            span {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+
+      .rightTotalPrice {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+
+        .totalOrderText {
+          white-space: nowrap;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+        }
+
+        .finalOrderPrice {
+          white-space: nowrap;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 27px;
+          font-weight: 700;
+
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .cartNotice {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 20px;
+      gap: 5px;
+
+      span {
+        font-size: 13px;
+        font-family: 'Noto Sans KR', sans-serif;
+        color: #d02d28;
+      }
+    }
+  }
+}
