@@ -1,5 +1,7 @@
+import { useNavigate, Link } from 'react-router-dom';
 import { MdOutlineShoppingBag } from 'react-icons/md';
 import './SearchCard.scss';
+import Nav from '../Nav';
 
 export default function SearchCard({
   id,
@@ -9,9 +11,15 @@ export default function SearchCard({
   price,
   cardSize,
 }) {
+  const navigate = useNavigate();
+
+  const goToDetail = e => {
+    return navigate(`../product/detail/${id}`);
+  };
+
   return (
-    <section className="searchCard">
-      <div className="cardContainer">
+    <section className="searchCard" key={id}>
+      <div className="cardContainer" onClick={goToDetail}>
         <div className={'cardThumbnail' + cardSize}>
           <img src={img[0].img_url} alt="thumbnail" />
         </div>

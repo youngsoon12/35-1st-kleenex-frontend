@@ -12,7 +12,6 @@ const NavSmall = () => {
   async function request() {
     if (!search) {
       setValues([]);
-      console.log('실험');
       return;
     }
     const res = await fetch(
@@ -20,7 +19,6 @@ const NavSmall = () => {
     );
     const result = await res.json();
     setValues(result.result);
-    console.log('result', result);
   }
 
   const handleSearchOpen = () => {
@@ -29,9 +27,8 @@ const NavSmall = () => {
   };
 
   const inputSearch = e => {
-    setSearch(e.target.value);
-    console.log(search);
     request();
+    setSearch(e.target.value);
   };
 
   if (values) {
@@ -41,20 +38,47 @@ const NavSmall = () => {
       }
     });
   }
-  console.log('search', search);
-  console.log('value', values);
 
   useEffect(() => {
     request();
+    if (search.length < 1) {
+      setValues('');
+    }
   }, [search]);
 
   return (
     <div className="NavSmall">
       <div className="inner">
+        {search && isSearchOn && (
+          <div className="searchSmallBox">
+            <div className="searchBoxContainer">
+              <div className="leftContainer">
+                <div className="linkBox">
+                  <ul>
+                    <li>싱글블렌드</li>
+                    <li>로스팅</li>
+                    <li>원두</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="rightContainer">
+                {' '}
+                {filterValue.current.length === 0 ? (
+                  <span>검색결과가 없습니다</span>
+                ) : (
+                  filterValue.current.map((data, index) => {
+                    return (
+                      <SearchCard key={data.id} {...data} cardSize="Small" />
+                    );
+                  })
+                )}
+              </div>
+            </div>
+          </div>
+        )}
         <div className="first">
           <Link to="/">
             <div className="smallNavLogoTitle">KLEENEX</div>
-            {/* <img src="/images/Nav/NavSmallLogo.png" alt="로고" /> */}
           </Link>
         </div>
         {isSearchOn && (
@@ -66,31 +90,6 @@ const NavSmall = () => {
               onBlur={handleSearchOpen}
               autoFocus
             />
-            <div className="searchSmallBox">
-              <div className="searchBoxContainer">
-                <div className="leftContainer">
-                  <div className="linkBox">
-                    <ul>
-                      <li>싱글블렌드</li>
-                      <li>로스팅</li>
-                      <li>원두</li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="rightContainer">
-                  {' '}
-                  {filterValue.current.length === 0 ? (
-                    <span>검색결과가 없습니다</span>
-                  ) : (
-                    filterValue.current.map((data, index) => {
-                      return (
-                        <SearchCard key={data.id} {...data} cardSize="Small" />
-                      );
-                    })
-                  )}
-                </div>
-              </div>
-            </div>
           </div>
         )}
         <div className="categoryOne">
@@ -148,7 +147,7 @@ const CATEGORY_ONE = [
 const CATEGORY_TWO = [
   { className: 'museum', value: 'MUSEUM' },
   { className: 'teraTimes', value: 'TERA TIMES' },
-  { className: 'loacations', value: 'LOCATIONS' },
+  { className: 'locations', value: 'LOCATIONS' },
 ];
 
 const iconBarImage = [1, 2, 3, 4];

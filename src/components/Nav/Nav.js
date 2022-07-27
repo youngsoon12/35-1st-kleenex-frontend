@@ -35,8 +35,6 @@ const Nav = () => {
   }, [search]);
 
   const handleSearchOpen = () => {
-    // const body = document.querySelector('body');
-    // body.classList.add('hidden');
     setSearch('');
     setIsSearchOn(isSearchOn => !isSearchOn);
   };
@@ -56,6 +54,7 @@ const Nav = () => {
   if (isShowNavbar) {
     return (
       <div className="Nav">
+        {console.log(isSearchOn)}
         <div className="header">
           {search && isSearchOn && (
             <div className="searchBox">
@@ -88,11 +87,6 @@ const Nav = () => {
             <div className="link">
               <Link to="/main">
                 <h1 className="navLogoTitle">KLEENEX</h1>
-                {/* <img
-                  src="/images/Nav/Navlogo.jpg"
-                  alt="테라로사"
-                  className="logoImg"
-                /> */}
               </Link>
             </div>
             <div className="categoryMid">
