@@ -78,11 +78,7 @@ const NavSmall = () => {
         )}
         <div className="first">
           <Link to="/">
-<<<<<<< HEAD
-            <img src="/images/Nav/NavSmallLogo.png" alt="로고" />
-=======
             <div className="smallNavLogoTitle">KLEENEX</div>
->>>>>>> 28dfd831021afe137fc1cd70b02616bf2d49433c
           </Link>
         </div>
         {isSearchOn && (
@@ -97,20 +93,6 @@ const NavSmall = () => {
           </div>
         )}
         <div className="categoryOne">
-<<<<<<< HEAD
-          {isSearchOn && (
-            <div className="searchTag">
-              <input placeholder="입력해주세요." className="searchBar" />
-              <img
-                src="/images/Nav/search.png"
-                alt="돋보기"
-                className="searchIcon"
-                onClick={handleSearchOpen}
-              />
-            </div>
-          )}
-=======
->>>>>>> 28dfd831021afe137fc1cd70b02616bf2d49433c
           {isSearchOn || (
             <ul>
               {CATEGORY_ONE.map((data, index) => {
