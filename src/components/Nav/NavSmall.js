@@ -14,7 +14,7 @@ const NavSmall = () => {
       <div className="inner">
         <div className="first">
           <Link to="/">
-            <img src="./images/Nav/NavSmallLogo.png" alt="로고" />
+            <img src="/images/Nav/NavSmallLogo.png" alt="로고" />
           </Link>
         </div>
         <div className="categoryOne">
@@ -22,7 +22,7 @@ const NavSmall = () => {
             <div className="searchTag">
               <input placeholder="입력해주세요." className="searchBar" />
               <img
-                src="./images/Nav/search.png"
+                src="/images/Nav/search.png"
                 alt="돋보기"
                 className="searchIcon"
                 onClick={handleSearchOpen}
@@ -61,7 +61,7 @@ const NavSmall = () => {
               return (
                 <Link to="/" key={index}>
                   <li>
-                    <img src={`./images/Nav/icon${no}.png`} alt="로그인" />
+                    <img src={`/images/Nav/icon${no}.png`} alt="로그인" />
                   </li>
                 </Link>
               );
