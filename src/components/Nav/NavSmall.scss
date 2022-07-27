@@ -46,6 +46,16 @@
       margin-right: 60px;
       width: 164px;
 
+      .smallNavLogoTitle {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 900;
+        font-size: 36px;
+
+        &:hover {
+          color: black;
+        }
+      }
+
       img {
         width: 164px;
       }
@@ -64,6 +74,7 @@
           padding: 0px 27px;
           font-weight: 700;
           cursor: pointer;
+          width: 109px;
         }
 
         & li:hover {
@@ -88,7 +99,11 @@
         li {
           float: left;
           padding: 10px;
-          font-weight: lighter;
+          padding-bottom: 12px;
+          width: 109px;
+          font-weight: 400;
+          color: rgba(0, 0, 0, 0.7);
+          font-family: 'Noto Sans KR', sans-serif;
         }
 
         .museum {

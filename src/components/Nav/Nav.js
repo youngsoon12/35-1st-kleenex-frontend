@@ -84,11 +84,12 @@ const Nav = () => {
           <div className="inner">
             <div className="link">
               <Link to="/main">
-                <img
+                <h1 className="navLogoTitle">KLEENEX</h1>
+                {/* <img
                   src="/images/Nav/Navlogo.jpg"
                   alt="테라로사"
                   className="logoImg"
-                />
+                /> */}
               </Link>
             </div>
             <div className="categoryMid">

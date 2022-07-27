@@ -45,7 +45,8 @@ const NavSmall = () => {
       <div className="inner">
         <div className="first">
           <Link to="/">
-            <img src="/images/Nav/NavSmallLogo.png" alt="로고" />
+            <div className="smallNavLogoTitle">KLEENEX</div>
+            {/* <img src="/images/Nav/NavSmallLogo.png" alt="로고" /> */}
           </Link>
         </div>
         {isSearchOn && (
