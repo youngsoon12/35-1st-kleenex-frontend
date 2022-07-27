@@ -1,21 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useReducer } from 'react';
+import { Navigate, useParams } from 'react-router-dom';
 import './ProductDetail.scss';
 
 export default function ProductDetail() {
+  const params = useParams();
   const [detail, setDetail] = useState([]);
+  const [imageSelect, setImageSelect] = useState('');
   const [order, setOrder] = useState({
-    grind_option: '',
-    size_option: '',
+    graind: '',
+    size: '',
+    quantity: 1,
   });
-  const [orderLists, setOrderLists] = useState([]);
+  const [ordersList, setordersList] = useState([]);
+
+  const initialState = {
+    totalFee: 0,
+  };
+  const reducer = (state, action) => {};
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   console.log('order: ');
   console.log(order);
-  console.log('orderLists: ');
-  console.log(orderLists);
+  console.log('ordersList: ');
+  console.log(ordersList);
 
   async function request() {
-    // const res = await fetch(`http://10.58.5.25:8000/products/1`);
+    // const res = await fetch(
+    //   `http://10.58.3.145:8000/products/${params.product_id}`
+    // );
     const res = await fetch('/data/productDataDetail.json');
     const result = await res.json();
     setDetail(result.product_detail);
@@ -25,40 +37,41 @@ export default function ProductDetail() {
     request();
   }, []);
 
-  const grindOptionHandler = (e, input) => {
+  const productOptionHandler = e => {
     e.preventDefault();
-    const { name } = e.target;
-
-    if (order.grind_option === '') {
-      setOrder(() => ({
-        [name]: input,
-      }));
-    } else if (order.grind_option === input) {
-      setOrder(() => ({
-        [name]: '',
-      }));
+    const { name, value } = e.target;
+    if (order.graind === value) {
+      setOrder(prev => ({ ...prev, [name]: '' }));
+    } else {
+      setOrder(prev => ({ ...prev, [name]: value }));
     }
   };
 
-  const sizeOptionHandler = (e, input) => {
+  useEffect(() => {
+    if (order.size !== '') {
+      const prevordersList = [...ordersList];
+      prevordersList.push(order);
+      setordersList(prevordersList);
+      setOrder({ graind: '', size: '', quantity: 1 });
+    }
+  }, [order]);
+
+  const ordersListJsonify = async e => {
     e.preventDefault();
-    const { name } = e.target;
+    const POSTOrders = {};
+    POSTOrders.product_id = params.product_id;
+    POSTOrders.product = ordersList;
+    let JSONOut = {
+      product_id: 1,
+      product: POSTOrders.product,
+    };
 
-    console.log('prev order');
-    console.log(order);
-    setOrder({
-      ...order,
-      [name]: input,
-    });
-    console.log('after order');
-    console.log(order);
-
-    const prevOrderLists = [...orderLists];
-    prevOrderLists.push(order);
-    setOrderLists(prevOrderLists);
-    setOrder({
-      grind_option: '',
-      size_option: '',
+    const request = await fetch('http://10.58.7.4:8000/cart/cart', {
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('Token'),
+      },
+      body: JSON.stringify(JSONOut),
     });
   };
 
@@ -75,11 +88,27 @@ export default function ProductDetail() {
           <article className="description">
             <div className="productImages">
               <div className="productThumbnail">
-                <img src={detail.img[0].img_url} alt="thumbnail" />
+                {imageSelect === '' ? (
+                  <img src={detail.img[0].img_url} alt="thumbnail" />
+                ) : (
+                  <img src={imageSelect} alt="thumbnail" />
+                )}
               </div>
               <div className="awaitingImages">
-                <img src={detail.img[0].img_url} alt="thumbnail" />
-                <img src={detail.img[1].img_url} alt="thumbnail" />
+                <img
+                  src={detail.img[0].img_url}
+                  alt="thumbnail"
+                  onClick={() => {
+                    setImageSelect(detail.img[0].img_url);
+                  }}
+                />
+                <img
+                  src={detail.img[1].img_url}
+                  alt="thumbnail"
+                  onClick={() => {
+                    setImageSelect(detail.img[1].img_url);
+                  }}
+                />
               </div>
             </div>
 
@@ -108,11 +137,16 @@ export default function ProductDetail() {
                     <div className="choiceButtonWrapper">
                       {detail.graind.map(grind => (
                         <button
-                          // className={`isSelected_${}`}
-                          name="grind_option"
+                          className={`${
+                            Number(order.graind) === grind.graind_id
+                              ? 'highlighted'
+                              : ''
+                          }`}
+                          name="graind"
                           key={grind.graind_id}
+                          value={grind.graind_id}
                           onClick={e => {
-                            grindOptionHandler(e, grind.graind_type);
+                            productOptionHandler(e);
                           }}
                         >
                           {grind.graind_type}
@@ -130,15 +164,14 @@ export default function ProductDetail() {
                     <div className="choiceButtonWrapper">
                       {detail.size.map(size => (
                         <button
-                          className={`isDisabled_${
-                            !!order.grind_option ? false : true
-                          }`}
-                          name="size_option"
+                          className={`${!!order.graind ? false : true}`}
+                          name="size"
                           key={size.size_id}
+                          value={size.size_name}
                           onClick={e => {
-                            sizeOptionHandler(e, size.size_name);
+                            productOptionHandler(e);
                           }}
-                          disabled={!!order.grind_option ? false : true}
+                          disabled={!!order.graind ? false : true}
                         >
                           {size.size_name}
                         </button>
@@ -149,6 +182,35 @@ export default function ProductDetail() {
                 </div>
               </form>
 
+              <div className="ordersList">
+                <div className="ordersWrapper">
+                  {ordersList.map((order, index) => {
+                    return (
+                      <div className="order" key={index}>
+                        <div className="orderInfo">
+                          <div className="orderTitle">{detail.name}</div>
+                          <div className="orderOption">
+                            <p>
+                              {order.graind}/{order.size}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="orderPrice">
+                          <p>
+                            {detail.size.map(size => {
+                              return order.size === size.size_name
+                                ? Math.floor(size.size_price).toLocaleString()
+                                : '';
+                            })}
+                            원
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
               <div className="totalFee">
                 <p>
                   총 상품금액<span>0</span>
@@ -158,7 +220,12 @@ export default function ProductDetail() {
               <form className="actionButtonWrapper">
                 <div className="btnTop">
                   <button className="giftButton btnPreset">선물하기</button>
-                  <button className="cartButton btnPreset">장바구니</button>
+                  <button
+                    className="cartButton btnPreset"
+                    onClick={e => ordersListJsonify(e)}
+                  >
+                    장바구니
+                  </button>
                 </div>
                 <div className="btnBottom">
                   <button className="purchaseButton btnPreset">구매하기</button>

@@ -133,9 +133,13 @@
                 border: 1px solid #dbdbdb;
               }
 
-              .isDisabled_true {
+              .true {
                 background-color: #dbdbdb;
                 color: #8e8e8e;
+              }
+
+              .highlighted {
+                border: 2px solid black;
               }
             }
 
@@ -143,6 +147,40 @@
               display: block;
               font-size: 12px;
               color: #767479;
+            }
+          }
+        }
+
+        .ordersList {
+          border-top: 1px solid black;
+
+          .ordersWrapper {
+            .order {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              height: 61px;
+              padding: 9px 9px 9px 4px;
+
+              .orderInfo {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+                gap: 5px;
+                font-weight: bold;
+
+                .orderTitle {
+                  font-size: 15px;
+                }
+                .orderOption {
+                  margin: 0 0 0 5px;
+                  font-size: 13px;
+                  color: #757575;
+                }
+              }
+              .orderPrice {
+                font-size: 19px;
+              }
             }
           }
         }

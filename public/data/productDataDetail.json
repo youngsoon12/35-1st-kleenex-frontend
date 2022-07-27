@@ -56,12 +56,12 @@
     "size": [
       {
         "size_id": 1,
-        "size_name": " 500g",
+        "size_name": "500g",
         "size_price": "28000.00"
       },
       {
         "size_id": 2,
-        "size_name": " 1kg",
+        "size_name": "1kg",
         "size_price": "53000.00"
       }
     ]
