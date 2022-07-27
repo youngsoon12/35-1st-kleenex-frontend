@@ -1,9 +1,12 @@
-import { useEffect, useState, useReducer } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { RiArrowDropUpLine, RiArrowDropDownLine } from 'react-icons/ri';
+import { ImCross } from 'react-icons/im';
 import './ProductDetail.scss';
 
 export default function ProductDetail() {
   const params = useParams();
+  const navigate = useNavigate();
   const [detail, setDetail] = useState([]);
   const [imageSelect, setImageSelect] = useState('');
   const [order, setOrder] = useState({
@@ -12,17 +15,6 @@ export default function ProductDetail() {
     quantity: 1,
   });
   const [ordersList, setordersList] = useState([]);
-
-  const initialState = {
-    totalFee: 0,
-  };
-  const reducer = (state, action) => {};
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  console.log('order: ');
-  console.log(order);
-  console.log('ordersList: ');
-  console.log(ordersList);
 
   async function request() {
     // const res = await fetch(
@@ -73,6 +65,16 @@ export default function ProductDetail() {
       },
       body: JSON.stringify(JSONOut),
     });
+
+    const result = await request.json();
+
+    if (result.MESSAGE === 'SUCCESS') {
+      navigate('/cart');
+    }
+  };
+
+  const deleteHandler = e => {
+    const afterDelete = ordersList.filter(item => item.id !== ordersList.id);
   };
 
   if (Object.keys(detail).length !== 0) {
@@ -193,6 +195,29 @@ export default function ProductDetail() {
                             <p>
                               {order.graind}/{order.size}
                             </p>
+                          </div>
+                        </div>
+                        <div className="orderQuantity">
+                          <div className="QuantityControl">
+                            <input
+                              className="txtQuantityControl"
+                              type="text"
+                              value="1"
+                            />
+                            <div className="btnQuantityControl">
+                              <button className="increase btn">
+                                <RiArrowDropUpLine />
+                              </button>
+                              <button className="decrease btn">
+                                <RiArrowDropDownLine />
+                              </button>
+                            </div>
+                            <button
+                              className="delete"
+                              onClick={e => deleteHandler(e)}
+                            >
+                              <ImCross />
+                            </button>
                           </div>
                         </div>
                         <div className="orderPrice">
