@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Register.scss';
 import RegisterToP from './RegisterToP';
+import './Register.scss';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Register = () => {
     email: '',
   });
 
-  const onBlur = e => {
+  const onChange = e => {
     const { name, value } = e.target;
     setPerson({ ...person, [name]: value });
   };
@@ -82,7 +82,7 @@ const Register = () => {
                     <input
                       className="inputInfo"
                       name="name"
-                      onChange={onBlur}
+                      onChange={onChange}
                     />
                   </td>
                 </tr>
@@ -96,7 +96,7 @@ const Register = () => {
                     <input
                       className="inputInfo"
                       name="userName"
-                      onChange={onBlur}
+                      onChange={onChange}
                     />
                     {person.userName.length > 0 &&
                       (REGEX_USERNAME.test(person.userName) ? (
@@ -119,7 +119,7 @@ const Register = () => {
                       className="inputInfo"
                       type="password"
                       name="passWord"
-                      onChange={onBlur}
+                      onChange={onChange}
                     />
                     <span className="inputTip">
                       (영문/숫자/특수문자 포함 필수, 8자 이상)
@@ -135,7 +135,7 @@ const Register = () => {
                       className="inputInfo"
                       type="password"
                       name="passWordCheck"
-                      onChange={onBlur}
+                      onChange={onChange}
                     />
                     {person.passWordCheck.length > 0 &&
                       (person.passWord === person.passWordCheck ? (
@@ -155,7 +155,7 @@ const Register = () => {
                     <input
                       className="inputInfo"
                       name="address"
-                      onChange={onBlur}
+                      onChange={onChange}
                     />
                     <span className="inputTip">기본 주소</span>
                   </td>
@@ -171,7 +171,7 @@ const Register = () => {
                       <input
                         className="inputPhoneNumber"
                         name="phoneNumber1"
-                        onChange={onBlur}
+                        onChange={onChange}
                       />
                     </span>
                     <span>-</span>
@@ -179,7 +179,7 @@ const Register = () => {
                       <input
                         className="inputPhoneNumber"
                         name="phoneNumber2"
-                        onChange={onBlur}
+                        onChange={onChange}
                       />
                     </span>
                     <span className="inputTip">
@@ -192,7 +192,11 @@ const Register = () => {
                 <tr>
                   <th>이메일</th>
                   <td>
-                    <input className="inputInfo" name="email" onBlur={onBlur} />
+                    <input
+                      className="inputInfo"
+                      name="email"
+                      onBlur={onChange}
+                    />
                     <span className="inputTip">
                       <span>이메일 수신</span>
                       <input type="checkbox" />
