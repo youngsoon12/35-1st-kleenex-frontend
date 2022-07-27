@@ -1,11 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-import { CONFIG_URL } from '../../config';
-import './login.scss';
-=======
 import './Login.scss';
->>>>>>> 28dfd831021afe137fc1cd70b02616bf2d49433c
 
 function Login() {
   const [inputValue, setInputValue] = useState({
