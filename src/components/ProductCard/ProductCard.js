@@ -16,7 +16,7 @@ export default function ProductCard({
 
   const goToDetail = e => {
     e.preventDefault();
-    return navigate(`../product/detail/${id}`);
+    return navigate(`../products/${id}`);
   };
   return (
     <section className="productCard" key={id}>
