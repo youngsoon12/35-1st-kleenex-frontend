@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import NavSmall from './NavSmall';
 import SearchCard from './search/SearchCard';
-import { Link } from 'react-router-dom';
 import { CONFIG_URL } from '../../config';
 import './Nav.scss';
 
@@ -11,7 +11,9 @@ const Nav = () => {
   const [isSearchOn, setIsSearchOn] = useState(false);
   const [search, setSearch] = useState('');
   const [values, setValues] = useState([]);
+  const [isToken, setIsToken] = useState(false);
   const filterValue = useRef([]);
+  const location = useLocation();
 
   // json
   async function request() {
@@ -30,7 +32,13 @@ const Nav = () => {
     return () => {
       window.removeEventListener('scroll', () => {});
     };
-  }, []);
+  }, [location]);
+
+  const logOut = () => {
+    localStorage.removeItem('Token');
+    return setIsToken(isToken => !isToken);
+  };
+
   useEffect(() => {
     request();
   }, [search]);
@@ -127,20 +135,16 @@ const Nav = () => {
                 </ul>
               )}
             </div>
+
             <div className="categoryRight">
               <ul className="rightTop">
-                {localStorage.getItem('Token')
-                  ? RIGHT_TOP_DATA_LOGIN.map(data => {
-                      return (
-                        <span key={data.id}>
-                          <Link to={`${data.link}`}>
-                            <li>{data.name}</li>
-                          </Link>
-                          <li>&nbsp;|&nbsp; </li>
-                        </span>
-                      );
-                    })
-                  : RIGHT_TOP_DATA.map(data => {
+                {localStorage.Token ? (
+                  <div>
+                    <span>
+                      <li onClick={logOut}>로그아웃</li>
+                      <li>&nbsp;|&nbsp; </li>
+                    </span>
+                    {RIGHT_TOP_DATA_LOGIN.map(data => {
                       return (
                         <span key={data.id}>
                           <Link to={`${data.link}`}>
@@ -150,6 +154,19 @@ const Nav = () => {
                         </span>
                       );
                     })}
+                  </div>
+                ) : (
+                  RIGHT_TOP_DATA.map(data => {
+                    return (
+                      <span key={data.id}>
+                        <Link to={`${data.link}`}>
+                          <li>{data.name}</li>
+                        </Link>
+                        <li>&nbsp;|&nbsp; </li>
+                      </span>
+                    );
+                  })
+                )}
               </ul>
               <ul className="link">
                 {LAST_LINK_DATA.map((data, index) => {
@@ -187,10 +204,9 @@ const RIGHT_TOP_DATA = [
 ];
 
 const RIGHT_TOP_DATA_LOGIN = [
-  { id: 1, name: '로그아웃', link: '' },
-  { id: 2, name: '주문/배송', link: '/main' },
-  { id: 3, name: '장바구니', link: '/cart' },
-  { id: 4, name: '문의', link: '/main' },
+  { id: 1, name: '주문/배송', link: '/main' },
+  { id: 2, name: '장바구니', link: '/cart' },
+  { id: 3, name: '문의', link: '/main' },
 ];
 
 const LAST_LINK_DATA = [

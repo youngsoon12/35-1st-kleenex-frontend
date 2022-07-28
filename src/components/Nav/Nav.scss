@@ -10,134 +10,136 @@ body {
     height: 100%;
   }
 }
-.header {
-  position: sticky;
-  top: 0;
-  display: flex;
-  min-width: 1260px;
-  height: 158px;
-  border-bottom: 1px solid #ededed;
-  min-width: 1450px;
-  z-index: 10000;
-
-  .inner {
-    display: flex;
-    justify-content: space-between;
+.Nav {
+  .clickBox {
+    position: absolute;
+    width: 100%;
+    height: 2000px;
+  }
+  .header {
     position: sticky;
     top: 0;
-    width: 1240px;
-    align-items: center;
-    margin: 0 auto;
-
-    .navLogoTitle {
-      padding-left: 15px;
-      padding-top: 20px;
-      font-family: 'Roboto', sans-serif;
-      font-size: 63px;
-      font-weight: 900;
-    }
-
-    .logoImg {
-      margin-top: 16px;
-    }
-  }
-
-  .categoryMid {
     display: flex;
-    align-items: flex-end;
-    width: 400px;
-    height: 50px;
-    font-weight: 700;
+    min-width: 1260px;
+    height: 158px;
+    border-bottom: 1px solid #ededed;
+    min-width: 1450px;
+    z-index: 10000;
 
-    .searchBar {
-      position: relative;
-      padding: 7px;
-      width: 450px;
-      height: 40px;
-      border: none;
-      border-bottom: 1px solid black;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 16px;
+    .inner {
+      display: flex;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      width: 1240px;
+      align-items: center;
+      margin: 0 auto;
+
+      .navLogoTitle {
+        padding-left: 15px;
+        padding-top: 20px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 63px;
+        font-weight: 900;
+      }
+
+      .logoImg {
+        margin-top: 16px;
+      }
     }
 
-    .searchIcon {
-      position: absolute;
-      left: 420px;
-      top: 5px;
-      height: 20px;
+    .categoryMid {
+      display: flex;
+      align-items: flex-end;
+      width: 400px;
+      height: 50px;
+      font-weight: 700;
+
+      .searchBar {
+        position: relative;
+        padding: 7px;
+        width: 450px;
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid black;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 16px;
+      }
+
+      .searchIcon {
+        position: absolute;
+        left: 420px;
+        top: 5px;
+        height: 20px;
+      }
+
+      ul {
+        li {
+          width: 115px;
+          padding: 0 30px;
+          color: #222222;
+          float: left;
+          align-items: center;
+          cursor: pointer;
+
+          &:hover {
+            font-size: 0px;
+          }
+        }
+
+        .about:hover:before {
+          @include hoverFontColor();
+          content: '소개';
+        }
+
+        .shop:hover:before {
+          @include hoverFontColor();
+          content: '쇼핑';
+        }
+
+        .search:hover:before {
+          @include hoverFontColor();
+          content: '검색';
+        }
+      }
     }
 
-    ul {
-      li {
-        width: 115px;
-        padding: 0 30px;
-        color: #222222;
-        float: left;
-        align-items: center;
-        cursor: pointer;
+    .categoryRight {
+      margin-bottom: 22px;
 
-        &:hover {
-          font-size: 0px;
+      .rightTop {
+        padding: 15px 0 40px;
+        li {
+          float: left;
+          padding: 1px;
+          font-size: 14px;
+          color: #222222;
+          cursor: pointer;
+        }
+
+        li:hover {
+          color: #d02d28;
         }
       }
 
-      .about:hover:before {
-        @include hoverFontColor();
-        content: '소개';
-      }
+      .link {
+        li {
+          margin: 0 0 5px 20px;
+          line-height: 2.5vh;
+        }
 
-      .shop:hover:before {
-        @include hoverFontColor();
-        content: '쇼핑';
-      }
+        li:hover {
+          color: #d02d28;
+        }
 
-      .search:hover:before {
-        @include hoverFontColor();
-        content: '검색';
-      }
-    }
-  }
-
-  .categoryRight {
-    margin-bottom: 22px;
-
-    .rightTop {
-      padding: 15px 0 40px;
-      li {
-        float: left;
-        padding: 1px;
-        font-size: 14px;
-        color: #222222;
-      }
-
-      li:hover {
-        color: #d02d28;
-      }
-    }
-
-    .link {
-      li {
-        margin: 0 0 5px 20px;
-        line-height: 2.5vh;
-      }
-
-      li:hover {
-        color: #d02d28;
-      }
-
-      a {
-        text-decoration: none;
-        font-size: 16px;
-        color: #222222;
+        a {
+          text-decoration: none;
+          font-size: 16px;
+          color: #222222;
+        }
       }
     }
   }
-}
-
-.clickBox {
-  position: absolute;
-  width: 100%;
-  height: 2000px;
 }
 
 .searchBox {
