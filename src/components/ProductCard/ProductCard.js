@@ -20,7 +20,7 @@ export default function ProductCard({
     e.preventDefault();
 
     if (mainMatch) {
-      return navigate(`products/${id}`);
+      return navigate(`/products/${id}`);
     } else if (productMatch) {
       return navigate(`${id}`);
     }

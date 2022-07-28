@@ -57,7 +57,7 @@ export default function ProductDetail() {
       product: POSTOrders.product,
     };
 
-    const request = await fetch('http://10.58.7.4:8000/cart/cart', {
+    const request = await fetch(`${CONFIG_URL}/cart/cart`, {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('Token'),

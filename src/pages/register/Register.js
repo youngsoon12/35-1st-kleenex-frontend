@@ -44,7 +44,7 @@ const Register = () => {
                 )
               ) {
                 fetch(`${CONFIG_URL}/user/signup`, {
-                  method: 'post',
+                  method: 'POST',
                   body: JSON.stringify({
                     name: person.name,
                     username: person.userName,

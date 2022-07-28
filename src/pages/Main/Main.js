@@ -6,6 +6,7 @@ import {
   BANNER_CARD_DATA,
   BOTTOM_LINK_DATA,
 } from '../Main/data/data';
+import { CONFIG_URL } from '../../config';
 import './main.scss';
 
 function Main() {
@@ -16,13 +17,13 @@ function Main() {
   // mock data 가져오기
 
   async function request() {
-    const res = await fetch('http://10.58.3.145:8000/products/main');
+    const res = await fetch(`${CONFIG_URL}/products/main`);
     const result = await res.json();
     setValues(result.premium);
   }
 
   async function newRequest() {
-    const res = await fetch('http://10.58.3.145:8000/products/main');
+    const res = await fetch(`${CONFIG_URL}/products/main`);
     const result = await res.json();
     setNewValue(result.fresh_product);
   }
@@ -82,6 +83,7 @@ function Main() {
                   return (
                     <ProductCard
                       key={product.id}
+                      id={product.id}
                       img={product.img[0].img_url}
                       name={product.name}
                       eng_name={product.eng_name}
@@ -106,6 +108,7 @@ function Main() {
                   return (
                     <ProductCard
                       key={product.id}
+                      id={product.id}
                       img={product.img[0].img_url}
                       name={product.name}
                       eng_name={product.eng_name}
