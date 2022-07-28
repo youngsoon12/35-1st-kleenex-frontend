@@ -10,6 +10,7 @@ const Cart = () => {
   const [itemsPrice, setItemsPrice] = useState([]);
   const shipmentPrice = itemsPrice > 50000 ? 0 : 2500;
   const totalPrice = itemsPrice + shipmentPrice;
+  const copyProducts = useRef([]);
 
   // 첫 화면 렌더링 시 개인 카트 데이터를 요청합니다.
   async function request() {
@@ -26,11 +27,29 @@ const Cart = () => {
     setItemsPrice(result.MESSAGE.reduce((a, c) => a + c.price * c.quantity, 0));
   }
 
-  console.log(value);
+  async function addToCart() {
+    const res = await fetch(`${CONFIG_URL}/cart/cart`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('Token'),
+      },
+      body: JSON.stringify({
+        cart_id: copyProducts.current.cart_id,
+        quantity: copyProducts.current.quantity,
+      }),
+    });
+    const result = await res.json();
+  }
+
+  console.log(copyProducts.current);
 
   // 렌더링 이후 request 를 불러옵니다.
   useEffect(() => {
     request();
+    return () => {
+      addToCart();
+    };
   }, []);
 
   // 카트 아이템의 수량을 1씩 감소시켜 이후 바로 서버에 전송합니다.
@@ -40,20 +59,8 @@ const Cart = () => {
     copyValue[selectedId].quantity === 1
       ? (copyValue[selectedId].quantity = 1)
       : (copyValue[selectedId].quantity -= 1);
+    copyProducts.current = copyValue[selectedId];
     setValues(copyValue);
-
-    // 서버에 patch 로 전달
-    fetch(`${CONFIG_URL}/cart/cart`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: localStorage.getItem('Token'),
-      },
-      body: JSON.stringify({
-        cart_id: copyValue[selectedId].cart_id,
-        quantity: copyValue[selectedId].quantity,
-      }),
-    }).then(res => res.json());
     setItemsPrice(value.reduce((a, c) => a + c.price * c.quantity, 0));
   };
 
@@ -62,19 +69,8 @@ const Cart = () => {
     const copyValue = [...value];
     const selectedId = value.findIndex(product => product.cart_id === id);
     copyValue[selectedId].quantity += 1;
+    copyProducts.current = copyValue[selectedId];
     setValues(copyValue);
-
-    fetch(`${CONFIG_URL}/cart/cart`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: localStorage.getItem('Token'),
-      },
-      body: JSON.stringify({
-        cart_id: copyValue[selectedId].cart_id,
-        quantity: copyValue[selectedId].quantity,
-      }),
-    }).then(res => res.json());
     setItemsPrice(value.reduce((a, c) => a + c.price * c.quantity, 0));
   };
 
