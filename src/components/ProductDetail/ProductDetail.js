@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { RiArrowDropUpLine, RiArrowDropDownLine } from 'react-icons/ri';
 import { ImCross } from 'react-icons/im';
 import './ProductDetail.scss';
@@ -73,10 +73,6 @@ export default function ProductDetail() {
     }
   };
 
-  const deleteHandler = e => {
-    const afterDelete = ordersList.filter(item => item.id !== ordersList.id);
-  };
-
   if (Object.keys(detail).length !== 0) {
     return (
       <section className="rightPanel">
@@ -147,9 +143,7 @@ export default function ProductDetail() {
                           name="graind"
                           key={grind.graind_id}
                           value={grind.graind_id}
-                          onClick={e => {
-                            productOptionHandler(e);
-                          }}
+                          onClick={productOptionHandler}
                         >
                           {grind.graind_type}
                         </button>
@@ -170,9 +164,7 @@ export default function ProductDetail() {
                           name="size"
                           key={size.size_id}
                           value={size.size_name}
-                          onClick={e => {
-                            productOptionHandler(e);
-                          }}
+                          onClick={productOptionHandler}
                           disabled={!!order.graind ? false : true}
                         >
                           {size.size_name}
@@ -202,7 +194,7 @@ export default function ProductDetail() {
                             <input
                               className="txtQuantityControl"
                               type="text"
-                              value="1"
+                              value={order.quantity}
                             />
                             <div className="btnQuantityControl">
                               <button className="increase btn">
@@ -212,10 +204,7 @@ export default function ProductDetail() {
                                 <RiArrowDropDownLine />
                               </button>
                             </div>
-                            <button
-                              className="delete"
-                              onClick={e => deleteHandler(e)}
-                            >
+                            <button className="delete">
                               <ImCross />
                             </button>
                           </div>
