@@ -200,7 +200,16 @@
         justify-content: center;
         align-items: center;
         padding: 70px 0;
-        gap: 90px;
+        gap: 100px;
+
+        li {
+          a {
+            img {
+              width: 338px;
+              height: 129px;
+            }
+          }
+        }
       }
     }
   }
