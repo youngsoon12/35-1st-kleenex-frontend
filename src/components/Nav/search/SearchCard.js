@@ -14,7 +14,7 @@ export default function SearchCard({
   const navigate = useNavigate();
 
   const goToDetail = e => {
-    return navigate(`/products/detail/${id}`);
+    return navigate(`/products/${id}`);
   };
 
   return (

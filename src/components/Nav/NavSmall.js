@@ -134,7 +134,6 @@ const NavSmall = () => {
               <div>
                 <li>
                   <img src="/images/Nav/icon1.png" alt="" onClick={logOut} />
-                  fuk
                 </li>
                 {iconBarImage.map((data, index) => {
                   return (
