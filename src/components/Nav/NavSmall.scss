@@ -18,6 +18,13 @@
     }
   }
 
+  .clickBox {
+    position: absolute;
+    width: 100%;
+    height: 2000px;
+    top: 84.5px;
+  }
+
   .inner {
     min-width: 1440px;
     z-index: 10000;
@@ -30,6 +37,7 @@
     height: 84.5px;
     background-color: white;
     border-bottom: 1px solid #ededed;
+    z-index: 10000;
 
     .searchBar {
       position: relative;
@@ -39,7 +47,6 @@
       font-size: 13px;
       opacity: 1;
       border: none;
-      border-bottom: 1px solid black;
     }
 
     .first {

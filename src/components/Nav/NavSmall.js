@@ -49,6 +49,7 @@ const NavSmall = () => {
   return (
     <div className="NavSmall">
       <div className="inner">
+        {isSearchOn && <div className="clickBox" onClick={handleSearchOpen} />}
         {search && isSearchOn && (
           <div className="searchSmallBox">
             <div className="searchBoxContainer">
@@ -87,7 +88,6 @@ const NavSmall = () => {
               placeholder="검색"
               className="searchBar"
               onChange={inputSearch}
-              onBlur={handleSearchOpen}
               autoFocus
             />
           </div>
