@@ -17,7 +17,10 @@ export default function ProductList() {
     const result = await res.json();
     setTotalItems(result.total);
     setProducts(result.shop_product_list);
+    console.log('totalItem', result);
   }
+  console.log('location', location.search);
+  console.log('url', `${CONFIG_URL}/products${location.search}`);
 
   useEffect(() => {
     request(location.search);
