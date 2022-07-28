@@ -43,7 +43,7 @@ const InProduct = ({
         </div>
       </td>
       <td className="bodyProductFee">
-        {quantity * price > 50000 || totalPrice > 50000
+        {quantity * price >= 50000 || totalPrice >= 50000
           ? '무료'
           : (2500).toLocaleString()}
       </td>

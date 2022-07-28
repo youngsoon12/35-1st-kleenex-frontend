@@ -8,7 +8,7 @@ import './Cart.scss';
 const Cart = () => {
   const [value, setValues] = useState([]);
   const [itemsPrice, setItemsPrice] = useState([]);
-  const shipmentPrice = itemsPrice > 50000 ? 0 : 2500;
+  const shipmentPrice = itemsPrice >= 50000 ? 0 : 2500;
   const totalPrice = itemsPrice + shipmentPrice;
   const copyProduct = useRef([]);
   const resultData = useRef();
