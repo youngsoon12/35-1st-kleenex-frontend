@@ -25,7 +25,7 @@ export default function ProductList() {
   const updateOffset = buttonIndex => {
     const limit = 12;
     const offset = (buttonIndex - 1) * limit;
-    const queryString = `offset=${offset}&limit=${limit}`;
+    const queryString = `?offset=${offset}&limit=${limit}`;
     navigate(queryString);
   };
 
