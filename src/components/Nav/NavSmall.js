@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import SearchCard from './search/SearchCard';
 import './NavSmall.scss';
+import { CONFIG_URL } from '../../config';
 
 const NavSmall = () => {
   const [isSearchOn, setIsSearchOn] = useState(false);
   const [search, setSearch] = useState('');
   const [values, setValues] = useState([]);
+  const [isToken, setIsToken] = useState(false);
   const filterValue = useRef([]);
+  const location = useLocation();
 
   async function request() {
     if (!search) {
@@ -15,7 +18,7 @@ const NavSmall = () => {
       return;
     }
     const res = await fetch(
-      `http://10.58.3.145:8000/products/main/search?keywords=${search}`
+      `${CONFIG_URL}/products/main/search?keywords=${search}`
     );
     const result = await res.json();
     setValues(result.result);
@@ -38,6 +41,7 @@ const NavSmall = () => {
       }
     });
   }
+  useEffect(() => {}, location);
 
   useEffect(() => {
     request();
@@ -45,6 +49,11 @@ const NavSmall = () => {
       setValues('');
     }
   }, [search]);
+
+  const logOut = () => {
+    localStorage.removeItem('Token');
+    return setIsToken(isToken => !isToken);
+  };
 
   return (
     <div className="NavSmall">
@@ -121,15 +130,40 @@ const NavSmall = () => {
         </div>
         <div className="iconBar">
           <ul>
-            {iconBarImage.map((data, index) => {
-              return (
-                <Link to={data.link} key={index}>
+            {localStorage.Token ? (
+              <div>
+                <li>
+                  <img src="/images/Nav/icon1.png" alt="" onClick={logOut} />
+                  fuk
+                </li>
+                {iconBarImage.map((data, index) => {
+                  return (
+                    <Link to={data.link} key={index}>
+                      <li>
+                        <img src={`/images/Nav/icon${data.no}.png`} alt="" />
+                      </li>
+                    </Link>
+                  );
+                })}
+              </div>
+            ) : (
+              <div>
+                <Link to="/login">
                   <li>
-                    <img src={`/images/Nav/icon${data.no}.png`} alt="" />
+                    <img src="/images/Nav/icon1.png" alt="" />
                   </li>
                 </Link>
-              );
-            })}
+                {iconBarImage.map((data, index) => {
+                  return (
+                    <Link to={data.link} key={index}>
+                      <li>
+                        <img src={`/images/Nav/icon${data.no}.png`} alt="" />
+                      </li>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
           </ul>
         </div>
       </div>
@@ -151,8 +185,7 @@ const CATEGORY_TWO = [
 ];
 
 const iconBarImage = [
-  { no: 1, link: '/login' },
-  { no: 2, link: '/login' },
+  { no: 2, link: '/main' },
   { no: 3, link: '/cart' },
-  { no: 4, link: '/login' },
+  { no: 4, link: '/main' },
 ];
