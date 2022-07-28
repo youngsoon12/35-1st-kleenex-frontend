@@ -77,7 +77,7 @@ const NavSmall = () => {
           </div>
         )}
         <div className="first">
-          <Link to="/">
+          <Link to="/main">
             <div className="smallNavLogoTitle">KLEENEX</div>
           </Link>
         </div>
@@ -97,7 +97,7 @@ const NavSmall = () => {
             <ul>
               {CATEGORY_ONE.map((data, index) => {
                 return (
-                  <Link to="/" key={index}>
+                  <Link to={data.link} key={index}>
                     <li className={data.className}>{data.value}</li>
                   </Link>
                 );
@@ -112,7 +112,7 @@ const NavSmall = () => {
           <ul>
             {CATEGORY_TWO.map((data, index) => {
               return (
-                <Link to="/" key={index}>
+                <Link to={data.link} key={index}>
                   <li className={data.className}>{data.value}</li>
                 </Link>
               );
@@ -121,11 +121,11 @@ const NavSmall = () => {
         </div>
         <div className="iconBar">
           <ul>
-            {iconBarImage.map((no, index) => {
+            {iconBarImage.map((data, index) => {
               return (
-                <Link to="/" key={index}>
+                <Link to={data.link} key={index}>
                   <li>
-                    <img src={`/images/Nav/icon${no}.png`} alt="로그인" />
+                    <img src={`/images/Nav/icon${data.no}.png`} alt="" />
                   </li>
                 </Link>
               );
@@ -140,14 +140,19 @@ const NavSmall = () => {
 export default NavSmall;
 
 const CATEGORY_ONE = [
-  { className: 'about', value: 'ABOUT' },
-  { className: 'shop', value: 'SHOP' },
+  { className: 'about', value: 'ABOUT', link: '/main' },
+  { className: 'shop', value: 'SHOP', link: '/products' },
 ];
 
 const CATEGORY_TWO = [
-  { className: 'museum', value: 'MUSEUM' },
-  { className: 'teraTimes', value: 'TERA TIMES' },
-  { className: 'locations', value: 'LOCATIONS' },
+  { className: 'museum', value: 'MUSEUM', link: '/main' },
+  { className: 'teraTimes', value: 'TERA TIMES', link: '/main' },
+  { className: 'locations', value: 'LOCATIONS', link: '/main' },
 ];
 
-const iconBarImage = [1, 2, 3, 4];
+const iconBarImage = [
+  { no: 1, link: '/login' },
+  { no: 2, link: '/login' },
+  { no: 3, link: '/cart' },
+  { no: 4, link: '/login' },
+];
