@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { RiArrowDropUpLine, RiArrowDropDownLine } from 'react-icons/ri';
 import { ImCross } from 'react-icons/im';
+import { CONFIG_URL } from '../../config';
 import './ProductDetail.scss';
 
 export default function ProductDetail() {
@@ -17,10 +18,8 @@ export default function ProductDetail() {
   const [ordersList, setordersList] = useState([]);
 
   async function request() {
-    // const res = await fetch(
-    //   `http://10.58.3.145:8000/products/${params.product_id}`
-    // );
-    const res = await fetch('/data/productDataDetail.json');
+    const res = await fetch(`${CONFIG_URL}/products/${params.product_id}`);
+    // const res = await fetch('/data/productDataDetail.json');
     const result = await res.json();
     setDetail(result.product_detail);
   }
@@ -54,7 +53,7 @@ export default function ProductDetail() {
     POSTOrders.product_id = params.product_id;
     POSTOrders.product = ordersList;
     let JSONOut = {
-      product_id: 1,
+      product_id: params.product_id,
       product: POSTOrders.product,
     };
 
