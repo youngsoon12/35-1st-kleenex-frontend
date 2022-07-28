@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { CONFIG_URL } from '../../config';
-import './login.scss';
+import './Login.scss';
 
 function Login() {
   const [inputValue, setInputValue] = useState({
@@ -23,7 +22,6 @@ function Login() {
         });
   };
 
-  // 첫 랜더링 이후 로컬스토리지에서 유저아이디를 확인합니다.
   useEffect(() => {
     if (localStorage.getItem('UserId')) {
       isChecked.current = true;
@@ -47,7 +45,6 @@ function Login() {
   };
 
   // 서버에게 데이터를 POST
-
   const postLogin = async () => {
     const request = await fetch(`${CONFIG_URL}/user/signin`, {
       method: 'POST',
@@ -82,6 +79,10 @@ function Login() {
   const onSubmit = e => {
     e.preventDefault();
     postLogin();
+  };
+
+  const toMoveRegister = () => {
+    navigate('/register');
   };
 
   // 유효성 검사
@@ -171,7 +172,7 @@ function Login() {
                     크리넥스에 가입하시면 더 많은 혜택을 누리실 수 있습니다.
                   </p>
                 </div>
-                <div className="registerButton">
+                <div className="registerButton" onClick={toMoveRegister}>
                   <span>신규회원가입</span>
                 </div>
               </div>
