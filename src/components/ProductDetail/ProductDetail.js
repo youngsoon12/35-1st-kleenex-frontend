@@ -54,7 +54,7 @@ export default function ProductDetail() {
     POSTOrders.product_id = params.product_id;
     POSTOrders.product = ordersList;
     let JSONOut = {
-      product_id: 1,
+      product_id: POSTOrders.product_id,
       product: POSTOrders.product,
     };
 
