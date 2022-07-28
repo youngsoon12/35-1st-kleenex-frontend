@@ -8,8 +8,8 @@ import Cart from './pages/Cart/Cart';
 import Register from './pages/register/Register';
 import RegisterSuccess from './pages/register/RegisterSuccess';
 import Products from './pages/Products/Products';
-import ProductsList from './components/ProductsList/ProductsList';
 import ProductDetail from './components/ProductDetail/ProductDetail';
+import ProductsList from './components/ProductsList/ProductsList';
 
 const Router = () => {
   return (
