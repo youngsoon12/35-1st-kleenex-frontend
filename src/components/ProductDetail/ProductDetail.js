@@ -14,8 +14,9 @@ export default function ProductDetail() {
     size: '',
     quantity: 1,
   });
-  const [ordersList, setordersList] = useState([]);
+  const [ordersList, setOrdersList] = useState([]);
 
+  // ProductDetail 데이터 통신
   async function request() {
     // const res = await fetch(
     //   `http://10.58.3.145:8000/products/${params.product_id}`
@@ -29,6 +30,7 @@ export default function ProductDetail() {
     request();
   }, []);
 
+  // 주문 옵션 핸들러
   const productOptionHandler = e => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -41,13 +43,14 @@ export default function ProductDetail() {
 
   useEffect(() => {
     if (order.size !== '') {
-      const prevordersList = [...ordersList];
-      prevordersList.push(order);
-      setordersList(prevordersList);
+      const prevOrdersList = [...ordersList];
+      prevOrdersList.push(order);
+      setOrdersList(prevOrdersList);
       setOrder({ graind: '', size: '', quantity: 1 });
     }
   }, [order]);
 
+  // 주문리스트 서버 전송 데이터 통신
   const ordersListJsonify = async e => {
     e.preventDefault();
     const POSTOrders = {};
@@ -71,6 +74,24 @@ export default function ProductDetail() {
     if (result.MESSAGE === 'SUCCESS') {
       navigate('/cart');
     }
+  };
+
+  const qttIncrease = id => {
+    const prevOrdersList = [...ordersList];
+    prevOrdersList[id].quantity++;
+    setOrdersList(prevOrdersList);
+  };
+
+  const qttDecrease = id => {
+    const prevOrdersList = [...ordersList];
+    if (prevOrdersList[id].quantity > 1) prevOrdersList[id].quantity--;
+    setOrdersList(prevOrdersList);
+  };
+
+  const orderDelete = id => {
+    const prevOrdersList = [...ordersList];
+    prevOrdersList.splice(id, 1);
+    setOrdersList(prevOrdersList);
   };
 
   if (Object.keys(detail).length !== 0) {
@@ -197,14 +218,23 @@ export default function ProductDetail() {
                               value={order.quantity}
                             />
                             <div className="btnQuantityControl">
-                              <button className="increase btn">
+                              <button
+                                className="increase btn"
+                                onClick={() => qttIncrease(index)}
+                              >
                                 <RiArrowDropUpLine />
                               </button>
-                              <button className="decrease btn">
+                              <button
+                                className="decrease btn"
+                                onClick={() => qttDecrease(index)}
+                              >
                                 <RiArrowDropDownLine />
                               </button>
                             </div>
-                            <button className="delete">
+                            <button
+                              className="delete"
+                              onClick={() => orderDelete(index)}
+                            >
                               <ImCross />
                             </button>
                           </div>
