@@ -96,13 +96,15 @@ export default function ProductDetail() {
   };
 
   useEffect(() => {
+    let total = 0;
     ordersList.map(order => {
       return detail.size.map(size => {
         return order.size === size.size_name
-          ? setTotalFee(totalFee + order.quantity * size.size_price)
+          ? (total += order.quantity * size.size_price)
           : '';
       });
     });
+    setTotalFee(total);
   }, [ordersList]);
 
   if (Object.keys(detail).length !== 0) {
