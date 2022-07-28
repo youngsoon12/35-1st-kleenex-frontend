@@ -1,0 +1,31 @@
+.rightPanel {
+  width: 1040px;
+  height: fit-content;
+
+  .listHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+
+    h3 {
+      font-size: 20px;
+      margin: 0 0 0 8px;
+    }
+
+    p {
+      font-size: 13px;
+      margin: 0 10px 0 0;
+      font-weight: lighter;
+
+      span {
+        color: #8d8d8d;
+      }
+    }
+  }
+
+  .listContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
