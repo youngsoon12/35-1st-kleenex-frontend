@@ -7,6 +7,7 @@ const RegisterSuccess = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const user = location.state;
+  console.log(user.person.name);
 
   return (
     <div className="RegisterSuccess">
@@ -14,7 +15,7 @@ const RegisterSuccess = () => {
       <div className="signUpShow">
         <div className="message">
           <p>회원가입이 정상적으로 완료 되었습니다!</p>
-          <span>{user.name} 님</span>은 [아라비카] 회원이십니다.
+          <span>{user.person.name} 님</span>은 [아라비카] 회원이십니다.
         </div>
         <div>
           <button

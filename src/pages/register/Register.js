@@ -42,7 +42,7 @@ const Register = () => {
                   `010-${person.phoneNumber1}-${person.phoneNumber2}`
                 )
               ) {
-                fetch('http://10.58.7.167:8000/user/signup', {
+                fetch('http://10.58.2.102:8000/user/signup', {
                   method: 'post',
                   body: JSON.stringify({
                     name: person.name,
