@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { CONFIG_URL } from '../../config';
 import './Login.scss';
 
 function Login() {
