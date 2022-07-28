@@ -336,6 +336,11 @@ input[type="submit"] {
   *overflow: visible; /* 4 */
 }
 
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 /**
  * Re-set default cursor for disabled elements.
  */
