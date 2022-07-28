@@ -66,6 +66,7 @@ export default function ProductDetail() {
     });
 
     const result = await request.json();
+    console.log(result);
 
     if (result.MESSAGE === 'SUCCESS') {
       navigate('/cart');
