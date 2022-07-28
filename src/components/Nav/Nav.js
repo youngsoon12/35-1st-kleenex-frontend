@@ -105,7 +105,6 @@ const Nav = () => {
                       placeholder="검색"
                       className="searchBar"
                       onChange={inputSearch}
-                      // onBlur={handleSearchOpen}
                       autoFocus
                     />
                   </div>
@@ -115,13 +114,8 @@ const Nav = () => {
                   {LINK_DATA.map((data, index) => {
                     return (
                       <span key={index}>
-                        <Link to="/" className="link">
-                          <li
-                            className={data.className}
-                            onClick={() => alert('준비중입니다.')}
-                          >
-                            {data.name}
-                          </li>
+                        <Link to={data.link} className="link">
+                          <li className={data.className}>{data.name}</li>
                         </Link>
                       </span>
                     );
@@ -134,16 +128,27 @@ const Nav = () => {
             </div>
             <div className="categoryRight">
               <ul className="rightTop">
-                {RIGHT_TOP_DATA.map(data => {
-                  return (
-                    <span key={data.id}>
-                      <Link to={`${data.link}`}>
-                        <li>{data.name}</li>
-                      </Link>
-                      <li>&nbsp;|&nbsp; </li>
-                    </span>
-                  );
-                })}
+                {localStorage.getItem('Token')
+                  ? RIGHT_TOP_DATA_LOGIN.map(data => {
+                      return (
+                        <span key={data.id}>
+                          <Link to={`${data.link}`}>
+                            <li>{data.name}</li>
+                          </Link>
+                          <li>&nbsp;|&nbsp; </li>
+                        </span>
+                      );
+                    })
+                  : RIGHT_TOP_DATA.map(data => {
+                      return (
+                        <span key={data.id}>
+                          <Link to={`${data.link}`}>
+                            <li>{data.name}</li>
+                          </Link>
+                          <li>&nbsp;|&nbsp; </li>
+                        </span>
+                      );
+                    })}
               </ul>
               <ul className="link">
                 {LAST_LINK_DATA.map((data, index) => {
@@ -169,16 +174,24 @@ const Nav = () => {
 export default Nav;
 
 const LINK_DATA = [
-  { className: 'about', name: 'ABOUT' },
-  { className: 'shop', name: 'SHOP' },
+  { className: 'about', name: 'ABOUT', link: '/main' },
+  { className: 'shop', name: 'SHOP', link: '/products' },
 ];
 
 const RIGHT_TOP_DATA = [
   { id: 1, name: '로그인', link: '/login' },
-  { id: 2, name: '주문/배송', link: '/' },
-  { id: 3, name: '장바구니', link: '/' },
-  { id: 4, name: '문의', link: '/' },
+  { id: 2, name: '주문/배송', link: '/main' },
+  { id: 3, name: '장바구니', link: '/cart' },
+  { id: 4, name: '문의', link: '/main' },
 ];
+
+const RIGHT_TOP_DATA_LOGIN = [
+  { id: 1, name: '로그아웃', link: '' },
+  { id: 2, name: '주문/배송', link: '/main' },
+  { id: 3, name: '장바구니', link: '/cart' },
+  { id: 4, name: '문의', link: '/main' },
+];
+
 const LAST_LINK_DATA = [
   { name: 'MUSEUM', className: 'museum' },
   { name: 'TERA TIMES', className: 'teraTimes' },
