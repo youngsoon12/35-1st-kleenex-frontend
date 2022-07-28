@@ -1,0 +1,301 @@
+.rightPanel {
+  width: 1040px;
+  height: fit-content;
+
+  .listHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+
+    h3 {
+      font-size: 20px;
+      margin: 0 0 0 8px;
+    }
+
+    p {
+      font-size: 13px;
+      margin: 0 10px 0 0;
+      font-weight: lighter;
+
+      span {
+        color: #8d8d8d;
+      }
+    }
+  }
+
+  .listContainer {
+    .description {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      width: 100%;
+      height: 100%;
+      padding: 16px 0 0;
+      gap: 25px;
+
+      .productImages {
+        .productThumbnail {
+          width: 495px;
+          height: 348px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .awaitingImages {
+          display: flex;
+          flex-direction: row;
+          width: 116px;
+          height: 82px;
+          gap: 10px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            margin: 10px 0;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .productDetails {
+        .describe {
+          .productTitle {
+            padding: 0 0 8px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+          }
+
+          .defaultPrice {
+            padding: 0 0 8px;
+            font-size: 22px;
+          }
+
+          .productTaste {
+            margin: 34px 0 0;
+            padding: 0 0 8px;
+            font-size: 15px;
+
+            p {
+              font-size: 15px;
+              font-weight: bold;
+
+              span {
+                margin: 0 0 0 5px;
+                font-weight: lighter;
+              }
+            }
+          }
+        }
+
+        .optionSelect {
+          margin: 40px 0 21px;
+
+          .productRoasting {
+            display: flex;
+            justify-content: flex-start;
+            padding: 0 0 8px;
+            font-size: 15px;
+          }
+
+          .productMass {
+            display: flex;
+            justify-content: flex-start;
+            padding: 0 0 8px;
+            font-size: 15px;
+          }
+
+          .indicator {
+            font-weight: bold;
+            min-width: 124px;
+            width: 124px;
+            padding: 14px 0 8px 9px;
+            color: #111111;
+          }
+
+          .buttonDetail {
+            .choiceButtonWrapper {
+              display: flex;
+              justify-content: flex-start;
+              flex-wrap: wrap;
+              padding: 10px 10px 4px 0;
+              gap: 5px;
+              font-size: 12px;
+
+              button {
+                padding: 6px 5px;
+                background-color: inherit;
+                border: 1px solid #dbdbdb;
+              }
+
+              .true {
+                background-color: #dbdbdb;
+                color: #8e8e8e;
+              }
+
+              .highlighted {
+                border: 2px solid black;
+              }
+            }
+
+            p {
+              display: block;
+              font-size: 12px;
+              color: #767479;
+            }
+          }
+        }
+
+        .ordersList {
+          border-top: 1px solid black;
+
+          .ordersWrapper {
+            .order {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              height: 61px;
+              padding: 9px 9px 9px 4px;
+
+              .orderInfo {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+                gap: 5px;
+                font-weight: bold;
+
+                .orderTitle {
+                  font-size: 15px;
+                }
+                .orderOption {
+                  margin: 0 0 0 5px;
+                  font-size: 13px;
+                  color: #757575;
+                }
+              }
+
+              .orderQuantity {
+                .QuantityControl {
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  width: 40px;
+                  height: 21px;
+
+                  .txtQuantityControl {
+                    width: 29px;
+                    height: 20px;
+                    padding: 0 2px 0 3px;
+                    font-size: 12px;
+                    border: 1px solid #8e8e8e;
+                  }
+
+                  .btnQuantityControl {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    .btn {
+                      position: relative;
+                      height: 10px;
+                      width: 21px;
+                      border: 1px solid #8e8e8e;
+
+                      svg {
+                        position: absolute;
+                        top: -2px;
+                        left: 2px;
+                        font-size: 14px;
+                      }
+                    }
+                  }
+
+                  .delete {
+                    position: relative;
+                    width: 11px;
+                    height: 11px;
+                    margin: 0 0 0 10px;
+                    background-color: #8e8e8e;
+                    border: 1px solid #8e8e8e;
+
+                    svg {
+                      position: absolute;
+                      top: 2px;
+                      left: 3px;
+                      font-size: 5px;
+                      color: #ffffff;
+                    }
+                  }
+                }
+              }
+
+              .orderPrice {
+                font-size: 19px;
+              }
+            }
+          }
+        }
+
+        .totalFee {
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          box-sizing: border-box;
+          width: 100%;
+          height: 65px;
+          padding: 14px 9px 19px;
+          border-top: 1px solid black;
+
+          p {
+            font-size: 16px;
+
+            span {
+              margin: 0 0 0 20px;
+              font-size: 21px;
+              font-weight: bold;
+            }
+          }
+        }
+
+        .actionButtonWrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          padding: 10px 0;
+
+          .btnTop {
+            display: flex;
+            justify-content: space-between;
+
+            .giftButton {
+              width: 49.5%;
+            }
+
+            .cartButton {
+              width: 49.5%;
+            }
+          }
+
+          .btnBottom {
+            .purchaseButton {
+              width: 100%;
+            }
+          }
+
+          .btnPreset {
+            height: 50px;
+            border: 1px solid #414141;
+            font-size: 15px;
+            background-color: inherit;
+          }
+        }
+      }
+    }
+  }
+}
