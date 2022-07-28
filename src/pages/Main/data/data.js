@@ -38,6 +38,6 @@ export const BANNER_CARD_DATA = [
 
 export const BOTTOM_LINK_DATA = [
   { id: 1, url: 'https://terarosa.com/SkinImg/main_bt_01.jpg' },
-  { id: 2, url: 'https://terarosa.com/SkinImg/main_bt_02.jpg' },
-  { id: 3, url: 'https://terarosa.com/SkinImg/main_bt_03.jpg' },
+  { id: 2, url: '../images/kleenexbottom3.png' },
+  { id: 3, url: '../images/kleenexbottom2.png' },
 ];

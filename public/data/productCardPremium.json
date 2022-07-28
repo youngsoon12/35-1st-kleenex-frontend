@@ -1,0 +1,105 @@
+{
+  "premium": [
+    {
+      "id": 11,
+      "name": "[예약발송] 시티 블렌드 컬렉션",
+      "eng_name": "City Blend Collection",
+      "img": [
+        "https://images.unsplash.com/photo-1493925410384-84f842e616fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80&h=900",
+        "https://images.unsplash.com/photo-1534961313562-759034ed04a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80"
+      ],
+      "img_id": [22, 23],
+      "roasting_date": "2022-07-24",
+      "taste": ["Cool", "Mango", "Passion fruit"],
+      "taste_id": [5, 6, 7],
+      "price": "53000.00"
+    },
+    {
+      "id": 3,
+      "name": "인도네시아 판탄 무사라",
+      "eng_name": "2021 Indonesia C.O.E Winner",
+      "img": [
+        "https://images.unsplash.com/photo-1586095516671-d085ff58cdd4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80&h=600",
+        "https://images.unsplash.com/photo-1587049016823-69ef9d68bd44?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
+        "https://images.unsplash.com/photo-1530592126211-8294b41580ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2848&q=80&h=2200"
+      ],
+      "img_id": [5, 6, 7],
+      "roasting_date": "2022-07-17",
+      "taste": ["Grapefruit", "Hibiscus", "Floral"],
+      "taste_id": [8, 9, 10],
+      "price": "50000.00"
+    },
+    {
+      "id": 14,
+      "name": "클래식 에스프레소 블렌드",
+      "eng_name": "Classic Espresso Blend",
+      "img": [
+        "https://images.unsplash.com/photo-1520516472218-ed48f8ff3271?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80&h=2700",
+        "https://images.unsplash.com/photo-1629144315587-7a5c571b1249?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80"
+      ],
+      "img_id": [28, 29],
+      "roasting_date": "2022-07-08",
+      "taste": ["Cool", "Mango", "Passion fruit"],
+      "taste_id": [5, 6, 7],
+      "price": "42000.00"
+    }
+  ],
+  "fresh_product": [
+    {
+      "id": 9,
+      "name": "에티오피아 예가체페 첼베사",
+      "eng_name": "Ethiopia Yirgacheffe Chelbesa",
+      "img": [
+        "https://images.unsplash.com/photo-1621114481058-9e7014e5afc7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1530&q=80",
+        "https://images.unsplash.com/photo-1616672239881-aec9f3f43521?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+      ],
+      "img_id": [18, 19],
+      "roasting_date": "2022-07-27",
+      "taste": ["Grapefruit", "Hibiscus", "Floral"],
+      "taste_id": [8, 9, 10],
+      "price": "25000.00"
+    },
+    {
+      "id": 13,
+      "name": "어센틱 에스프레소 블렌드 시즌 14",
+      "eng_name": "Authentic Espresso Blend No.14",
+      "img": [
+        "https://images.unsplash.com/photo-1565690678319-e59672ec24de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80",
+        "https://images.unsplash.com/photo-1580674478483-f56915fe1908?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+      ],
+      "img_id": [26, 27],
+      "roasting_date": "2022-07-26",
+      "taste": ["Apple", "Plum", "Lime", "Peach"],
+      "taste_id": [1, 2, 3, 4],
+      "price": "20000.00"
+    },
+    {
+      "id": 8,
+      "name": "콜롬비아 호세 플로레즈",
+      "eng_name": "Colombia Jose Florez",
+      "img": [
+        "https://images.unsplash.com/photo-1552346988-bf70b50d3c98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2948&q=80",
+        "https://images.unsplash.com/photo-1588664274474-9b1e7af52ff8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80"
+      ],
+      "img_id": [16, 17],
+      "roasting_date": "2022-07-25",
+      "taste": ["Cool", "Mango", "Passion fruit"],
+      "taste_id": [5, 6, 7],
+      "price": "23000.00"
+    },
+    {
+      "id": 11,
+      "name": "[예약발송] 시티 블렌드 컬렉션",
+      "eng_name": "City Blend Collection",
+      "img": [
+        "https://images.unsplash.com/photo-1493925410384-84f842e616fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80&h=900",
+        "https://images.unsplash.com/photo-1534961313562-759034ed04a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80"
+      ],
+      "img_id": [22, 23],
+      "roasting_date": "2022-07-24",
+      "taste": ["Cool", "Mango", "Passion fruit"],
+      "taste_id": [5, 6, 7],
+      "price": "53000.00"
+    }
+  ]
+}
