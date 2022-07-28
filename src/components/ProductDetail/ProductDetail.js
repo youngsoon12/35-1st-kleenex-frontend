@@ -15,13 +15,14 @@ export default function ProductDetail() {
     quantity: 1,
   });
   const [ordersList, setOrdersList] = useState([]);
+  const [totalFee, setTotalFee] = useState(0);
 
   // ProductDetail 데이터 통신
   async function request() {
-    // const res = await fetch(
-    //   `http://10.58.3.145:8000/products/${params.product_id}`
-    // );
-    const res = await fetch('/data/productDataDetail.json');
+    const res = await fetch(
+      `http://10.58.2.102:8000/products/${params.product_id}`
+    );
+    // const res = await fetch('/data/productDataDetail.json');
     const result = await res.json();
     setDetail(result.product_detail);
   }
@@ -61,7 +62,7 @@ export default function ProductDetail() {
       product: POSTOrders.product,
     };
 
-    const request = await fetch('http://10.58.7.4:8000/cart/cart', {
+    const request = await fetch('http://10.58.2.102:8000/cart/cart', {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('Token'),
@@ -93,6 +94,16 @@ export default function ProductDetail() {
     prevOrdersList.splice(id, 1);
     setOrdersList(prevOrdersList);
   };
+
+  useEffect(() => {
+    ordersList.map(order => {
+      return detail.size.map(size => {
+        return order.size === size.size_name
+          ? setTotalFee(totalFee + order.quantity * size.size_price)
+          : '';
+      });
+    });
+  }, [ordersList]);
 
   if (Object.keys(detail).length !== 0) {
     return (
@@ -243,7 +254,9 @@ export default function ProductDetail() {
                           <p>
                             {detail.size.map(size => {
                               return order.size === size.size_name
-                                ? Math.floor(size.size_price).toLocaleString()
+                                ? Math.floor(
+                                    size.size_price * order.quantity
+                                  ).toLocaleString()
                                 : '';
                             })}
                             원
@@ -257,7 +270,8 @@ export default function ProductDetail() {
 
               <div className="totalFee">
                 <p>
-                  총 상품금액<span>0</span>
+                  총 상품금액
+                  <span>{Math.floor(totalFee).toLocaleString('ko-KR')}원</span>
                 </p>
               </div>
 
@@ -266,7 +280,7 @@ export default function ProductDetail() {
                   <button className="giftButton btnPreset">선물하기</button>
                   <button
                     className="cartButton btnPreset"
-                    onClick={e => ordersListJsonify(e)}
+                    onClick={ordersListJsonify}
                   >
                     장바구니
                   </button>
