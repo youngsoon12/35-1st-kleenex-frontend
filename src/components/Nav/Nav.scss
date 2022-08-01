@@ -1,7 +1,7 @@
 @mixin hoverFontColor {
-  color: red;
+  color: #d02d28;
   font-size: 16px;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #d02d28;
 }
 
 .header {
@@ -26,90 +26,201 @@
   }
 
   .categoryMid {
+body {
+  .hidden {
+    overflow: hidden;
+    height: 100%;
+  }
+}
+.Nav {
+  .clickBox {
+    position: absolute;
+    width: 100%;
+    height: 2000px;
+  }
+  .header {
+    position: sticky;
+    top: 0;
     display: flex;
-    align-items: flex-end;
-    width: 400px;
-    height: 50px;
-    font-weight: 700;
+    min-width: 1260px;
+    height: 158px;
+    border-bottom: 1px solid #ededed;
+    min-width: 1450px;
+    z-index: 10000;
 
-    .searchBar {
-      padding: 7px;
-      width: 450px;
-      border-radius: 10px;
-      border: 0.5px solid #6d5f5f;
-      font-size: 13px;
+    .inner {
+      display: flex;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      width: 1240px;
+      align-items: center;
+      margin: 0 auto;
+
+      .navLogoTitle {
+        padding-left: 15px;
+        padding-top: 20px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 63px;
+        font-weight: 900;
+      }
+
+      .logoImg {
+        margin-top: 16px;
+      }
     }
 
-    .searchIcon {
-      position: absolute;
-      left: 860px;
-      top: 78px;
-      height: 20px;
+    .categoryMid {
+      display: flex;
+      align-items: flex-end;
+      width: 400px;
+      height: 50px;
+      font-weight: 700;
+
+      .searchBar {
+        position: relative;
+        padding: 7px;
+        width: 450px;
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid black;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 16px;
+      }
+
+      .searchIcon {
+        position: absolute;
+        left: 420px;
+        top: 5px;
+        height: 20px;
+      }
+
+      ul {
+        li {
+          width: 115px;
+          padding: 0 30px;
+          color: #222222;
+          float: left;
+          align-items: center;
+          cursor: pointer;
+
+          &:hover {
+            font-size: 0px;
+          }
+        }
+
+        .about:hover:before {
+          @include hoverFontColor();
+          content: '소개';
+        }
+
+        .shop:hover:before {
+          @include hoverFontColor();
+          content: '쇼핑';
+        }
+
+        .search:hover:before {
+          @include hoverFontColor();
+          content: '검색';
+        }
+      }
     }
 
-    ul {
-      li {
-        width: 115px;
-        padding: 0 30px;
-        color: #222222;
-        float: left;
-        align-items: center;
-        cursor: pointer;
+    .categoryRight {
+      margin-bottom: 22px;
+      width: 274px;
+      .rightTop {
+        padding: 15px 0 40px;
+        .out {
+        }
+        li {
+          float: left;
+          padding: 1px;
+          font-size: 14px;
+          color: #222222;
+          cursor: pointer;
+        }
 
-        &:hover {
-          font-size: 0px;
+        li:hover {
+          color: #d02d28;
         }
       }
 
-      .about:hover:before {
-        @include hoverFontColor();
-        content: '소개';
-      }
+      .link {
+        li {
+          margin: 0 0 5px 20px;
+          line-height: 2.5vh;
+        }
 
-      .shop:hover:before {
-        @include hoverFontColor();
-        content: '쇼핑';
-      }
+        li:hover {
+          color: #d02d28;
+        }
 
-      .search:hover:before {
-        @include hoverFontColor();
-        content: '검색';
-      }
-    }
-  }
-
-  .categoryRight {
-    margin-bottom: 22px;
-
-    .rightTop {
-      padding: 15px 0 40px;
-      li {
-        float: left;
-        padding: 1px;
-        font-size: 14px;
-        color: #222222;
-      }
-
-      li:hover {
-        color: red;
-      }
-    }
-
-    .link {
-      li {
-        margin: 0 0 5px 20px;
-        line-height: 2.5vh;
-      }
-
-      li:hover {
-        color: red;
-      }
-
-      a {
-        text-decoration: none;
-        font-size: 16px;
-        color: #222222;
+        a {
+          text-decoration: none;
+          font-size: 16px;
+          color: #222222;
+        }
       }
     }
   }
+}
+
+.searchBox {
+  position: absolute;
+  top: 105px;
+  width: 100%;
+  height: 400px;
+  // background-color: white;
+  background-color: white;
+  opacity: 1;
+
+  .searchBoxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+    padding-top: 20px;
+
+    .leftContainer {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-bottom: 170px;
+
+      .linkBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 20px;
+          font-size: 20px;
+          font-family: 'Noto Sans KR', sans-serif;
+
+          li:hover {
+            color: #d02d28;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .rightContainer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 936px;
+      height: 350px;
+      gap: 20px;
+      overflow: hidden;
+    }
+  }
+}
+
+.inputRelative {
+  position: relative;
 }
