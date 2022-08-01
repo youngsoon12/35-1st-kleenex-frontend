@@ -1,0 +1,184 @@
+@mixin inputForm {
+  margin: 0px 4px;
+  padding: 0px 10px;
+  height: 40px;
+  border: 1px solid #d5d5d5;
+  color: #808080;
+}
+
+@mixin signUp {
+  .path {
+    padding: 68px 10px 0 0;
+    ul {
+      height: 30px;
+      vertical-align: middle;
+
+      li {
+        float: right;
+        padding-top: 4px;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .titleArea {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 0 40px;
+
+    .logo {
+      height: 68.4px;
+
+      .logo1 {
+        font-size: 38px;
+        letter-spacing: -3px;
+        font-weight: 100;
+      }
+
+      .logo2 {
+        font-size: 19px;
+      }
+    }
+  }
+}
+
+.Register {
+  .wrap {
+    width: 100%;
+    border-top: 1px solid black;
+
+    .container {
+      width: 1240px;
+      margin: 0 auto;
+
+      @include signUp();
+
+      .inputTitle {
+        padding: 0 0 15px;
+        line-height: 1.5;
+        font-size: 20px;
+        font-weight: 600;
+        border-bottom: 2px solid #333333;
+      }
+
+      .inputDataTable {
+        line-height: 1.5;
+        margin-bottom: 55px;
+
+        .inputTip {
+          margin: 5px;
+          color: #808080;
+          font-size: 14px;
+          font: 0.75em;
+        }
+
+        .CheckFail {
+          color: red;
+        }
+
+        tr {
+          display: table-row;
+          border-bottom: 1px solid #dbdbdb;
+          color: #808080;
+          font-weight: 700;
+
+          th {
+            display: block;
+            padding: 25px 0 24px 23px;
+            width: 150px;
+            font-size: 16px;
+            color: #5f5f5f;
+            background-color: #f8f8f8;
+            text-align: left;
+          }
+
+          td {
+            width: 100%;
+            padding: 15px 0px 15px 13px;
+
+            span {
+              margin: 5px;
+              font-size: 14px;
+              font: 0.75em;
+            }
+
+            .phoneFirst {
+              @include inputForm();
+              width: 116px;
+              font-size: 16px;
+            }
+
+            .inputPhoneNumber {
+              @include inputForm();
+              width: 127px;
+              font-size: 14px;
+              &:focus {
+                border: 2px solid black;
+                border-radius: 3px;
+              }
+            }
+          }
+
+          .inputInfo {
+            @include inputForm();
+            width: 397px;
+            font-size: 14px;
+            &:focus {
+              border: 2px solid black;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+
+      .buttonArea {
+        display: flex;
+        justify-content: center;
+
+        .inputSubmit {
+          padding: 10px 8px;
+          width: 487px;
+          height: 56px;
+          background: black;
+          color: white;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.RegisterSuccess {
+  @include signUp();
+  margin: 0 auto;
+  .signUpShow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto;
+    width: 1200px;
+    height: 400px;
+    border-top: 1px solid black;
+    background-color: #f9f9f9;
+
+    .message {
+      margin: 0 auto;
+      width: 100%;
+      line-height: 4vh;
+      p {
+        font-size: 25px;
+      }
+      span {
+        font-weight: 700;
+      }
+    }
+
+    .goMain {
+      margin-top: 25px;
+      width: 200px;
+      height: 50px;
+    }
+  }
+}
