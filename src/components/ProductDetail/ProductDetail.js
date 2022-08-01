@@ -14,13 +14,15 @@ export default function ProductDetail() {
     size: '',
     quantity: 1,
   });
-  const [ordersList, setordersList] = useState([]);
+  const [ordersList, setOrdersList] = useState([]);
+  const [totalFee, setTotalFee] = useState(0);
 
+  // ProductDetail 데이터 통신
   async function request() {
-    // const res = await fetch(
-    //   `http://10.58.3.145:8000/products/${params.product_id}`
-    // );
-    const res = await fetch('/data/productDataDetail.json');
+    const res = await fetch(
+      `http://35.90.169.104:8000/products/${params.product_id}`
+    );
+    // const res = await fetch('/data/productDataDetail.json');
     const result = await res.json();
     setDetail(result.product_detail);
   }
@@ -29,6 +31,7 @@ export default function ProductDetail() {
     request();
   }, []);
 
+  // 주문 옵션 핸들러
   const productOptionHandler = e => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -41,13 +44,14 @@ export default function ProductDetail() {
 
   useEffect(() => {
     if (order.size !== '') {
-      const prevordersList = [...ordersList];
-      prevordersList.push(order);
-      setordersList(prevordersList);
+      const prevOrdersList = [...ordersList];
+      prevOrdersList.push(order);
+      setOrdersList(prevOrdersList);
       setOrder({ graind: '', size: '', quantity: 1 });
     }
   }, [order]);
 
+  // 주문리스트 서버 전송 데이터 통신
   const ordersListJsonify = async e => {
     e.preventDefault();
     const POSTOrders = {};
@@ -58,7 +62,7 @@ export default function ProductDetail() {
       product: POSTOrders.product,
     };
 
-    const request = await fetch('http://10.58.7.4:8000/cart/cart', {
+    const request = await fetch('http://10.58.2.102:8000/cart/cart', {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('Token'),
@@ -72,6 +76,36 @@ export default function ProductDetail() {
       navigate('/cart');
     }
   };
+
+  const qttIncrease = id => {
+    const prevOrdersList = [...ordersList];
+    prevOrdersList[id].quantity++;
+    setOrdersList(prevOrdersList);
+  };
+
+  const qttDecrease = id => {
+    const prevOrdersList = [...ordersList];
+    if (prevOrdersList[id].quantity > 1) prevOrdersList[id].quantity--;
+    setOrdersList(prevOrdersList);
+  };
+
+  const orderDelete = id => {
+    const prevOrdersList = [...ordersList];
+    prevOrdersList.splice(id, 1);
+    setOrdersList(prevOrdersList);
+  };
+
+  useEffect(() => {
+    let total = 0;
+    ordersList.map(order => {
+      return detail.size.map(size => {
+        return order.size === size.size_name
+          ? (total += order.quantity * size.size_price)
+          : '';
+      });
+    });
+    setTotalFee(total);
+  }, [ordersList]);
 
   if (Object.keys(detail).length !== 0) {
     return (
@@ -197,14 +231,23 @@ export default function ProductDetail() {
                               value={order.quantity}
                             />
                             <div className="btnQuantityControl">
-                              <button className="increase btn">
+                              <button
+                                className="increase btn"
+                                onClick={() => qttIncrease(index)}
+                              >
                                 <RiArrowDropUpLine />
                               </button>
-                              <button className="decrease btn">
+                              <button
+                                className="decrease btn"
+                                onClick={() => qttDecrease(index)}
+                              >
                                 <RiArrowDropDownLine />
                               </button>
                             </div>
-                            <button className="delete">
+                            <button
+                              className="delete"
+                              onClick={() => orderDelete(index)}
+                            >
                               <ImCross />
                             </button>
                           </div>
@@ -213,7 +256,9 @@ export default function ProductDetail() {
                           <p>
                             {detail.size.map(size => {
                               return order.size === size.size_name
-                                ? Math.floor(size.size_price).toLocaleString()
+                                ? Math.floor(
+                                    size.size_price * order.quantity
+                                  ).toLocaleString()
                                 : '';
                             })}
                             원
@@ -227,7 +272,8 @@ export default function ProductDetail() {
 
               <div className="totalFee">
                 <p>
-                  총 상품금액<span>0</span>
+                  총 상품금액
+                  <span>{Math.floor(totalFee).toLocaleString('ko-KR')}원</span>
                 </p>
               </div>
 
@@ -236,7 +282,7 @@ export default function ProductDetail() {
                   <button className="giftButton btnPreset">선물하기</button>
                   <button
                     className="cartButton btnPreset"
-                    onClick={e => ordersListJsonify(e)}
+                    onClick={ordersListJsonify}
                   >
                     장바구니
                   </button>
