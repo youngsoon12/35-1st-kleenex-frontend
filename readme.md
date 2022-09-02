@@ -76,6 +76,7 @@
 
 ![signup](https://user-images.githubusercontent.com/105600985/182024817-97ec7b3b-3a3c-4fca-8ec0-404bedc54040.gif)
 
+![모델링](https://little-polish-7ff.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff93266b2-aae6-4f18-bf0e-122f973bcc1e%2FUntitled.png?table=block&id=38ccb56b-e01b-4772-8420-dfc7b6ddbc3d&spaceId=3603a399-ae9e-47d0-9870-7786d6f3f89b&width=2000&userId=&cache=v2)
 
 ### **Login**
 ![팀_크리넥스_시연_영상_AdobeExpress](https://user-images.githubusercontent.com/105952597/182052000-08b521b0-df2a-40c2-9b6c-54340d53f924.gif)
