@@ -4,28 +4,6 @@
   border-bottom: 2px solid #d02d28;
 }
 
-.header {
-  display: flex;
-  min-width: 1260px;
-  height: 158px;
-  border-bottom: 1px solid #ededed;
-  min-width: 450px;
-
-  .inner {
-    display: flex;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    width: 1240px;
-    align-items: center;
-    margin: 0 auto;
-
-    .logoImg {
-      margin-top: 16px;
-    }
-  }
-
-  .categoryMid {
 body {
   .hidden {
     overflow: hidden;
@@ -97,7 +75,7 @@ body {
 
       ul {
         li {
-          width: 115px;
+          width: 133px;
           padding: 0 30px;
           color: #222222;
           float: left;
@@ -129,10 +107,10 @@ body {
     .categoryRight {
       margin-bottom: 22px;
       width: 274px;
+
       .rightTop {
         padding: 15px 0 40px;
-        .out {
-        }
+
         li {
           float: left;
           padding: 1px;

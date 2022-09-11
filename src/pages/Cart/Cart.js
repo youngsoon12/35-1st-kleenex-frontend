@@ -10,8 +10,7 @@ const Cart = () => {
   const [itemsPrice, setItemsPrice] = useState([]);
   const shipmentPrice = itemsPrice >= 50000 ? 0 : 2500;
   const totalPrice = itemsPrice + shipmentPrice;
-  const copyProduct = useRef([]);
-  const resultData = useRef();
+  const copyProducts = useRef([]);
 
   // 첫 화면 렌더링 시 개인 카트 데이터를 요청합니다.
   async function request() {
@@ -28,27 +27,28 @@ const Cart = () => {
     setItemsPrice(result.MESSAGE.reduce((a, c) => a + c.price * c.quantity, 0));
   }
 
-  async function changeQty() {
-    const res = fetch(`${CONFIG_URL}/cart/cart`, {
+  async function addToCart() {
+    const res = await fetch(`${CONFIG_URL}/cart/cart`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         authorization: localStorage.getItem('Token'),
       },
       body: JSON.stringify({
-        cart_id: copyProduct.current.cart_id,
-        quantity: copyProduct.current.quantity,
+        cart_id: copyProducts.current.cart_id,
+        quantity: copyProducts.current.quantity,
       }),
     });
     const result = await res.json();
-    resultData.current = result;
   }
+
+  console.log(copyProducts.current);
 
   // 렌더링 이후 request 를 불러옵니다.
   useEffect(() => {
     request();
     return () => {
-      changeQty();
+      addToCart();
     };
   }, []);
 
@@ -59,7 +59,7 @@ const Cart = () => {
     copyValue[selectedId].quantity === 1
       ? (copyValue[selectedId].quantity = 1)
       : (copyValue[selectedId].quantity -= 1);
-    copyProduct.current = copyValue[selectedId];
+    copyProducts.current = copyValue[selectedId];
     setValues(copyValue);
     setItemsPrice(value.reduce((a, c) => a + c.price * c.quantity, 0));
   };
@@ -69,7 +69,7 @@ const Cart = () => {
     const copyValue = [...value];
     const selectedId = value.findIndex(product => product.cart_id === id);
     copyValue[selectedId].quantity += 1;
-    copyProduct.current = copyValue[selectedId];
+    copyProducts.current = copyValue[selectedId];
     setValues(copyValue);
     setItemsPrice(value.reduce((a, c) => a + c.price * c.quantity, 0));
   };

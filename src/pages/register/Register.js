@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RegisterToP from './RegisterToP';
+import { CONFIG_URL } from '../../config';
 import './Register.scss';
 
 const Register = () => {
@@ -42,8 +43,8 @@ const Register = () => {
                   `010-${person.phoneNumber1}-${person.phoneNumber2}`
                 )
               ) {
-                fetch('{{http://10.58.2.102:8000/user/signup}}', {
-                  method: 'post',
+                fetch(`${CONFIG_URL}/user/signup`, {
+                  method: 'POST',
                   body: JSON.stringify({
                     name: person.name,
                     username: person.userName,

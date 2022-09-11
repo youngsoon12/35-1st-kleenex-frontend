@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RiArrowDropUpLine, RiArrowDropDownLine } from 'react-icons/ri';
 import { ImCross } from 'react-icons/im';
+import { CONFIG_URL } from '../../config';
 import './ProductDetail.scss';
 
 export default function ProductDetail() {
@@ -19,9 +20,7 @@ export default function ProductDetail() {
 
   // ProductDetail 데이터 통신
   async function request() {
-    const res = await fetch(
-      `http://35.90.169.104:8000/products/${params.product_id}`
-    );
+    const res = await fetch(`${CONFIG_URL}/products/${params.product_id}`);
     // const res = await fetch('/data/productDataDetail.json');
     const result = await res.json();
     setDetail(result.product_detail);
@@ -62,7 +61,7 @@ export default function ProductDetail() {
       product: POSTOrders.product,
     };
 
-    const request = await fetch('http://10.58.2.102:8000/cart/cart', {
+    const request = await fetch(`${CONFIG_URL}/cart/cart`, {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('Token'),
@@ -71,6 +70,7 @@ export default function ProductDetail() {
     });
 
     const result = await request.json();
+    console.log(result);
 
     if (result.MESSAGE === 'SUCCESS') {
       navigate('/cart');
