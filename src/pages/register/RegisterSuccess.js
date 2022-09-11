@@ -7,6 +7,7 @@ const RegisterSuccess = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const user = location.state;
+  console.log(user.person.name);
 
   return (
     <div className="RegisterSuccess">
