@@ -4,6 +4,7 @@ import NavSmall from './NavSmall';
 import SearchCard from './search/SearchCard';
 import { CONFIG_URL } from '../../config';
 import './Nav.scss';
+import { useDebounce } from '../../hooks/useDebounce';
 
 // true false
 const Nav = () => {
@@ -15,12 +16,18 @@ const Nav = () => {
   const filterValue = useRef([]);
   const location = useLocation();
 
+  const deBounceSearch = useDebounce(search, 1000);
   // json
   async function request() {
+    if (deBounceSearch.length === 0) {
+      setValues([]);
+      return;
+    }
     const res = await fetch(
-      `${CONFIG_URL}/products/main/search?keywords=${search}`
+      `${CONFIG_URL}/products/main/search?keywords=${deBounceSearch}`
     );
     const result = await res.json();
+    console.log('보내는중', deBounceSearch);
     setValues(result.result);
   }
 
@@ -41,7 +48,7 @@ const Nav = () => {
 
   useEffect(() => {
     request();
-  }, [search]);
+  }, [deBounceSearch]);
 
   const handleSearchOpen = () => {
     setSearch('');
