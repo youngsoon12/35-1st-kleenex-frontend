@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="public/images/README/테라로사 슬라이드.gif" />
+</div>
+
 # TERAROSA
 
 - 팀 명 : 크리넥스
@@ -75,9 +79,8 @@
 
 ![signup](https://user-images.githubusercontent.com/105600985/182024817-97ec7b3b-3a3c-4fca-8ec0-404bedc54040.gif)
 
-
-
 ### **Login**
+
 ![팀_크리넥스_시연_영상_AdobeExpress](https://user-images.githubusercontent.com/105952597/182052000-08b521b0-df2a-40c2-9b6c-54340d53f924.gif)
 너무 작다 큰일났따!
 
