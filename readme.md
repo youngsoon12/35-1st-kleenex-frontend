@@ -4,6 +4,13 @@
 
 # TERAROSA
 
+<h2>실행 방법</h2>
+<ol>
+  <li>파일을 내려받는다.</li>
+  <li>터미널을 키고 npm install을 입력하여 필요한 npm 패키지들을 설치해준다.</li>
+  <li>터미널에 npm start를 입려하여 실행한다.</li>
+</ol>
+
 - 팀 명 : 크리넥스
 - 팀 원: [최원익(PM)](https://github.com/Yelihi), [김영수](https://github.com/youngsoon12), [오창훈](https://github.com/och-changhoon), [김도연](https://github.com/kdylsky), [안상현](https://github.com/AhnSang0915)
 
@@ -82,6 +89,4 @@
 ### **Login**
 
 ![팀_크리넥스_시연_영상_AdobeExpress](https://user-images.githubusercontent.com/105952597/182052000-08b521b0-df2a-40c2-9b6c-54340d53f924.gif)
-너무 작다 큰일났따!
 
-### **Cart**
