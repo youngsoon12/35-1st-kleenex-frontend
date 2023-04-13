@@ -10,7 +10,7 @@
    <img src = "public\images\README\ReadMeLogo.JPG">
   <br>
   
-  <h2>실행 방법</h2>
+<h2>실행 방법</h2>
 <ol>
   <li>파일을 내려받는다.</li>
   <li>터미널을 키고 npm install을 입력하여 필요한 npm 패키지들을 설치해준다.</li>
