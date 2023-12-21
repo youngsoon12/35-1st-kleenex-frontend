@@ -41,11 +41,9 @@
 
 - Trello
 
-  ![트렐로](public\images\README\Trello.JPG)
 
 - Notion
 
-  ![노션](public\images\README\Notion.JPG)
 
 ## 구현 목표
 
